@@ -473,7 +473,7 @@ const CONFIG = {
     if(bad){f.querySelector(".field.invalid input,.field.invalid textarea,.field.invalid select")?.focus();return;}
 
     const orders=(()=>{try{return JSON.parse(localStorage.getItem(ORDKEY))||[];}catch(e){return[];}})();
-    const code=`HK20-SHOP-${String(orders.length+1).padStart(5,"0")}`;
+    const code=`HK20-SHOP-${String(orders.length+1).padStart(3,"0")}`;
     const items=Object.entries(cart).map(([id,q])=>({id,name:byId(id).name,qty:q,price:byId(id).price}));
     const order={type:"don_hang",code,name:name.value.trim(),class:f.querySelector("#o-class").value,phone:normPhone(phone.value),
       deliver,address:deliver==="Giao tận nơi"?addr.value.trim():"",note:f.querySelector("#o-note").value.trim(),

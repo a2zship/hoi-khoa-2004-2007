@@ -1024,7 +1024,7 @@ const CONFIG = {
   const setErr=(id,bad)=>document.getElementById(id).closest(".field").classList.toggle("invalid",bad);
   const load=()=>{try{return JSON.parse(localStorage.getItem(KEY))||[];}catch(e){return[];}};
   const save=l=>{try{localStorage.setItem(KEY,JSON.stringify(l));}catch(e){}};
-  const genCode=cls=>`HK20-${cls}-${String(load().length+1).padStart(5,"0")}`;
+  const genCode=cls=>`HK20-${cls}-${String(load().length+1).padStart(3,"0")}`;
 
   window.addEventListener("hashchange",()=>{if(window.__preClass)document.getElementById("f-class").value=window.__preClass;});
 

@@ -338,7 +338,7 @@ h1,h2,h3{font-family:var(--ff-head);line-height:1.15;margin:0 0 .4em;font-weight
   };
   $("#demo-pool").onclick=()=>{
     const cls=["A1","A2","A3","A5","A7","A9","A11","A14"], names=["Nguyễn An","Trần Bình","Lê Chi","Phạm Dũng","Vũ Hà","Đỗ Khoa","Bùi Lan","Hồ Minh","Ngô Phúc","Đặng Quân"];
-    const arr=[]; for(let i=1;i<=40;i++){const c=cls[rnd(cls.length)];arr.push({code:`HK20-${c}-${String(i).padStart(5,"0")}`,name:names[rnd(names.length)],class:c});}
+    const arr=[]; for(let i=1;i<=40;i++){const c=cls[rnd(cls.length)];arr.push({code:`HK20-${c}-${String(i).padStart(3,"0")}`,name:names[rnd(names.length)],class:c});}
     pool=arr; saveJSON(KEY_POOL,pool);
     $("#pool-text").value=pool.map(p=>`${p.code}, ${p.name}, ${p.class}`).join("\n");
     refresh(); toast("Đã tạo 40 mã mẫu để thử.");
