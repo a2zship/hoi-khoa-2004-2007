@@ -65,18 +65,29 @@ h1,h2,h3{font-family:var(--ff-head);line-height:1.15;margin:0 0 .4em;font-weight
 .stage .prize-label{color:#dbe6ff;font-size:clamp(15px,2vw,18px);margin:0 0 22px}
 .stage .prize-label b{color:var(--gold-soft)}
 
-/* Reel */
-.reel{margin:0 auto;max-width:640px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:clamp(22px,4vw,40px) 18px;box-shadow:inset 0 0 40px rgba(0,0,0,.2)}
-.reel .win-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
-.reel .code{font-family:var(--ff-head);font-weight:700;letter-spacing:2px;color:var(--gold-soft);line-height:1;
-  font-size:clamp(38px,9vw,76px);text-shadow:0 4px 26px rgba(0,0,0,.35);font-variant-numeric:tabular-nums}
-.reel.rolling .code{color:#fff;opacity:.92}
+/* Wheel */
+.wheel-stage{display:flex;flex-direction:column;align-items:center;gap:20px}
+.wheel-wrap{position:relative;width:min(380px,82vw);aspect-ratio:1}
+.pointer{position:absolute;top:-10px;left:50%;transform:translateX(-50%);z-index:4;filter:drop-shadow(0 4px 6px rgba(0,0,0,.4))}
+.pointer svg{width:44px;height:48px;display:block}
+.wheel{width:100%;height:100%;border-radius:50%;position:relative;
+  background:conic-gradient(#153f9e 0 30deg,#c7972f 30deg 60deg,#153f9e 60deg 90deg,#c7972f 90deg 120deg,#153f9e 120deg 150deg,#c7972f 150deg 180deg,#153f9e 180deg 210deg,#c7972f 210deg 240deg,#153f9e 240deg 270deg,#c7972f 270deg 300deg,#153f9e 300deg 330deg,#c7972f 330deg 360deg);
+  box-shadow:0 0 0 8px rgba(255,255,255,.9),0 0 0 13px var(--gold),0 22px 55px rgba(0,0,0,.45),inset 0 0 46px rgba(0,0,0,.3);
+  transition:transform 4.4s cubic-bezier(.12,.64,.13,1)}
+.wheel::before{content:"";position:absolute;inset:0;border-radius:50%;pointer-events:none;
+  background:repeating-conic-gradient(rgba(255,255,255,.55) 0 .7deg, transparent .7deg 30deg)}
+.wheel::after{content:"";position:absolute;inset:0;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,transparent 60%,rgba(255,255,255,.12) 61% 62%,transparent 63%)}
+.hub{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:3;width:40%;aspect-ratio:1;border-radius:50%;
+  background:#fff;box-shadow:0 6px 20px rgba(0,0,0,.35),inset 0 0 0 4px var(--gold);display:grid;place-items:center;text-align:center;padding:8px}
+.hub .hub-code{font-family:var(--ff-head);font-weight:700;color:var(--blue);font-size:clamp(13px,3.6vw,21px);line-height:1.05;letter-spacing:.5px;word-break:break-word}
+.win-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;min-height:8px}
 .win-card{background:#fff;color:var(--navy);border-radius:16px;padding:18px 22px;min-width:220px;box-shadow:var(--shadow-lg);border:2px solid var(--gold);animation:pop .4s ease}
 .win-card .wc-code{font-family:var(--ff-head);font-weight:700;font-size:clamp(26px,4vw,36px);color:var(--blue);letter-spacing:1px}
 .win-card .wc-name{font-weight:600;font-size:17px;margin-top:4px}
 .win-card .wc-class{display:inline-block;margin-top:6px;background:var(--cream);color:var(--gold-ink);font-size:13px;font-weight:600;padding:3px 12px;border-radius:var(--radius-pill)}
 @keyframes pop{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}
-.reel .hint{color:#c6d2ee;font-size:14px;margin:0}
+.hint{color:#c6d2ee;font-size:14px;margin:0;text-align:center}
 .stage-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:26px}
 .stage-actions .btn{min-height:54px;padding:14px 34px;font-size:17px}
 .pool-info{margin-top:16px;color:#cdd8f5;font-size:14px}
@@ -152,9 +163,14 @@ h1,h2,h3{font-family:var(--ff-head);line-height:1.15;margin:0 0 .4em;font-weight
     <span class="kicker"><svg class="icon"><use href="#i-sparkle"/></svg>Bốc thăm may mắn</span>
     <h1>Vòng quay trúng thưởng</h1>
     <p class="prize-label">Giải thưởng: <b id="prize-show">Quà kỷ niệm hội khóa</b></p>
-    <div class="reel" id="reel">
-      <div class="win-row" id="win-row"><div class="code" id="code">HK20-••-•••••</div></div>
-      <p class="hint" id="reel-hint" style="margin-top:14px">Nạp danh sách mã đăng ký bên dưới, rồi bấm “QUAY SỐ”.</p>
+    <div class="wheel-stage">
+      <div class="wheel-wrap">
+        <div class="pointer"><svg viewBox="0 0 44 48"><path d="M22 46 L6 8 Q22 0 38 8 Z" fill="#ffffff" stroke="#c7972f" stroke-width="2.5" stroke-linejoin="round"/></svg></div>
+        <div class="wheel" id="wheel"></div>
+        <div class="hub"><div class="hub-code" id="hub-code">Sẵn sàng</div></div>
+      </div>
+      <div class="win-row" id="win-row"></div>
+      <p class="hint" id="reel-hint">Nạp danh sách mã đăng ký bên dưới, rồi bấm “QUAY SỐ”.</p>
     </div>
     <div class="stage-actions">
       <button class="btn btn-gold" id="spin-btn"><svg class="icon"><use href="#i-dice"/></svg>QUAY SỐ</button>
@@ -211,7 +227,7 @@ h1,h2,h3{font-family:var(--ff-head);line-height:1.15;margin:0 0 .4em;font-weight
 (function(){
   const $=s=>document.querySelector(s);
   const KEY_POOL="hoikhoa_boctham_pool", KEY_WIN="hoikhoa_boctham_winners", KEY_REG="hoikhoa2004_2007_dangky";
-  let pool=[], winners=[], rolling=false;
+  let pool=[], winners=[], rolling=false, currentRot=0;
 
   // ---- storage ----
   const loadJSON=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))??d;}catch(e){return d;}};
@@ -296,30 +312,29 @@ h1,h2,h3{font-family:var(--ff-head);line-height:1.15;margin:0 0 .4em;font-weight
     for(let i=0;i<draw;i++){ const idx=rnd(bag.length); chosen.push(bag.splice(idx,1)[0]); }
 
     rolling=true; $("#spin-btn").disabled=true; $("#fs-btn").disabled=true;
-    $("#reel").classList.add("rolling"); $("#reel-hint").textContent="Đang quay…";
-    const row=$("#win-row"); row.innerHTML=`<div class="code" id="code">HK20-••-•••••</div>`;
-    const codeEl=$("#code");
-    const t0=Date.now(), dur=2600;
-    const roll=setInterval(()=>{
-      codeEl.textContent=pool[rnd(pool.length)].code;
-      if(Date.now()-t0>=dur){
-        clearInterval(roll);
-        // reveal
-        row.innerHTML="";
-        chosen.forEach(w=>{
-          const c=document.createElement("div"); c.className="win-card";
-          c.innerHTML=`<div class="wc-code">${w.code}</div>${w.name?`<div class="wc-name">${w.name}</div>`:""}${w.class?`<span class="wc-class">Lớp ${w.class}</span>`:""}`;
-          row.appendChild(c);
-        });
-        chosen.forEach(w=>winners.push({...w,prize,at:new Date().toISOString()}));
-        saveJSON(KEY_WIN,winners);
-        $("#reel").classList.remove("rolling");
-        $("#reel-hint").textContent=draw>1?`🎉 Chúc mừng ${draw} người trúng “${prize}”!`:`🎉 Chúc mừng người trúng “${prize}”!`;
-        confetti();
-        rolling=false; $("#fs-btn").disabled=false;
-        refresh();
-      }
-    },70);
+    $("#reel-hint").textContent="Đang quay…";
+    const row=$("#win-row"); row.innerHTML="";
+    const hub=$("#hub-code"), wheel=$("#wheel");
+    // tâm quay hiện mã ngẫu nhiên khi bánh xe đang xoay
+    const roll=setInterval(()=>{ hub.textContent=pool[rnd(pool.length)].code; }, 80);
+    // xoay bánh xe: 6 vòng + góc ngẫu nhiên (mang tính trình diễn; người trúng đã chọn công bằng)
+    currentRot += 360*6 + rnd(360);
+    wheel.style.transform=`rotate(${currentRot}deg)`;
+    setTimeout(()=>{
+      clearInterval(roll);
+      hub.textContent = chosen.length===1 ? chosen[0].code : "🎉 "+chosen.length+" giải";
+      chosen.forEach(w=>{
+        const c=document.createElement("div"); c.className="win-card";
+        c.innerHTML=`<div class="wc-code">${w.code}</div>${w.name?`<div class="wc-name">${w.name}</div>`:""}${w.class?`<span class="wc-class">Lớp ${w.class}</span>`:""}`;
+        row.appendChild(c);
+      });
+      chosen.forEach(w=>winners.push({...w,prize,at:new Date().toISOString()}));
+      saveJSON(KEY_WIN,winners);
+      $("#reel-hint").textContent=draw>1?`🎉 Chúc mừng ${draw} người trúng “${prize}”!`:`🎉 Chúc mừng người trúng “${prize}”!`;
+      confetti();
+      rolling=false; $("#fs-btn").disabled=false;
+      refresh();
+    }, 4500);
   }
 
   // ---- events ----
