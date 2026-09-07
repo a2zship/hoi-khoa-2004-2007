@@ -1038,7 +1038,7 @@ const CONFIG = {
     setErr("f-name",bN);setErr("f-class",bC);setErr("f-phone",bP);
     if(bN||bC||bP){const first=form.querySelector(".field.invalid input,.field.invalid select");if(first)first.focus();return;}
     submitting=true;
-    const rec={code:genCode(cls),name,class:cls,phone:normPhone(phoneRaw),
+    const rec={type:"dang_ky",code:genCode(cls),name,class:cls,phone:normPhone(phoneRaw),
       guests:parseInt(document.getElementById("f-guests").value||"0",10),
       meal:document.getElementById("f-meal").value,
       nick:document.getElementById("f-nick").value.trim(),
