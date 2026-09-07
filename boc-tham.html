@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bốc thăm may mắn — Hội khóa 2004–2007 THPT Phạm Văn Nghị</title>
+<meta name="description" content="Chương trình bốc thăm may mắn tặng quà theo mã số đăng ký — Hội khóa 2004–2007 THPT Phạm Văn Nghị." />
+<meta name="theme-color" content="#0E2438" />
+<link rel="icon" href="logo%204.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --navy:#123C9E; --navy-700:#1B54CC; --navy-900:#0C2A66;
+  --blue:#1B54CC; --blue-bright:#2E6AE6;
+  --gold:#C7972F; --gold-soft:#F0CE7A; --gold-ink:#1B4BB0;
+  --paper:#FFFFFF; --cream:#EEF4FD; --cream-2:#E1EAFB;
+  --ink:#15233F; --muted:#586176; --line:#DCE6F5; --line-cool:#D3DEEF;
+  --shadow-xs:0 1px 2px rgba(14,36,56,.06); --shadow-sm:0 2px 10px rgba(14,36,56,.08);
+  --shadow-md:0 14px 34px rgba(14,36,56,.14); --shadow-lg:0 26px 60px rgba(14,36,56,.22);
+  --radius:16px; --radius-sm:12px; --radius-pill:999px; --maxw:1120px;
+  --ff-head:"EB Garamond", Georgia, serif; --ff-body:"Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--ff-body);color:var(--ink);background:var(--paper);line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit}
+h1,h2,h3{font-family:var(--ff-head);line-height:1.15;margin:0 0 .4em;font-weight:600}
+.container{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 20px}
+.icon{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:none;display:block}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;cursor:pointer;min-height:46px;padding:11px 22px;border-radius:var(--radius-pill);font-weight:600;font-size:15px;border:1.5px solid transparent;transition:transform .2s,box-shadow .2s,background .2s,color .2s;white-space:nowrap}
+.btn .icon{width:18px;height:18px;stroke-width:2}
+.btn:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.btn-primary{background:linear-gradient(180deg,var(--blue-bright),var(--blue));color:#fff;box-shadow:0 6px 18px rgba(27,84,204,.3)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(27,84,204,.4)}
+.btn-gold{background:linear-gradient(180deg,#E7C25A,var(--gold));color:#3a2905;box-shadow:0 8px 22px rgba(199,151,47,.4)}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(199,151,47,.5)}
+.btn-outline{background:#fff;color:var(--blue);border-color:var(--blue)}
+.btn-outline:hover{background:var(--blue);color:#fff}
+.btn-ghost{background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.5)}
+.btn-ghost:hover{background:rgba(255,255,255,.18)}
+.btn[disabled]{opacity:.45;cursor:not-allowed;transform:none!important;box-shadow:none}
+
+/* Header */
+.site-header{background:#fff;border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:14px;height:64px}
+.brand{display:flex;align-items:center;gap:11px;color:var(--navy)}
+.brand img{height:44px}
+.brand b{font-family:var(--ff-head);font-size:17px;display:block;line-height:1.15}
+.brand span{font-size:12px;color:var(--muted)}
+.nav a.back{display:inline-flex;align-items:center;gap:7px;color:var(--ink);font-weight:500;font-size:14.5px}
+.nav a.back:hover{color:var(--blue)}
+.nav a.back .icon{width:18px;height:18px}
+
+/* Stage */
+.stage{position:relative;color:#fff;overflow:hidden;
+  background:radial-gradient(900px 500px at 15% -10%,rgba(120,161,245,.5),transparent 60%),radial-gradient(700px 420px at 100% 0,rgba(240,206,122,.22),transparent 55%),linear-gradient(165deg,#2A63DD,var(--blue) 46%,var(--navy-900))}
+.stage::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.6;background-image:radial-gradient(2px 2px at 18% 26%,rgba(255,255,255,.7),transparent),radial-gradient(1.6px 1.6px at 70% 20%,rgba(240,206,122,.7),transparent),radial-gradient(2px 2px at 85% 62%,rgba(255,255,255,.5),transparent),radial-gradient(1.6px 1.6px at 38% 76%,rgba(255,255,255,.4),transparent)}
+.stage-inner{position:relative;text-align:center;padding:clamp(30px,5vw,56px) 0 clamp(36px,6vw,64px)}
+.kicker{display:inline-flex;align-items:center;gap:9px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;font-size:12.5px;color:var(--gold-soft);border:1px solid rgba(240,206,122,.45);padding:6px 15px;border-radius:var(--radius-pill);margin-bottom:14px}
+.kicker .icon{width:15px;height:15px}
+.stage h1{font-size:clamp(28px,5vw,46px);color:#fff;margin-bottom:6px;text-shadow:0 3px 22px rgba(0,0,0,.28)}
+.stage .prize-label{color:#dbe6ff;font-size:clamp(15px,2vw,18px);margin:0 0 22px}
+.stage .prize-label b{color:var(--gold-soft)}
+
+/* Reel */
+.reel{margin:0 auto;max-width:640px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:clamp(22px,4vw,40px) 18px;box-shadow:inset 0 0 40px rgba(0,0,0,.2)}
+.reel .win-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+.reel .code{font-family:var(--ff-head);font-weight:700;letter-spacing:2px;color:var(--gold-soft);line-height:1;
+  font-size:clamp(38px,9vw,76px);text-shadow:0 4px 26px rgba(0,0,0,.35);font-variant-numeric:tabular-nums}
+.reel.rolling .code{color:#fff;opacity:.92}
+.win-card{background:#fff;color:var(--navy);border-radius:16px;padding:18px 22px;min-width:220px;box-shadow:var(--shadow-lg);border:2px solid var(--gold);animation:pop .4s ease}
+.win-card .wc-code{font-family:var(--ff-head);font-weight:700;font-size:clamp(26px,4vw,36px);color:var(--blue);letter-spacing:1px}
+.win-card .wc-name{font-weight:600;font-size:17px;margin-top:4px}
+.win-card .wc-class{display:inline-block;margin-top:6px;background:var(--cream);color:var(--gold-ink);font-size:13px;font-weight:600;padding:3px 12px;border-radius:var(--radius-pill)}
+@keyframes pop{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}
+.reel .hint{color:#c6d2ee;font-size:14px;margin:0}
+.stage-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:26px}
+.stage-actions .btn{min-height:54px;padding:14px 34px;font-size:17px}
+.pool-info{margin-top:16px;color:#cdd8f5;font-size:14px}
+.pool-info b{color:#fff}
+
+/* Panels */
+.wrap{display:grid;gap:22px;grid-template-columns:1fr;padding:clamp(28px,5vw,52px) 0}
+@media(min-width:900px){.wrap{grid-template-columns:1.1fr .9fr}}
+.panel{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow-xs)}
+.panel h2{font-size:22px;color:var(--navy);display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.panel h2 .icon{width:22px;height:22px;color:var(--gold-ink)}
+.panel .sub{color:var(--muted);font-size:14px;margin:0 0 16px}
+.field{margin-bottom:14px}
+.field label{display:block;font-weight:600;font-size:14px;margin-bottom:6px}
+.field input,.field textarea{width:100%;font-family:inherit;font-size:16px;color:var(--ink);padding:11px 13px;border:1.5px solid var(--line-cool);border-radius:10px;background:#fff}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(27,84,204,.14)}
+.field textarea{min-height:120px;resize:vertical;font-size:14px;line-height:1.5}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
+.opts{display:flex;flex-direction:column;gap:8px;margin:6px 0 14px}
+.opts label{display:flex;align-items:center;gap:9px;font-size:14px;color:var(--ink);cursor:pointer}
+.opts input{width:18px;height:18px;accent-color:var(--blue)}
+.btn-row{display:flex;flex-wrap:wrap;gap:10px}
+.pool-badge{display:inline-flex;align-items:center;gap:8px;background:var(--cream);color:var(--navy);font-weight:600;font-size:14px;padding:8px 14px;border-radius:var(--radius-pill);margin-top:6px}
+.pool-badge .icon{width:17px;height:17px;color:var(--gold-ink)}
+
+/* Winners list */
+.win-list{list-style:none;padding:0;margin:0;max-height:420px;overflow-y:auto}
+.win-list li{display:flex;align-items:center;gap:12px;padding:11px 4px;border-bottom:1px dashed var(--line)}
+.win-list li .num{width:28px;height:28px;border-radius:50%;background:var(--navy);color:#fff;font-size:13px;font-weight:700;display:grid;place-items:center;flex:none}
+.win-list li .wl-code{font-family:var(--ff-head);font-weight:700;color:var(--blue);font-size:16px}
+.win-list li .wl-name{font-size:13.5px;color:var(--muted)}
+.win-list li .wl-prize{margin-left:auto;font-size:12.5px;color:var(--gold-ink);font-weight:600;text-align:right;max-width:45%}
+.empty{color:var(--muted);text-align:center;padding:30px 10px;font-size:14px}
+.win-foot{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.win-foot .btn{min-height:40px;padding:8px 16px;font-size:13.5px}
+.count-pill{margin-left:auto;font-size:13px;color:var(--muted);align-self:center}
+
+/* Confetti */
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:100;overflow:hidden}
+.confetti-piece{position:absolute;top:-16px;width:10px;height:16px;opacity:.95;will-change:transform;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(105vh) rotate(720deg)}}
+
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:var(--navy);color:#fff;padding:11px 20px;border-radius:var(--radius-pill);font-size:14px;font-weight:500;box-shadow:var(--shadow-md);opacity:0;transition:opacity .25s,transform .25s;z-index:110}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;transition:none!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="i-gift" viewBox="0 0 24 24"><rect x="3" y="8.5" width="18" height="4" rx="1"/><path d="M12 8.5v12M5 12.5v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/><path d="M12 8.5S10.5 3.5 8 3.5a2.5 2.5 0 0 0 0 5M12 8.5s1.5-5 4-5a2.5 2.5 0 0 1 0 5"/></symbol>
+  <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 3v5M12 16v5M3 12h5M16 12h5"/><path d="m6.2 6.2 3 3M14.8 14.8l3 3M17.8 6.2l-3 3M9.2 14.8l-3 3"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13M3.5 6h.01M3.5 12h.01M3.5 18h.01"/></symbol>
+  <symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M9.5 7V5.2a1.2 1.2 0 0 1 1.2-1.2h2.6a1.2 1.2 0 0 1 1.2 1.2V7M6.5 7l1 12.2a1.2 1.2 0 0 0 1.2 1.1h6.6a1.2 1.2 0 0 0 1.2-1.1L17.5 7"/></symbol>
+  <symbol id="i-laptop" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M2 20h20M9 20l.5-2h5l.5 2"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-dice" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8" cy="8" r="1.3"/><circle cx="16" cy="8" r="1.3"/><circle cx="12" cy="12" r="1.3"/><circle cx="8" cy="16" r="1.3"/><circle cx="16" cy="16" r="1.3"/></symbol>
+</defs></svg>
+
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="index.html"><img src="logo%204.png" alt="Logo hội khóa"><span><b>Hội khóa 2004–2007</b><span>Bốc thăm may mắn</span></span></a>
+    <a class="back" href="index.html"><svg class="icon"><use href="#i-back"/></svg>Trang chủ</a>
+  </div>
+</header>
+
+<!-- STAGE -->
+<section class="stage">
+  <div class="container stage-inner">
+    <span class="kicker"><svg class="icon"><use href="#i-sparkle"/></svg>Bốc thăm may mắn</span>
+    <h1>Vòng quay trúng thưởng</h1>
+    <p class="prize-label">Giải thưởng: <b id="prize-show">Quà kỷ niệm hội khóa</b></p>
+    <div class="reel" id="reel">
+      <div class="win-row" id="win-row"><div class="code" id="code">HK20-••-•••••</div></div>
+      <p class="hint" id="reel-hint" style="margin-top:14px">Nạp danh sách mã đăng ký bên dưới, rồi bấm “QUAY SỐ”.</p>
+    </div>
+    <div class="stage-actions">
+      <button class="btn btn-gold" id="spin-btn"><svg class="icon"><use href="#i-dice"/></svg>QUAY SỐ</button>
+      <button class="btn btn-ghost" id="fs-btn">Toàn màn hình</button>
+    </div>
+    <p class="pool-info">Số mã trong vòng quay: <b id="pool-live">0</b> · Đã trúng: <b id="won-live">0</b></p>
+  </div>
+</section>
+
+<div class="container">
+  <div class="wrap">
+    <!-- SETUP -->
+    <div class="panel">
+      <h2><svg class="icon"><use href="#i-settings"/></svg>Thiết lập</h2>
+      <p class="sub">Nhập giải thưởng, số lượng trúng mỗi lượt và danh sách mã dự thưởng.</p>
+      <div class="row2">
+        <div class="field"><label for="prize">Tên giải thưởng</label><input id="prize" type="text" value="Quà kỷ niệm hội khóa"></div>
+        <div class="field"><label for="ndraw">Số người trúng mỗi lượt</label><input id="ndraw" type="number" min="1" max="50" value="1"></div>
+      </div>
+      <div class="opts">
+        <label><input type="checkbox" id="opt-unique" checked>Không trúng trùng (loại người đã trúng khỏi vòng sau)</label>
+      </div>
+      <div class="field">
+        <label for="pool-text">Danh sách dự thưởng — mỗi dòng một mã <span style="color:var(--muted);font-weight:400">(có thể kèm tên, lớp: <code>MÃ, Tên, Lớp</code>)</span></label>
+        <textarea id="pool-text" placeholder="HK20-A3-00027, Nguyễn Văn A, A3&#10;HK20-A7-00105, Trần Thị B, A7&#10;HK20-A1-00003"></textarea>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-primary" id="load-pool"><svg class="icon"><use href="#i-users"/></svg>Nạp danh sách</button>
+        <button class="btn btn-outline" id="from-local"><svg class="icon"><use href="#i-laptop"/></svg>Lấy từ máy này</button>
+        <button class="btn btn-outline" id="demo-pool"><svg class="icon"><use href="#i-dice"/></svg>Danh sách mẫu</button>
+      </div>
+      <div class="pool-badge"><svg class="icon"><use href="#i-users"/></svg>Đang có <b id="pool-count">&nbsp;0&nbsp;</b> mã trong vòng quay</div>
+      <p class="sub" style="margin-top:14px;margin-bottom:0"><b>Lấy từ máy này:</b> đọc các đăng ký đã lưu trên trình duyệt máy đang mở. <b>Dán từ Google Sheet:</b> copy cột mã (và tên/lớp) từ Sheet BTC rồi dán vào ô trên — chính xác nhất cho ngày hội.</p>
+    </div>
+
+    <!-- WINNERS -->
+    <div class="panel">
+      <h2><svg class="icon"><use href="#i-list"/></svg>Danh sách trúng thưởng <span class="count-pill" id="won-count">0 người</span></h2>
+      <p class="sub">Kết quả được lưu lại trên máy này (không mất khi tải lại trang).</p>
+      <ul class="win-list" id="win-list"><li class="empty" id="win-empty">Chưa có kết quả. Bấm “QUAY SỐ” để bắt đầu 🎁</li></ul>
+      <div class="win-foot">
+        <button class="btn btn-outline" id="copy-win"><svg class="icon"><use href="#i-copy"/></svg>Sao chép</button>
+        <button class="btn btn-outline" id="export-win"><svg class="icon"><use href="#i-download"/></svg>Tải CSV</button>
+        <button class="btn btn-outline" id="clear-win" style="color:#a63d40;border-color:#a63d40"><svg class="icon"><use href="#i-trash"/></svg>Xóa kết quả</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="confetti"></div>
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  const $=s=>document.querySelector(s);
+  const KEY_POOL="hoikhoa_boctham_pool", KEY_WIN="hoikhoa_boctham_winners", KEY_REG="hoikhoa2004_2007_dangky";
+  let pool=[], winners=[], rolling=false;
+
+  // ---- storage ----
+  const loadJSON=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))??d;}catch(e){return d;}};
+  const saveJSON=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}};
+  pool=loadJSON(KEY_POOL,[]); winners=loadJSON(KEY_WIN,[]);
+
+  // ---- random (crypto) ----
+  function rnd(n){ if(window.crypto?.getRandomValues){const a=new Uint32Array(1);crypto.getRandomValues(a);return a[0]%n;} return Math.floor(Math.random()*n); }
+
+  // ---- parse pool ----
+  function parsePool(text){
+    const seen=new Set(), out=[];
+    text.split(/\r?\n/).forEach(line=>{
+      line=line.trim(); if(!line) return;
+      const p=line.split(/[\t,;|]/).map(s=>s.trim());
+      let code=p[0], name=p[1]||"", cls=p[2]||"";
+      if(!code) return;
+      if(!cls){ const m=code.match(/HK20-(A\d{1,2})/i); if(m) cls=m[1].toUpperCase(); }
+      const key=code.toUpperCase();
+      if(seen.has(key)) return; seen.add(key);
+      out.push({code,name,class:cls});
+    });
+    return out;
+  }
+
+  // ---- toast ----
+  let toastT; function toast(msg){const t=$("#toast");t.textContent=msg;t.classList.add("show");clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove("show"),2200);}
+
+  // ---- UI refresh ----
+  function refresh(){
+    $("#pool-count").innerHTML="&nbsp;"+pool.length+"&nbsp;";
+    const wonCodes=new Set(winners.map(w=>w.code.toUpperCase()));
+    const remaining=$("#opt-unique").checked ? pool.filter(p=>!wonCodes.has(p.code.toUpperCase())).length : pool.length;
+    $("#pool-live").textContent=remaining;
+    $("#won-live").textContent=winners.length;
+    $("#won-count").textContent=winners.length+" người";
+    $("#prize-show").textContent=$("#prize").value.trim()||"Quà kỷ niệm hội khóa";
+    renderWinners();
+    $("#spin-btn").disabled=remaining<=0;
+    if(pool.length&&remaining<=0) $("#reel-hint").textContent="Đã quay hết danh sách. Bỏ chọn “không trùng” hoặc nạp thêm mã để quay tiếp.";
+  }
+  function renderWinners(){
+    const ul=$("#win-list");
+    if(!winners.length){ ul.innerHTML='<li class="empty">Chưa có kết quả. Bấm “QUAY SỐ” để bắt đầu 🎁</li>'; return; }
+    ul.innerHTML="";
+    winners.forEach((w,i)=>{
+      const li=document.createElement("li");
+      li.innerHTML=`<span class="num">${i+1}</span><div><div class="wl-code">${w.code}</div><div class="wl-name">${[w.name,w.class].filter(Boolean).join(" · ")||"—"}</div></div><span class="wl-prize">${w.prize||""}</span>`;
+      ul.appendChild(li);
+    });
+  }
+
+  // ---- confetti ----
+  function confetti(){
+    if(window.matchMedia("(prefers-reduced-motion:reduce)").matches) return;
+    const box=$("#confetti"); const colors=["#C7972F","#F0CE7A","#1B54CC","#2E6AE6","#ffffff"];
+    for(let i=0;i<90;i++){
+      const p=document.createElement("div"); p.className="confetti-piece";
+      p.style.left=Math.random()*100+"vw";
+      p.style.background=colors[i%colors.length];
+      p.style.animationDuration=(2.4+Math.random()*1.8)+"s";
+      p.style.animationDelay=(Math.random()*.5)+"s";
+      p.style.width=(6+Math.random()*8)+"px";
+      p.style.height=(10+Math.random()*10)+"px";
+      p.style.opacity=(.7+Math.random()*.3).toFixed(2);
+      box.appendChild(p); setTimeout(()=>p.remove(),4800);
+    }
+  }
+
+  // ---- spin ----
+  function spin(){
+    if(rolling) return;
+    const prize=$("#prize").value.trim()||"Quà kỷ niệm hội khóa";
+    const n=Math.max(1,Math.min(50,parseInt($("#ndraw").value||"1",10)));
+    const wonCodes=new Set(winners.map(w=>w.code.toUpperCase()));
+    let avail=$("#opt-unique").checked ? pool.filter(p=>!wonCodes.has(p.code.toUpperCase())) : pool.slice();
+    if(!avail.length){ toast("Không còn mã nào để quay."); return; }
+    const draw=Math.min(n,avail.length);
+
+    // chọn người trúng trước
+    const chosen=[]; const bag=avail.slice();
+    for(let i=0;i<draw;i++){ const idx=rnd(bag.length); chosen.push(bag.splice(idx,1)[0]); }
+
+    rolling=true; $("#spin-btn").disabled=true; $("#fs-btn").disabled=true;
+    $("#reel").classList.add("rolling"); $("#reel-hint").textContent="Đang quay…";
+    const row=$("#win-row"); row.innerHTML=`<div class="code" id="code">HK20-••-•••••</div>`;
+    const codeEl=$("#code");
+    const t0=Date.now(), dur=2600;
+    const roll=setInterval(()=>{
+      codeEl.textContent=pool[rnd(pool.length)].code;
+      if(Date.now()-t0>=dur){
+        clearInterval(roll);
+        // reveal
+        row.innerHTML="";
+        chosen.forEach(w=>{
+          const c=document.createElement("div"); c.className="win-card";
+          c.innerHTML=`<div class="wc-code">${w.code}</div>${w.name?`<div class="wc-name">${w.name}</div>`:""}${w.class?`<span class="wc-class">Lớp ${w.class}</span>`:""}`;
+          row.appendChild(c);
+        });
+        chosen.forEach(w=>winners.push({...w,prize,at:new Date().toISOString()}));
+        saveJSON(KEY_WIN,winners);
+        $("#reel").classList.remove("rolling");
+        $("#reel-hint").textContent=draw>1?`🎉 Chúc mừng ${draw} người trúng “${prize}”!`:`🎉 Chúc mừng người trúng “${prize}”!`;
+        confetti();
+        rolling=false; $("#fs-btn").disabled=false;
+        refresh();
+      }
+    },70);
+  }
+
+  // ---- events ----
+  $("#load-pool").onclick=()=>{
+    const parsed=parsePool($("#pool-text").value);
+    if(!parsed.length){ toast("Chưa có mã hợp lệ trong ô danh sách."); return; }
+    pool=parsed; saveJSON(KEY_POOL,pool); refresh(); toast("Đã nạp "+pool.length+" mã.");
+  };
+  $("#from-local").onclick=()=>{
+    const regs=loadJSON(KEY_REG,[]);
+    if(!regs.length){ toast("Máy này chưa có đăng ký nào trong localStorage."); return; }
+    pool=regs.map(r=>({code:r.code,name:r.name||"",class:r.class||""}));
+    saveJSON(KEY_POOL,pool);
+    $("#pool-text").value=pool.map(p=>[p.code,p.name,p.class].filter(Boolean).join(", ")).join("\n");
+    refresh(); toast("Đã lấy "+pool.length+" đăng ký từ máy này.");
+  };
+  $("#demo-pool").onclick=()=>{
+    const cls=["A1","A2","A3","A5","A7","A9","A11","A14"], names=["Nguyễn An","Trần Bình","Lê Chi","Phạm Dũng","Vũ Hà","Đỗ Khoa","Bùi Lan","Hồ Minh","Ngô Phúc","Đặng Quân"];
+    const arr=[]; for(let i=1;i<=40;i++){const c=cls[rnd(cls.length)];arr.push({code:`HK20-${c}-${String(i).padStart(5,"0")}`,name:names[rnd(names.length)],class:c});}
+    pool=arr; saveJSON(KEY_POOL,pool);
+    $("#pool-text").value=pool.map(p=>`${p.code}, ${p.name}, ${p.class}`).join("\n");
+    refresh(); toast("Đã tạo 40 mã mẫu để thử.");
+  };
+  $("#spin-btn").onclick=spin;
+  $("#prize").oninput=()=>$("#prize-show").textContent=$("#prize").value.trim()||"Quà kỷ niệm hội khóa";
+  $("#opt-unique").onchange=refresh;
+
+  $("#copy-win").onclick=async()=>{
+    if(!winners.length){toast("Chưa có kết quả.");return;}
+    const txt=winners.map((w,i)=>`${i+1}. ${w.code} - ${[w.name,w.class].filter(Boolean).join(" ")} - ${w.prize||""}`).join("\n");
+    try{await navigator.clipboard.writeText(txt);toast("Đã sao chép danh sách trúng.");}catch(e){toast("Không sao chép được.");}
+  };
+  $("#export-win").onclick=()=>{
+    if(!winners.length){toast("Chưa có kết quả.");return;}
+    const rows=[["STT","Mã đăng ký","Họ tên","Lớp","Giải thưởng","Thời gian"]]
+      .concat(winners.map((w,i)=>[i+1,w.code,w.name||"",w.class||"",w.prize||"",new Date(w.at).toLocaleString("vi-VN")]));
+    const csv="﻿"+rows.map(r=>r.map(c=>`"${String(c).replace(/"/g,'""')}"`).join(",")).join("\n");
+    const blob=new Blob([csv],{type:"text/csv;charset=utf-8"}); const url=URL.createObjectURL(blob);
+    const a=document.createElement("a"); a.href=url; a.download="ket-qua-boc-tham-hoi-khoa.csv"; a.click(); URL.revokeObjectURL(url);
+    toast("Đã tải file CSV.");
+  };
+  $("#clear-win").onclick=()=>{
+    if(!winners.length) return;
+    if(confirm("Xóa toàn bộ danh sách trúng thưởng?")){ winners=[]; saveJSON(KEY_WIN,winners); refresh(); toast("Đã xóa kết quả."); }
+  };
+  $("#fs-btn").onclick=()=>{ const el=document.documentElement; if(!document.fullscreenElement){el.requestFullscreen?.();}else{document.exitFullscreen?.();} };
+
+  // restore textarea from saved pool
+  if(pool.length) $("#pool-text").value=pool.map(p=>[p.code,p.name,p.class].filter(Boolean).join(", ")).join("\n");
+  refresh();
+})();
+</script>
+
+<!--
+==================================================================
+ HƯỚNG DẪN BỐC THĂM (không hiển thị)
+==================================================================
+- Nạp danh sách dự thưởng bằng 1 trong 3 cách:
+   1) "Lấy từ máy này": đọc đăng ký đã lưu localStorage trên máy đang mở.
+   2) Dán từ Google Sheet: copy cột Mã ĐK (và Họ tên, Lớp) từ tab DangKy → dán vào ô → "Nạp danh sách". CHÍNH XÁC NHẤT cho ngày hội (đủ toàn bộ đăng ký).
+   3) "Danh sách mẫu": tạo 40 mã giả để thử máy chiếu trước.
+- Đặt "Tên giải thưởng" và "Số người trúng mỗi lượt", bấm QUAY SỐ.
+- Bật "Toàn màn hình" khi trình chiếu trên sân khấu.
+- Kết quả lưu trên máy (localStorage), tải được CSV/sao chép. Bốc ngẫu nhiên bằng crypto.getRandomValues (công bằng).
+==================================================================
+-->
+</body>
+</html>
