@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>20 Năm Ngày Trở Về — Gặp Lại Thanh Xuân | Hội khóa 2004–2007 THPT Phạm Văn Nghị</title>
+<meta name="description" content="Kỷ niệm 20 năm ngày ra trường — Hội khóa 2004–2007, Trường THPT Phạm Văn Nghị. Ngày 01/05/2027. Đăng ký trở về và đồng hành cùng ngày hội." />
+<meta name="theme-color" content="#0E2438" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="20 Năm Ngày Trở Về — Gặp Lại Thanh Xuân" />
+<meta property="og:description" content="Hội khóa 2004–2007, THPT Phạm Văn Nghị — Ngày 01/05/2027. Cùng trở về gặp lại thanh xuân." />
+<meta property="og:image" content="13.png" />
+<meta property="og:locale" content="vi_VN" />
+<link rel="icon" href="logo%204.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+/* ============================================================
+   DESIGN TOKENS — Hội khóa 2004–2007 (navy + vàng đồng, thanh lịch)
+   ============================================================ */
+:root{
+  /* Màu chủ đạo — XANH DƯƠNG & TRẮNG (theo logo) */
+  --navy:#123C9E;          /* xanh dương đậm (heading, chrome) */
+  --navy-700:#1B54CC;      /* xanh royal */
+  --navy-900:#0C2A66;      /* đáy hero / footer */
+  --blue:#1B54CC;          /* xanh royal (link, giờ) */
+  --blue-bright:#2E6AE6;   /* xanh sáng (nút, nhấn) */
+  --gold:#C7972F;          /* vàng đồng — chỉ dùng làm viền/đường kẻ nhấn */
+  --gold-soft:#F0CE7A;     /* vàng sáng trên nền xanh (chữ nhấn hero) */
+  --gold-ink:#1B4BB0;      /* icon nhỏ & eyebrow → xanh royal */
+  --red:#A63D40;           /* đỏ trầm (dự phòng) */
+
+  /* Nền & chữ */
+  --paper:#FFFFFF;
+  --cream:#EEF4FD;         /* nền xanh nhạt xen kẽ (thay kem) */
+  --cream-2:#E1EAFB;
+  --ink:#15233F;           /* chữ chính (xanh than) */
+  --muted:#586176;         /* chữ phụ */
+  --line:#DCE6F5;          /* viền xanh nhạt */
+  --line-cool:#D3DEEF;
+
+  /* Hệ thống */
+  --shadow-xs:0 1px 2px rgba(14,36,56,.06);
+  --shadow-sm:0 2px 10px rgba(14,36,56,.07);
+  --shadow-md:0 14px 34px rgba(14,36,56,.12);
+  --shadow-lg:0 26px 60px rgba(14,36,56,.20);
+  --radius:16px;
+  --radius-sm:12px;
+  --radius-pill:999px;
+  --maxw:1140px;
+  --ff-head:"EB Garamond", Georgia, "Times New Roman", serif;
+  --ff-body:"Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+
+  /* Spacing (density 4/10 — standard) */
+  --sp-1:8px; --sp-2:16px; --sp-3:24px; --sp-4:40px; --sp-5:64px;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px;-webkit-text-size-adjust:100%}
+body{
+  margin:0;font-family:var(--ff-body);color:var(--ink);background:var(--paper);
+  line-height:1.65;font-size:16px;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit}
+
+h1,h2,h3,h4{font-family:var(--ff-head);line-height:1.15;margin:0 0 .4em;font-weight:600;letter-spacing:.2px}
+h2{font-size:clamp(28px,4.6vw,42px);color:var(--navy)}
+h3{font-size:clamp(20px,2.6vw,24px);color:var(--navy)}
+p{margin:0 0 1em}
+
+.container{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 22px}
+section{padding:clamp(52px,7.5vw,96px) 0}
+.section-cream{background:var(--cream)}
+.center{text-align:center}
+
+/* Eyebrow with hairlines */
+.eyebrow{display:inline-flex;align-items:center;gap:12px;font-family:var(--ff-body);
+  font-weight:600;letter-spacing:.22em;text-transform:uppercase;font-size:12.5px;color:var(--gold-ink);margin-bottom:12px}
+.eyebrow::before,.eyebrow::after{content:"";width:28px;height:1px;background:var(--gold);opacity:.7}
+.section-head{max-width:660px;margin:0 auto}
+.lead{font-size:clamp(16px,1.9vw,18px);color:var(--muted);max-width:62ch;margin-inline:auto}
+
+/* ---- Icons ---- */
+.icon{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.7;
+  stroke-linecap:round;stroke-linejoin:round;flex:none;display:block}
+.icon-sm{width:18px;height:18px}
+.medallion{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;flex:none;
+  background:var(--cream);border:1px solid var(--line);color:var(--navy);box-shadow:var(--shadow-xs)}
+.medallion .icon{color:var(--gold-ink)}
+
+/* ---- Buttons ---- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;cursor:pointer;
+  min-height:50px;padding:13px 26px;border-radius:var(--radius-pill);font-weight:600;font-size:15.5px;
+  border:1.5px solid transparent;transition:transform .2s ease,box-shadow .2s ease,background .2s ease,color .2s ease;white-space:nowrap}
+.btn .icon{width:19px;height:19px;stroke-width:2}
+.btn:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.btn-primary{background:linear-gradient(180deg,var(--blue-bright),var(--blue));color:#fff;box-shadow:0 6px 18px rgba(27,84,204,.32)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(27,84,204,.42)}
+.btn-white{background:#fff;color:var(--blue);box-shadow:0 6px 18px rgba(0,0,0,.18)}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,.26);background:#f3f7ff}
+.btn-ghost{background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.55)}
+.btn-ghost:hover{background:rgba(255,255,255,.16);border-color:#fff}
+.btn-outline{background:var(--paper);color:var(--navy);border-color:var(--navy)}
+.btn-outline:hover{background:var(--navy);color:#fff}
+.btn-red{background:var(--red);color:#fff}
+.btn-red:hover{background:#8f3033;transform:translateY(-2px);box-shadow:var(--shadow-md)}
+
+.badge{display:inline-flex;align-items:center;gap:5px;font-family:var(--ff-body);font-size:12px;font-weight:600;
+  padding:3px 10px;border-radius:var(--radius-pill);line-height:1.6;letter-spacing:.02em}
+.badge-plan{background:#E1EAFB;color:#1B4BB0}
+.badge-plan .icon{width:12px;height:12px}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.site-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:66px}
+.brand{display:flex;align-items:center;gap:11px;color:var(--navy)}
+.brand img{height:46px;width:auto}
+.brand .brand-txt{font-family:var(--ff-head);font-weight:600;font-size:15px;line-height:1.2;max-width:210px}
+.brand .brand-txt b{display:block;font-size:17px;letter-spacing:.2px}
+.brand .brand-txt span{font-family:var(--ff-body);font-size:12px;color:var(--muted);font-weight:500}
+.nav-links{display:none;gap:26px;align-items:center}
+.nav-links a{font-family:var(--ff-body);font-weight:500;font-size:15px;color:var(--ink);padding:6px 0;position:relative}
+.nav-links a:hover{color:var(--blue)}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-2px;height:2px;width:0;background:var(--gold);transition:width .2s}
+.nav-links a:hover::after{width:100%}
+.nav .btn{min-height:44px;padding:9px 20px;font-size:14.5px}
+.nav-cta{display:none}
+@media(min-width:1000px){.nav-links{display:flex}.nav-cta{display:inline-flex}}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{position:relative;color:#fff;overflow:hidden;isolation:isolate;
+  background:
+    radial-gradient(1000px 520px at 12% -8%, rgba(120,161,245,.45), transparent 60%),
+    radial-gradient(760px 460px at 100% 4%, rgba(240,206,122,.18), transparent 58%),
+    linear-gradient(165deg,#2A63DD 0%, var(--blue) 46%, var(--navy-900) 100%);
+}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.6;
+  background-image:
+    radial-gradient(2px 2px at 18% 26%,rgba(255,255,255,.7),transparent),
+    radial-gradient(1.5px 1.5px at 68% 18%,rgba(228,200,119,.7),transparent),
+    radial-gradient(2px 2px at 84% 58%,rgba(255,255,255,.5),transparent),
+    radial-gradient(1.5px 1.5px at 40% 76%,rgba(255,255,255,.4),transparent)}
+.hero-inner{position:relative;display:grid;grid-template-columns:1fr;gap:40px;align-items:center;
+  padding:clamp(48px,8vw,92px) 0}
+.hero-kicker{display:inline-flex;align-items:center;gap:9px;font-weight:600;letter-spacing:.16em;
+  text-transform:uppercase;font-size:12.5px;color:var(--gold-soft);border:1px solid rgba(228,200,119,.45);
+  padding:7px 15px;border-radius:var(--radius-pill);margin-bottom:20px}
+.hero-kicker .icon{width:15px;height:15px}
+.hero h1{font-size:clamp(38px,7vw,68px);color:#fff;margin-bottom:16px;line-height:1.06;
+  letter-spacing:.5px;text-shadow:0 3px 26px rgba(0,0,0,.28)}
+.hero h1 .accent{color:var(--gold-soft);display:block}
+.hero-sub{font-size:clamp(16px,2.2vw,20px);color:#e8eefb;margin-bottom:4px}
+.hero-sub b{color:#fff}
+.hero-meta{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 4px}
+.meta-chip{display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.09);
+  border:1px solid rgba(255,255,255,.16);padding:9px 15px;border-radius:var(--radius-pill);font-size:14.5px}
+.meta-chip .icon{width:17px;height:17px;color:var(--gold-soft)}
+.hero-goals{color:#c8d3ee;font-size:14.5px;margin:16px 0 2px;display:flex;align-items:center;gap:9px}
+.hero-goals .icon{width:17px;height:17px;color:var(--gold-soft)}
+.hero-goals b{color:var(--gold-soft)}
+.hero-cta{display:flex;flex-wrap:wrap;gap:13px;margin-top:26px}
+
+.hero-art{justify-self:center;position:relative}
+.medal{position:relative;width:min(360px,82vw);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;
+  background:radial-gradient(circle at 50% 42%, #fff 0 62%, #fbf6ea 100%);
+  box-shadow:0 30px 70px rgba(0,0,0,.4), inset 0 0 0 2px rgba(199,151,47,.35)}
+.medal::before{content:"";position:absolute;inset:14px;border-radius:50%;border:2px dashed rgba(199,151,47,.55)}
+.medal img{width:74%;height:auto;position:relative}
+
+/* Countdown */
+.countdown{display:flex;gap:10px;margin-top:28px;flex-wrap:wrap}
+.cd-box{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:14px;
+  padding:14px 6px 11px;min-width:74px;text-align:center;flex:1 1 66px;position:relative}
+.cd-num{font-family:var(--ff-head);font-size:clamp(30px,5.4vw,42px);font-weight:700;color:var(--gold-soft);line-height:1;display:block}
+.cd-label{font-family:var(--ff-body);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#c4cfe8;margin-top:8px}
+.cd-note{margin-top:14px;font-size:13.5px;color:#c8d3ee}
+@media(min-width:920px){.hero-inner{grid-template-columns:1.22fr .88fr}}
+
+/* Showcase band */
+.showcase{padding:0;background:var(--navy-900);position:relative}
+.showcase img{width:100%;height:auto}
+.showcase::after{content:"";position:absolute;left:0;right:0;bottom:0;height:5px;background:linear-gradient(90deg,var(--gold),var(--gold-soft),var(--gold))}
+
+/* ============================================================
+   LỜI MỜI
+   ============================================================ */
+.invite{background:linear-gradient(180deg,var(--cream),#fff)}
+.invite-box{max-width:820px;margin:0 auto;text-align:center}
+.invite .deco{font-family:var(--ff-head);font-size:90px;color:var(--gold);opacity:.35;line-height:.2;height:44px}
+.invite-box .quote{font-family:var(--ff-head);font-style:italic;font-size:clamp(20px,2.8vw,27px);
+  color:var(--navy);line-height:1.6;margin:8px 0 22px}
+
+/* ============================================================
+   GRID / CARDS
+   ============================================================ */
+.grid{display:grid;gap:20px}
+.grid-2{grid-template-columns:1fr}
+.grid-3{grid-template-columns:1fr}
+.grid-4{grid-template-columns:repeat(2,1fr)}
+@media(min-width:640px){.grid-2{grid-template-columns:1fr 1fr}.grid-3{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:960px){.grid-3{grid-template-columns:repeat(3,1fr)}.grid-4{grid-template-columns:repeat(4,1fr)}}
+
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow-xs);
+  transition:transform .2s ease,box-shadow .2s ease}
+.info-card{display:flex;gap:16px;align-items:flex-start}
+.info-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+.info-card .k{font-family:var(--ff-head);font-weight:600;font-size:19px;color:var(--navy);margin-bottom:3px}
+.info-card .v{color:var(--muted);font-size:15px}
+
+/* Experiences */
+.exp-card{display:flex;gap:14px;align-items:center;background:#fff;border:1px solid var(--line);
+  border-radius:var(--radius-sm);padding:16px 18px;box-shadow:var(--shadow-xs);transition:transform .2s,box-shadow .2s,border-color .2s}
+.exp-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-sm);border-color:var(--gold)}
+.exp-card .medallion{width:46px;height:46px}
+.exp-card .medallion .icon{width:22px;height:22px}
+.exp-card .txt{font-size:15.5px;color:var(--ink);font-weight:500}
+
+/* ============================================================
+   TIMELINE
+   ============================================================ */
+.timeline{position:relative;max-width:780px;margin:0 auto;padding-left:6px}
+.timeline::before{content:"";position:absolute;left:19px;top:8px;bottom:8px;width:2px;
+  background:linear-gradient(var(--gold-soft),var(--gold),var(--gold-ink));border-radius:2px}
+.tl-item{position:relative;padding:0 0 30px 58px}
+.tl-item:last-child{padding-bottom:0}
+.tl-dot{position:absolute;left:8px;top:0;width:24px;height:24px;border-radius:50%;background:#fff;
+  border:2px solid var(--gold);display:grid;place-items:center;box-shadow:var(--shadow-xs)}
+.tl-dot::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--gold)}
+.tl-time{font-family:var(--ff-head);font-weight:700;color:var(--blue);font-size:19px;line-height:1}
+.tl-title{font-weight:600;margin:5px 0 2px;font-size:16.5px}
+.tl-desc{color:var(--muted);font-size:14.5px}
+
+/* ============================================================
+   MAP / ĐỊA ĐIỂM
+   ============================================================ */
+.map-wrap{border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow-sm);background:var(--cream)}
+.map-wrap iframe{width:100%;height:360px;border:0;display:block}
+.map-placeholder{height:360px;display:grid;place-items:center;text-align:center;color:var(--muted);padding:26px}
+.map-placeholder .medallion{margin:0 auto 12px;width:64px;height:64px}
+.dd-list{list-style:none;padding:0;margin:16px 0 0}
+.dd-list li{display:flex;gap:11px;align-items:flex-start;color:var(--muted);font-size:15px;margin-bottom:12px}
+.dd-list .icon{width:20px;height:20px;color:var(--gold-ink);margin-top:2px}
+
+/* ============================================================
+   LỚP A1–A14
+   ============================================================ */
+.class-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px 18px;
+  box-shadow:var(--shadow-xs);transition:transform .2s,box-shadow .2s;text-align:center}
+.class-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+.class-badge{font-family:var(--ff-head);font-weight:700;font-size:26px;color:#fff;width:62px;height:62px;
+  border-radius:50%;display:grid;place-items:center;margin:0 auto 12px;position:relative;
+  background:radial-gradient(circle at 34% 28%,var(--navy-700),var(--navy));box-shadow:inset 0 0 0 2px rgba(199,151,47,.5)}
+.class-card .rep{font-size:13.5px;color:var(--muted);margin:2px 0}
+.class-card .rep b{color:var(--ink)}
+.class-card .btn{margin-top:14px;min-height:42px;padding:9px 16px;font-size:13.5px;width:100%}
+
+/* ============================================================
+   FORM
+   ============================================================ */
+.form-grid{display:grid;grid-template-columns:1fr;gap:28px}
+@media(min-width:920px){.form-grid{grid-template-columns:1.12fr .88fr}}
+.form-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:clamp(22px,3vw,34px);box-shadow:var(--shadow-md)}
+.field{margin-bottom:18px}
+.field label{display:block;font-weight:600;font-size:14.5px;margin-bottom:7px;color:var(--ink)}
+.field label .req{color:var(--red)}
+.field input,.field select,.field textarea{width:100%;font-family:inherit;font-size:16px;color:var(--ink);
+  padding:13px 15px;border:1.5px solid var(--line-cool);border-radius:11px;background:#fff;transition:border .15s,box-shadow .15s}
+.field input::placeholder,.field textarea::placeholder{color:#9aa3b0}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(30,79,156,.14)}
+.field textarea{min-height:92px;resize:vertical}
+.field .hint{font-size:12.5px;color:var(--muted);margin-top:5px}
+.field .err{font-size:12.5px;color:var(--red);margin-top:5px;display:none;align-items:center;gap:5px}
+.field .err .icon{width:14px;height:14px}
+.field.invalid input,.field.invalid select{border-color:var(--red)}
+.field.invalid .err{display:flex}
+.row2{display:grid;grid-template-columns:1fr;gap:0 18px}
+@media(min-width:560px){.row2{grid-template-columns:1fr 1fr}}
+.form-note{font-size:13px;color:var(--muted);margin-top:12px;display:flex;gap:8px;align-items:flex-start}
+.form-note .icon{width:16px;height:16px;color:var(--gold-ink);margin-top:2px;flex:none}
+.form-success{display:none;background:linear-gradient(180deg,#EFF7F0,#fff);border:1.5px solid #bfe0c7;border-radius:var(--radius);padding:30px 24px;text-align:center}
+.form-success.show{display:block;animation:pop .35s ease}
+.form-success .medallion{margin:0 auto 8px;width:64px;height:64px;background:#e4f2e6;border-color:#bfe0c7}
+.form-success .medallion .icon{color:#2f8a45;width:30px;height:30px}
+.form-success .code{font-family:var(--ff-head);font-size:28px;font-weight:700;color:var(--navy);
+  background:var(--cream);border:1px dashed var(--gold);border-radius:11px;padding:9px 20px;display:inline-block;margin:12px 0;letter-spacing:1.5px}
+@keyframes pop{from{transform:scale(.97);opacity:0}to{transform:scale(1);opacity:1}}
+.aside-card{background:var(--cream);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+.aside-card h3{font-size:20px;margin-bottom:8px}
+.aside-list{list-style:none;padding:0;margin:0}
+.aside-list li{display:flex;gap:10px;align-items:flex-start;color:var(--muted);font-size:14.5px;margin-bottom:9px}
+.aside-list .icon{width:18px;height:18px;color:var(--gold-ink);margin-top:2px;flex:none}
+
+/* ============================================================
+   QUỸ / TÀI TRỢ
+   ============================================================ */
+.fund-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow-xs);height:100%}
+.fund-card h3{display:flex;align-items:center;gap:10px}
+.fund-card h3 .icon{width:22px;height:22px;color:var(--gold-ink)}
+.qr-box{text-align:center;background:var(--cream);border:1px solid var(--line);border-radius:12px;padding:20px}
+.qr-box img{width:186px;height:186px;object-fit:contain;margin:0 auto;background:#fff;border-radius:10px;border:1px solid var(--line)}
+.qr-placeholder{width:186px;height:186px;margin:0 auto;background:#fff;border:2px dashed var(--gold);border-radius:10px;
+  display:grid;place-items:center;color:var(--muted);font-size:13px;text-align:center;padding:12px;gap:6px}
+.qr-placeholder .icon{width:34px;height:34px;color:var(--gold);margin:0 auto}
+.bank-line{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:12px 0;border-bottom:1px dashed var(--line);font-size:15px}
+.bank-line:last-child{border-bottom:0}
+.bank-line .k{color:var(--muted);display:flex;align-items:center;gap:8px}
+.bank-line .k .icon{width:17px;height:17px;color:var(--gold-ink)}
+.bank-line .v{font-weight:600;text-align:right}
+.copy-btn{display:inline-flex;align-items:center;gap:6px;background:var(--navy);color:#fff;border:0;border-radius:9px;padding:7px 13px;font-size:13px;cursor:pointer;font-weight:600;transition:background .2s}
+.copy-btn:hover{background:var(--navy-700)}
+.copy-btn .icon{width:14px;height:14px;stroke-width:2.2}
+.pkg-table{width:100%;border-collapse:collapse;font-size:14.5px;margin-top:10px}
+.pkg-table th,.pkg-table td{text-align:left;padding:12px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.pkg-table th{font-family:var(--ff-head);color:var(--navy);font-weight:700;background:var(--cream);font-size:16px}
+.pkg-table td.amt{white-space:nowrap;font-weight:600;color:var(--red)}
+.pkg-table tbody tr:hover{background:var(--cream)}
+
+/* ============================================================
+   ALBUM / KỶ NIỆM
+   ============================================================ */
+.album{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+@media(min-width:640px){.album{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:960px){.album{grid-template-columns:repeat(4,1fr)}}
+.album .ph{aspect-ratio:1/1;border-radius:14px;display:grid;place-items:center;text-align:center;color:#fff;
+  font-size:13px;font-weight:500;padding:12px;gap:8px;position:relative;overflow:hidden;
+  background:linear-gradient(150deg,var(--navy-700),var(--navy))}
+.album .ph .icon{width:30px;height:30px;color:rgba(255,255,255,.85)}
+.album .ph:nth-child(3n){background:linear-gradient(150deg,var(--blue-bright),var(--blue))}
+.album .ph:nth-child(4n){background:linear-gradient(150deg,#5B8DEF,#2E6AE6)}
+.messages{display:grid;gap:16px;margin-top:26px}
+@media(min-width:760px){.messages{grid-template-columns:1fr 1fr}}
+.msg{background:#fff;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:12px;padding:18px 20px;box-shadow:var(--shadow-xs)}
+.msg .qmark{color:var(--gold);width:22px;height:22px;margin-bottom:6px}
+.msg p{font-style:italic;color:var(--ink);margin:0 0 10px;font-family:var(--ff-head);font-size:18px;line-height:1.5}
+.msg .who{font-size:13.5px;color:var(--muted);font-weight:600}
+
+/* Ban tổ chức */
+.org-card{display:flex;align-items:center;gap:15px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow-xs);transition:transform .2s,box-shadow .2s}
+.org-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-sm)}
+.org-card .av{width:50px;height:50px;border-radius:50%;flex:none;display:grid;place-items:center;font-family:var(--ff-head);
+  font-weight:700;font-size:22px;color:#fff;background:radial-gradient(circle at 34% 28%,var(--navy-700),var(--navy));box-shadow:inset 0 0 0 2px rgba(199,151,47,.5)}
+.org-card .name{font-weight:600}
+.org-card .role{font-size:13.5px;color:var(--muted)}
+.org-card a.tel{margin-left:auto;color:var(--blue);font-weight:600;font-size:14px;white-space:nowrap;display:inline-flex;align-items:center;gap:6px}
+.org-card a.tel .icon{width:15px;height:15px}
+.org-card a.tel:hover{text-decoration:underline}
+.org-card .tel-muted{margin-left:auto;color:var(--muted);font-size:13.5px}
+
+/* FAQ */
+.faq{max-width:820px;margin:0 auto}
+.faq details{background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:13px;box-shadow:var(--shadow-xs);overflow:hidden}
+.faq summary{cursor:pointer;padding:17px 20px;font-weight:600;color:var(--navy);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .chev{width:20px;height:20px;color:var(--gold-ink);transition:transform .25s;flex:none}
+.faq details[open] summary .chev{transform:rotate(180deg)}
+.faq .ans{padding:0 20px 17px;color:var(--muted);font-size:15px}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer{background:var(--navy-900);color:#c7d2ea;padding:52px 0 120px;position:relative}
+.site-footer::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--gold),var(--gold-soft),var(--gold))}
+.footer-grid{display:grid;grid-template-columns:1fr;gap:30px}
+@media(min-width:760px){.footer-grid{grid-template-columns:1.5fr 1fr 1.1fr}}
+.site-footer h4{font-family:var(--ff-head);color:#fff;font-size:19px;margin:0 0 14px}
+.site-footer a:hover{color:var(--gold-soft)}
+.foot-brand{display:flex;align-items:center;gap:13px;margin-bottom:14px}
+.foot-brand img{height:58px;background:#fff;border-radius:12px;padding:5px}
+.site-footer ul{list-style:none;padding:0;margin:0}
+.site-footer li{margin-bottom:10px;font-size:14.5px;display:flex;align-items:center;gap:9px}
+.site-footer li .icon{width:17px;height:17px;color:var(--gold-soft);flex:none}
+.foot-links li{display:block}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.14);margin-top:34px;padding-top:20px;font-size:13px;color:#93a4cf;text-align:center}
+
+/* Mobile sticky CTA */
+.mobile-bar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;gap:10px;padding:10px 14px;
+  padding-bottom:calc(10px + env(safe-area-inset-bottom));
+  background:rgba(255,255,255,.97);backdrop-filter:blur(10px);border-top:1px solid var(--line);box-shadow:0 -6px 24px rgba(0,0,0,.09)}
+.mobile-bar .btn{flex:1;min-height:50px;font-size:15px}
+@media(min-width:1000px){.mobile-bar{display:none}.site-footer{padding-bottom:52px}}
+
+/* Reveal */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  *{animation:none!important;transition:none!important}
+}
+.skip-link{position:absolute;left:-999px;top:0;background:var(--gold);color:#3a2905;padding:10px 16px;border-radius:0 0 8px 0;z-index:100;font-weight:600}
+.skip-link:focus{left:0}
+</style>
+</head>
+<body>
+<a href="#dang-ky" class="skip-link">Bỏ qua tới phần đăng ký</a>
+
+<!-- SVG sprite (icon dùng lại qua <use>) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="17" rx="2.5"/><path d="M16 2.5v4M8 2.5v4M3 9.5h18"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10.5c0 6-8 11.5-8 11.5s-8-5.5-8-11.5a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10.3" r="2.8"/></symbol>
+    <symbol id="i-cap" viewBox="0 0 24 24"><path d="M22 9.5 12 5 2 9.5l10 4.5 10-4.5Z"/><path d="M6 11.5v5c0 1 2.7 3 6 3s6-2 6-3v-5"/><path d="M22 9.5v5"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+    <symbol id="i-ticket" viewBox="0 0 24 24"><path d="M4 5.5h16a1 1 0 0 1 1 1v2.5a2.5 2.5 0 0 0 0 5V16.5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V14a2.5 2.5 0 0 0 0-5V6.5a1 1 0 0 1 1-1Z"/><path d="M14 5.5v13" stroke-dasharray="2 3"/></symbol>
+    <symbol id="i-shirt" viewBox="0 0 24 24"><path d="M15 3.5 12 6 9 3.5 4 6l1.5 4H8v10h8V10h2.5L20 6l-5-2.5Z"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3 2"/></symbol>
+    <symbol id="i-map" viewBox="0 0 24 24"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2Z"/><path d="M9 4v14M15 6v14"/></symbol>
+    <symbol id="i-car" viewBox="0 0 24 24"><path d="M5 16.5H4a1 1 0 0 1-1-1V12l2-5.5a2 2 0 0 1 1.9-1.3h10.2A2 2 0 0 1 19 6.5L21 12v3.5a1 1 0 0 1-1 1h-1"/><path d="M3.5 11.5h17"/><circle cx="7.5" cy="16.5" r="2"/><circle cx="16.5" cy="16.5" r="2"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 6a5 5 0 0 0-7-.2L12 7.3l-1.8-1.5a5 5 0 0 0-7 7L12 21.5l8.8-8.7a5 5 0 0 0 0-6.8Z"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 8.5A1.5 1.5 0 0 1 5.5 7h1.7l1.3-2h7l1.3 2h1.7A1.5 1.5 0 0 1 20 8.5v9A1.5 1.5 0 0 1 18.5 19h-13A1.5 1.5 0 0 1 4 17.5Z"/><circle cx="12" cy="12.5" r="3.3"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2 4.2 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L9.8 11.8a16 16 0 0 0 6 6l1.4-1.4a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2Z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="m3 7 9 6 9-6"/></symbol>
+    <symbol id="i-film" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="15" rx="2"/><path d="M7 4.5v15M17 4.5v15M3 9.5h4M3 14.5h4M17 9.5h4M17 14.5h4"/></symbol>
+    <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="15" rx="2"/><circle cx="8.5" cy="10" r="2"/><path d="m4 18 5-4.5 3.5 3 3-2.5 4.5 4"/></symbol>
+    <symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 3s5 4.2 5 9a5 5 0 0 1-10 0c0-1.6.7-3 1.5-4.2.6 1 1.3 1.6 2.2 2C10 7 12 5 12 3Z"/></symbol>
+    <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 3v5M12 16v5M3 12h5M16 12h5"/><path d="m6.2 6.2 3 3M14.8 14.8l3 3M17.8 6.2l-3 3M9.2 14.8l-3 3"/></symbol>
+    <symbol id="i-disc" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.4"/></symbol>
+    <symbol id="i-gift" viewBox="0 0 24 24"><rect x="3" y="8.5" width="18" height="4" rx="1"/><path d="M12 8.5v12M5 12.5v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/><path d="M12 8.5S10.5 3.5 8 3.5a2.5 2.5 0 0 0 0 5M12 8.5s1.5-5 4-5a2.5 2.5 0 0 1 0 5"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2Z"/><path d="M19 19v2H6a2 2 0 0 1-2-2"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V21a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1Z"/></symbol>
+    <symbol id="i-teacher" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M12 16v4M8 20h8M8 9.5l2.2 2L15 8"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-quote" viewBox="0 0 24 24"><path d="M9 7c-2.2 0-4 1.9-4 4.2 0 2 1.5 3.6 3.5 3.6.3 2.2-.8 3.7-2.5 4.7M20 7c-2.2 0-4 1.9-4 4.2 0 2 1.5 3.6 3.5 3.6.3 2.2-.8 3.7-2.5 4.7"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.5 9.2l5.9-.9L12 3Z"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.4 3 8 7 9 4-1 7-4.6 7-9V6l-7-3Z"/><path d="m9.5 12 1.8 1.8 3.4-3.6"/></symbol>
+    <symbol id="i-clipboard" viewBox="0 0 24 24"><rect x="5" y="4.5" width="14" height="17" rx="2"/><path d="M9 4.5a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 15 4.5v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1Z"/><path d="M9 12h6M9 16h4"/></symbol>
+  </defs>
+</svg>
+
+<!-- ============================ HEADER ============================ -->
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="#top" aria-label="Về đầu trang">
+      <img src="logo%204.png" alt="Logo hội khóa 20 năm — THPT Phạm Văn Nghị" />
+      <span class="brand-txt"><b>Hội khóa 2004–2007</b><span>THPT Phạm Văn Nghị</span></span>
+    </a>
+    <nav class="nav-links" aria-label="Điều hướng chính">
+      <a href="#loi-moi">Lời mời</a>
+      <a href="#su-kien">Sự kiện</a>
+      <a href="#chuong-trinh">Chương trình</a>
+      <a href="#cac-lop">14 lớp</a>
+      <a href="#ky-uc">Ký ức</a>
+      <a href="#hoi-dap">Hỏi đáp</a>
+    </nav>
+    <a href="#dang-ky" class="btn btn-primary nav-cta">Đăng ký tham dự<svg class="icon"><use href="#i-arrow"/></svg></a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============================ HERO ============================ -->
+<section class="hero" aria-labelledby="hero-title">
+  <div class="container hero-inner">
+    <div class="hero-text">
+      <span class="hero-kicker"><svg class="icon"><use href="#i-star"/></svg> Kỷ niệm 20 năm ngày ra trường</span>
+      <h1 id="hero-title">20 NĂM NGÀY TRỞ VỀ<span class="accent">GẶP LẠI THANH XUÂN</span></h1>
+      <p class="hero-sub">Hội khóa <b>2004–2007</b> · Trường THPT Phạm Văn Nghị</p>
+      <p class="hero-sub" id="hero-date">Thứ Bảy, ngày 01 tháng 05 năm 2027</p>
+
+      <div class="hero-meta">
+        <span class="meta-chip"><svg class="icon"><use href="#i-pin"/></svg><span id="hero-venue">THPT Phạm Văn Nghị</span> <span class="badge badge-plan">Dự kiến</span></span>
+        <span class="meta-chip"><svg class="icon"><use href="#i-clock"/></svg><span id="hero-time">07:30 sáng</span></span>
+      </div>
+
+      <p class="hero-goals"><svg class="icon"><use href="#i-users"/></svg>Mục tiêu: <b id="goal-people">~350</b> cựu học sinh · <b id="goal-class">14</b> lớp (A1–A14)</p>
+
+      <div class="countdown" id="countdown" aria-label="Đếm ngược tới ngày hội khóa">
+        <div class="cd-box"><span class="cd-num" id="cd-days">--</span><span class="cd-label">Ngày</span></div>
+        <div class="cd-box"><span class="cd-num" id="cd-hours">--</span><span class="cd-label">Giờ</span></div>
+        <div class="cd-box"><span class="cd-num" id="cd-mins">--</span><span class="cd-label">Phút</span></div>
+        <div class="cd-box"><span class="cd-num" id="cd-secs">--</span><span class="cd-label">Giây</span></div>
+      </div>
+      <p class="cd-note" id="cd-note"></p>
+
+      <div class="hero-cta">
+        <a href="#dang-ky" class="btn btn-white">ĐĂNG KÝ THAM DỰ<svg class="icon"><use href="#i-arrow"/></svg></a>
+        <a href="#tai-tro" class="btn btn-ghost"><svg class="icon"><use href="#i-heart"/></svg>ĐỒNG HÀNH TÀI TRỢ</a>
+      </div>
+    </div>
+
+    <div class="hero-art">
+      <div class="medal">
+        <img src="logo%204.png" alt="Biểu tượng 20 năm hội khóa: 2007–2027, THPT Phạm Văn Nghị, Gặp lại thanh xuân" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="showcase">
+  <img src="13.png" alt="Cổng Trường THPT Phạm Văn Nghị rực rỡ hoa phượng — Ngày hội khóa 2004–2007" loading="lazy" />
+</div>
+
+<!-- ============================ LỜI MỜI ============================ -->
+<section class="invite reveal" id="loi-moi" aria-labelledby="invite-h">
+  <div class="container">
+    <div class="invite-box">
+      <div class="deco" aria-hidden="true">“</div>
+      <h2 id="invite-h">Lời mời trở về</h2>
+      <p class="quote">Hai mươi năm trước, chúng ta rời mái trường với những ước mơ còn dang dở. Hai mươi năm sau, mỗi người đã đi qua một hành trình riêng. Có người ở gần, có người lập nghiệp phương xa, nhưng ký ức về thầy cô, bạn bè và những năm tháng học trò vẫn còn nguyên vẹn. Ngày 01/05/2027, chúng ta cùng trở về – không phải để nhìn xem ai thành công hơn, mà để được gọi nhau bằng những cái tên thân thuộc của ngày xưa.</p>
+      <a href="#dang-ky" class="btn btn-primary"><svg class="icon"><use href="#i-heart"/></svg>TÔI SẼ TRỞ VỀ</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ THÔNG TIN SỰ KIỆN ============================ -->
+<section class="section-cream reveal" id="su-kien" aria-labelledby="su-kien-h">
+  <div class="container">
+    <div class="center section-head">
+      <span class="eyebrow">Thông tin</span>
+      <h2 id="su-kien-h">Ngày hội khóa</h2>
+      <p class="lead">Những cột mốc chính của ngày trở về. Nội dung chưa được Ban tổ chức chốt sẽ mang nhãn “Dự kiến”.</p>
+    </div>
+    <div class="grid grid-3" style="margin-top:38px">
+      <div class="card info-card"><span class="medallion"><svg class="icon"><use href="#i-calendar"/></svg></span><div><div class="k">Thời gian</div><div class="v">Thứ Bảy, 01/05/2027 · từ 07:30 <span class="badge badge-plan">Dự kiến</span></div></div></div>
+      <div class="card info-card"><span class="medallion"><svg class="icon"><use href="#i-pin"/></svg></span><div><div class="k">Địa điểm</div><div class="v">Trường THPT Phạm Văn Nghị <span class="badge badge-plan">Dự kiến</span></div></div></div>
+      <div class="card info-card"><span class="medallion"><svg class="icon"><use href="#i-cap"/></svg></span><div><div class="k">Thành phần</div><div class="v">Cựu học sinh khóa 2004–2007, thầy cô & người thân</div></div></div>
+      <div class="card info-card"><span class="medallion"><svg class="icon"><use href="#i-users"/></svg></span><div><div class="k">Quy mô</div><div class="v">14 lớp (A1–A14), mục tiêu ~350 cựu học sinh</div></div></div>
+      <div class="card info-card"><span class="medallion"><svg class="icon"><use href="#i-ticket"/></svg></span><div><div class="k">Chủ đề</div><div class="v">“20 năm ngày trở về – Gặp lại thanh xuân”</div></div></div>
+      <div class="card info-card"><span class="medallion"><svg class="icon"><use href="#i-shirt"/></svg></span><div><div class="k">Trang phục</div><div class="v">Lịch sự, gợi nhớ áo trắng học trò <span class="badge badge-plan">Dự kiến</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ TRẢI NGHIỆM ============================ -->
+<section class="reveal" id="trai-nghiem" aria-labelledby="tn-h">
+  <div class="container">
+    <div class="center section-head">
+      <span class="eyebrow">Đáng mong đợi</span>
+      <h2 id="tn-h">Điều chờ bạn trong ngày trở về</h2>
+    </div>
+    <div class="grid grid-2" style="margin-top:36px" id="exp-list"></div>
+  </div>
+</section>
+
+<!-- ============================ CHƯƠNG TRÌNH ============================ -->
+<section class="section-cream reveal" id="chuong-trinh" aria-labelledby="ct-h">
+  <div class="container">
+    <div class="center section-head">
+      <span class="eyebrow">Lịch trình</span>
+      <h2 id="ct-h">Chương trình ngày hội <span class="badge badge-plan">Dự kiến</span></h2>
+      <p class="lead">Khung giờ dự kiến, Ban tổ chức sẽ cập nhật khi chốt.</p>
+    </div>
+    <div class="timeline" id="timeline" style="margin-top:40px"></div>
+  </div>
+</section>
+
+<!-- ============================ ĐỊA ĐIỂM ============================ -->
+<section class="reveal" id="dia-diem" aria-labelledby="dd-h">
+  <div class="container">
+    <div class="grid grid-2" style="align-items:center">
+      <div>
+        <span class="eyebrow">Đường về trường</span>
+        <h2 id="dd-h">Địa điểm & di chuyển</h2>
+        <p class="lead" id="venue-address" style="margin-inline:0">Trường THPT Phạm Văn Nghị. (Ban tổ chức sẽ cập nhật địa chỉ chi tiết.)</p>
+        <ul class="dd-list">
+          <li><svg class="icon"><use href="#i-car"/></svg><span>Có khu vực gửi xe máy và ô tô trong khuôn viên trường <span class="badge badge-plan">Dự kiến</span></span></li>
+          <li><svg class="icon"><use href="#i-info"/></svg><span>Bạn ở xa cần hỗ trợ đưa đón/lưu trú? Ghi chú ở phần đăng ký để BTC sắp xếp.</span></li>
+        </ul>
+      </div>
+      <div class="map-wrap" id="map-wrap">
+        <div class="map-placeholder">
+          <div><span class="medallion"><svg class="icon"><use href="#i-map"/></svg></span>Bản đồ sẽ hiển thị khi BTC gắn liên kết Google Maps.<br><small>(Điền <code>mapEmbedUrl</code> trong phần CONFIG)</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ CÁC LỚP ============================ -->
+<section class="section-cream reveal" id="cac-lop" aria-labelledby="lop-h">
+  <div class="container">
+    <div class="center section-head">
+      <span class="eyebrow">Kết nối</span>
+      <h2 id="lop-h">14 lớp — A1 đến A14</h2>
+      <p class="lead">Tìm lại lớp của bạn và đăng ký cùng nhau trở về. Đại diện lớp sẽ được cập nhật khi có xác nhận.</p>
+    </div>
+    <div class="grid grid-4" id="class-grid" style="margin-top:36px"></div>
+  </div>
+</section>
+
+<!-- ============================ ĐĂNG KÝ ============================ -->
+<section class="reveal" id="dang-ky" aria-labelledby="dk-h">
+  <div class="container">
+    <div class="center section-head">
+      <span class="eyebrow">Ghi danh</span>
+      <h2 id="dk-h">Đăng ký tham dự</h2>
+      <p class="lead">Điền thông tin dưới đây (dưới 3 phút). Thông tin được lưu tạm trên trình duyệt của bạn để BTC tổng hợp.</p>
+    </div>
+
+    <div class="form-grid" style="margin-top:38px">
+      <div class="form-card">
+        <form id="reg-form" novalidate>
+          <div class="row2">
+            <div class="field">
+              <label for="f-name">Họ và tên <span class="req">*</span></label>
+              <input id="f-name" name="name" type="text" autocomplete="name" required minlength="2" />
+              <div class="err"><svg class="icon"><use href="#i-info"/></svg>Vui lòng nhập họ tên (từ 2 ký tự).</div>
+            </div>
+            <div class="field">
+              <label for="f-class">Lớp cũ <span class="req">*</span></label>
+              <select id="f-class" name="class" required><option value="">— Chọn lớp —</option></select>
+              <div class="err"><svg class="icon"><use href="#i-info"/></svg>Vui lòng chọn lớp của bạn.</div>
+            </div>
+          </div>
+          <div class="row2">
+            <div class="field">
+              <label for="f-phone">Số điện thoại <span class="req">*</span></label>
+              <input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required placeholder="VD: 0912 345 678" />
+              <div class="err"><svg class="icon"><use href="#i-info"/></svg>Số điện thoại chưa hợp lệ (10 số, bắt đầu bằng 0).</div>
+            </div>
+            <div class="field">
+              <label for="f-guests">Số người đi cùng</label>
+              <input id="f-guests" name="guests" type="number" min="0" max="20" step="1" value="0" />
+              <div class="hint">Không tính bản thân bạn.</div>
+            </div>
+          </div>
+          <div class="row2">
+            <div class="field">
+              <label for="f-meal">Suất ăn</label>
+              <select id="f-meal" name="meal"><option value="Mặn (thường)">Mặn (thường)</option><option value="Chay">Chay</option></select>
+            </div>
+            <div class="field">
+              <label for="f-nick">Tên thường gọi hồi đi học</label>
+              <input id="f-nick" name="nick" type="text" maxlength="50" placeholder="(không bắt buộc)" />
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-msg">Lời nhắn gửi hội khóa</label>
+            <textarea id="f-msg" name="message" maxlength="500" placeholder="Đôi dòng gửi thầy cô và bạn bè…"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%"><svg class="icon"><use href="#i-check"/></svg>XÁC NHẬN ĐĂNG KÝ</button>
+          <p class="form-note"><svg class="icon"><use href="#i-shield"/></svg>Bằng việc đăng ký, bạn đồng ý cho BTC dùng thông tin để tổ chức ngày hội. Chúng tôi không công khai số điện thoại của bạn.</p>
+        </form>
+
+        <div class="form-success" id="reg-success" role="status" aria-live="polite">
+          <span class="medallion"><svg class="icon"><use href="#i-check"/></svg></span>
+          <h3>Cảm ơn bạn đã đăng ký trở về!</h3>
+          <p style="color:var(--muted);margin:.2em 0">Mã đăng ký của bạn:</p>
+          <div class="code" id="reg-code">—</div>
+          <p style="color:var(--muted);font-size:14.5px">Ban tổ chức sẽ liên hệ xác nhận. Hẹn gặp bạn ngày 01/05/2027!</p>
+          <button type="button" class="btn btn-outline" id="reg-again" style="margin-top:6px">Đăng ký cho người khác</button>
+        </div>
+      </div>
+
+      <aside>
+        <div class="aside-card">
+          <h3>Đăng ký giúp gì cho ngày hội?</h3>
+          <p style="color:var(--muted);font-size:15px">Số liệu đăng ký giúp BTC chuẩn bị đủ chỗ ngồi, suất ăn, quà kỷ niệm và sắp xếp gặp gỡ theo lớp.</p>
+          <ul class="aside-list">
+            <li><svg class="icon"><use href="#i-check"/></svg>Đăng ký sớm để giữ suất và áo kỷ niệm.</li>
+            <li><svg class="icon"><use href="#i-check"/></svg>Rủ thêm bạn bè cùng lớp cùng về.</li>
+            <li><svg class="icon"><use href="#i-check"/></svg>Mọi thông tin cá nhân được bảo mật.</li>
+          </ul>
+        </div>
+        <div class="aside-card" style="margin-top:18px;background:#fff">
+          <h3>Bạn đang ở xa?</h3>
+          <p style="color:var(--muted);font-size:15px;margin:0">Ghi chú nhu cầu đưa đón hoặc lưu trú trong lời nhắn — BTC sẽ cố gắng hỗ trợ để bạn về được với hội khóa.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ TÀI TRỢ ============================ -->
+<section class="section-cream reveal" id="tai-tro" aria-labelledby="tt-h">
+  <div class="container">
+    <div class="center section-head">
+      <span class="eyebrow">Chung tay</span>
+      <h2 id="tt-h">Quỹ hội khóa & đồng hành tài trợ</h2>
+      <p class="lead">Mỗi đóng góp — dù nhỏ — đều giúp ngày trở về thêm trọn vẹn. Các con số minh bạch sẽ do Ban tài chính công khai.</p>
+    </div>
+
+    <div class="grid grid-2" style="margin-top:38px;align-items:stretch">
+      <div class="fund-card">
+        <h3><svg class="icon"><use href="#i-clipboard"/></svg>Đóng góp chuyển khoản</h3>
+        <div class="bank-line"><span class="k"><svg class="icon"><use href="#i-users"/></svg>Chủ tài khoản</span><span class="v" id="bank-name-acc">[Điền tên chủ TK]</span></div>
+        <div class="bank-line"><span class="k"><svg class="icon"><use href="#i-ticket"/></svg>Số tài khoản</span><span class="v" id="bank-number">[Điền số TK]</span></div>
+        <div class="bank-line"><span class="k"><svg class="icon"><use href="#i-shield"/></svg>Ngân hàng</span><span class="v" id="bank-bank">[Điền ngân hàng]</span></div>
+        <div class="bank-line"><span class="k"><svg class="icon"><use href="#i-info"/></svg>Nội dung CK</span><span class="v"><span id="transfer-content">HK20 [Ho ten] [Lop]</span> <button class="copy-btn" type="button" id="copy-transfer"><svg class="icon"><use href="#i-copy"/></svg>Sao chép</button></span></div>
+        <p class="form-note"><svg class="icon"><use href="#i-shield"/></svg>Ghi đúng nội dung chuyển khoản giúp BTC đối soát nhanh. Không nhập số tài khoản/ mật khẩu cá nhân của bạn ở bất kỳ đâu trên trang này.</p>
+      </div>
+
+      <div class="fund-card">
+        <h3><svg class="icon"><use href="#i-camera"/></svg>Quét mã QR</h3>
+        <div class="qr-box">
+          <div id="qr-slot" class="qr-placeholder"><svg class="icon"><use href="#i-camera"/></svg>Mã QR sẽ hiển thị khi BTC gắn ảnh QR<br>(điền <code>qrImage</code> trong CONFIG)</div>
+          <p style="color:var(--muted);font-size:13.5px;margin:14px 0 0">Mở app ngân hàng → quét mã → kiểm tra tên người nhận trước khi chuyển.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="fund-card" style="margin-top:20px">
+      <h3><svg class="icon"><use href="#i-gift"/></svg>Các mức đồng hành gợi ý <span class="badge badge-plan">Chờ BTC duyệt</span></h3>
+      <div style="overflow-x:auto">
+        <table class="pkg-table">
+          <thead><tr><th>Mức đồng hành</th><th>Gợi ý</th><th>Ghi nhận</th></tr></thead>
+          <tbody id="pkg-body"></tbody>
+        </table>
+      </div>
+      <p class="form-note"><svg class="icon"><use href="#i-info"/></svg>Hình thức: tiền mặt · chuyển khoản · hiện vật · dịch vụ · ẩn danh. Quyền lợi ghi nhận chỉ áp dụng khi được Ban tổ chức xác nhận. Ngày hội đề cao tinh thần tri ân, không biến thành trang quảng cáo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ KỶ NIỆM ============================ -->
+<section class="reveal" id="ky-uc" aria-labelledby="ku-h">
+  <div class="container">
+    <div class="center section-head">
+      <span class="eyebrow">Bức tường thanh xuân</span>
+      <h2 id="ku-h">Ký ức một thời áo trắng</h2>
+      <p class="lead">Album ảnh “xưa & nay” và những lời nhắn của thành viên hội khóa. Ảnh sẽ được BTC cập nhật và chỉ đăng khi có sự đồng ý.</p>
+    </div>
+    <div class="album" style="margin-top:34px" id="album"></div>
+    <div class="messages" id="messages"></div>
+  </div>
+</section>
+
+<!-- ============================ BAN TỔ CHỨC ============================ -->
+<section class="section-cream reveal" id="ban-to-chuc" aria-labelledby="btc-h">
+  <div class="container">
+    <div class="center section-head">
+      <span class="eyebrow">Liên hệ</span>
+      <h2 id="btc-h">Ban tổ chức</h2>
+      <p class="lead">Cần hỗ trợ đăng ký, tài trợ hay bất kỳ câu hỏi nào — hãy gọi cho các đầu mối dưới đây.</p>
+    </div>
+    <div class="grid grid-3" style="margin-top:34px" id="org-grid"></div>
+  </div>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section class="reveal" id="hoi-dap" aria-labelledby="faq-h">
+  <div class="container">
+    <div class="center section-head">
+      <span class="eyebrow">Hỏi đáp</span>
+      <h2 id="faq-h">Câu hỏi thường gặp</h2>
+    </div>
+    <div class="faq" style="margin-top:34px">
+      <details><summary>Tôi có thể dẫn theo người thân không?<svg class="icon chev"><use href="#i-chevron"/></svg></summary><div class="ans">Được. Bạn vui lòng ghi rõ số người đi cùng khi đăng ký để BTC chuẩn bị chỗ ngồi và suất ăn phù hợp.</div></details>
+      <details><summary>Chi phí tham dự là bao nhiêu?<svg class="icon chev"><use href="#i-chevron"/></svg></summary><div class="ans">Mức phí và quyền lợi kèm theo (áo kỷ niệm, suất ăn…) sẽ được Ban tổ chức thông báo chính thức. Thông tin sẽ cập nhật tại đây khi được chốt.</div></details>
+      <details><summary>Tôi ở xa, có được hỗ trợ không?<svg class="icon chev"><use href="#i-chevron"/></svg></summary><div class="ans">Có. Hãy ghi nhu cầu đưa đón hoặc lưu trú vào phần lời nhắn khi đăng ký, BTC sẽ liên hệ sắp xếp trong khả năng.</div></details>
+      <details><summary>Đăng ký rồi có sửa/hủy được không?<svg class="icon chev"><use href="#i-chevron"/></svg></summary><div class="ans">Được. Vui lòng liên hệ đầu mối Ban tổ chức ở phần cuối trang để cập nhật hoặc hủy đăng ký.</div></details>
+      <details><summary>Tôi muốn tài trợ cho ngày hội thì làm thế nào?<svg class="icon chev"><use href="#i-chevron"/></svg></summary><div class="ans">Bạn có thể đóng góp qua chuyển khoản/QR ở phần “Quỹ hội khóa & đồng hành tài trợ”, hoặc liên hệ trực tiếp BTC để trao đổi các hình thức tiền mặt, hiện vật, dịch vụ.</div></details>
+      <details><summary>Thông tin của tôi có được bảo mật không?<svg class="icon chev"><use href="#i-chevron"/></svg></summary><div class="ans">Có. BTC không công khai số điện thoại, mức đóng góp cá nhân hay thông tin nhạy cảm. Dữ liệu chỉ dùng để tổ chức ngày hội.</div></details>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="foot-brand">
+          <img src="logo%204.png" alt="Logo hội khóa" />
+          <div><strong style="color:#fff;font-size:18px;font-family:var(--ff-head)">Hội khóa 2004–2007</strong><br>THPT Phạm Văn Nghị</div>
+        </div>
+        <p style="font-size:14.5px">“20 năm ngày trở về – Gặp lại thanh xuân”. Ngày 01/05/2027, chúng ta cùng về lại mái trường xưa.</p>
+      </div>
+      <div>
+        <h4>Liên kết nhanh</h4>
+        <ul class="foot-links">
+          <li><a href="#loi-moi">Lời mời trở về</a></li>
+          <li><a href="#chuong-trinh">Chương trình</a></li>
+          <li><a href="#dang-ky">Đăng ký tham dự</a></li>
+          <li><a href="#tai-tro">Đồng hành tài trợ</a></li>
+          <li><a href="#hoi-dap">Câu hỏi thường gặp</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Hỗ trợ</h4>
+        <ul>
+          <li><svg class="icon"><use href="#i-phone"/></svg>Hotline BTC: <a id="foot-hotline" href="tel:">[Điền số hotline]</a></li>
+          <li><svg class="icon"><use href="#i-mail"/></svg>Email: <a id="foot-email" href="mailto:">[Điền email BTC]</a></li>
+          <li><svg class="icon"><use href="#i-shield"/></svg>Không công khai thông tin cá nhân của cựu học sinh.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p style="margin:0">© <span id="year"></span> Ban tổ chức Hội khóa 2004–2007 — THPT Phạm Văn Nghị. Trang tin dành cho cựu học sinh.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="mobile-bar">
+  <a href="#dang-ky" class="btn btn-primary">Tham dự</a>
+  <a href="#tai-tro" class="btn btn-outline">Tài trợ</a>
+</div>
+
+<script>
+/* ============================================================
+   ⚙️ CONFIG — Sếp chỉnh mọi thông tin ở đây, không cần đụng code bên dưới
+   ============================================================ */
+const CONFIG = {
+  eventDateISO: "2027-05-01T07:30:00+07:00",
+  dateDisplay:  "Thứ Bảy, ngày 01 tháng 05 năm 2027",
+  timeDisplay:  "07:30 sáng",
+  venueName:    "Trường THPT Phạm Văn Nghị",
+  venueAddress: "Trường THPT Phạm Văn Nghị. (Ban tổ chức sẽ cập nhật địa chỉ chi tiết.)",
+  targetPeople: "~350",
+  targetClasses: 14,
+
+  mapEmbedUrl: "",   // Google Maps → Share → Embed a map → dán link trong src="..."
+
+  bank: {
+    accountName: "", accountNumber: "", bankName: "",
+    transferPrefix: "HK20"
+  },
+  qrImage: "",
+
+  hotline: "", email: "",
+  formEndpoint: "", // (tùy chọn) Google Apps Script Web App để nhận đăng ký thật
+
+  classes: Array.from({length:14}, (_,i)=>({ code:"A"+(i+1), rep:"", repPhone:"" })),
+
+  program: [
+    {time:"07:30", title:"Đón khách & check-in", desc:"Nhận thẻ tên, áo kỷ niệm, chụp ảnh check-in tại cổng trường."},
+    {time:"08:30", title:"Về thăm lớp học cũ", desc:"Cựu học sinh trở lại phòng học xưa, ôn kỷ niệm cùng bạn bè."},
+    {time:"09:00", title:"Lễ khai mạc", desc:"Chào cờ, phát biểu, tri ân và tưởng nhớ thầy cô, bạn học cũ."},
+    {time:"10:00", title:"Chương trình “20 năm – Ngày trở về”", desc:"Chiếu phim kỷ niệm, tái hiện ảnh cũ từng lớp, giao lưu."},
+    {time:"11:30", title:"Tiệc hội ngộ", desc:"Cùng dùng bữa, văn nghệ và trò chơi ký ức."},
+    {time:"14:00", title:"Giao lưu tự do & chụp ảnh lớp", desc:"Gặp gỡ theo lớp, viết thông điệp gửi hội khóa 30 năm."},
+    {time:"16:00", title:"Bế mạc", desc:"Chia tay, hẹn ngày gặp lại. Nhận ảnh & kỷ yếu số sau sự kiện."}
+  ],
+
+  // icon = id trong sprite (không dùng emoji)
+  experiences: [
+    {icon:"home",    txt:"Trở lại lớp học cũ"},
+    {icon:"teacher", txt:"Gặp lại thầy cô chủ nhiệm và thầy cô bộ môn"},
+    {icon:"film",    txt:"Xem phim “20 năm – Ngày trở về”"},
+    {icon:"image",   txt:"Tái hiện ảnh cũ của từng lớp"},
+    {icon:"flame",   txt:"Tưởng nhớ thầy cô và bạn học cũ"},
+    {icon:"sparkle", txt:"Tiệc hội ngộ, văn nghệ và trò chơi ký ức"},
+    {icon:"mail",    txt:"Viết thông điệp gửi hội khóa 30 năm"},
+    {icon:"disc",    txt:"Nhận ảnh, video và kỷ yếu số sau sự kiện"}
+  ],
+
+  packages: [
+    {name:"Góp một bàn tay", amount:"Từ 2.000.000đ", benefit:"Ghi nhận trên trang cảm ơn (nếu đồng ý)"},
+    {name:"Giữ lửa thanh xuân", amount:"Từ 5.000.000đ", benefit:"Tên/logo trên website và bài cảm ơn"},
+    {name:"Đồng hành tri ân", amount:"Từ 10.000.000đ", benefit:"Logo trên ấn phẩm phù hợp, video cảm ơn"},
+    {name:"Dấu ấn 20 năm", amount:"Từ 20.000.000đ", benefit:"Quyền lợi theo thỏa thuận và phê duyệt BTC"},
+    {name:"Tài trợ đặc biệt", amount:"Thỏa thuận", benefit:"Tiền, hiện vật hoặc một hạng mục cụ thể"}
+  ],
+
+  albumLabels: ["Kỷ yếu lớp","Sân trường xưa","Thầy cô","Ảnh lớp A…","Ngày ra trường","Bạn thân","Giờ ra chơi","Chụp ảnh cùng nhau"],
+
+  messages: [
+    {text:"Nhớ những trưa trốn ngủ ra sân trường đá cầu. 20 năm rồi, mong gặp lại tất cả!", who:"Một cựu học sinh A5"},
+    {text:"Cảm ơn thầy cô đã dạy chúng em nên người. Nhất định em sẽ về.", who:"Một cựu học sinh A11"}
+  ]
+};
+
+/* ============================================================
+   RENDER
+   ============================================================ */
+(function(){
+  const $=s=>document.querySelector(s);
+  const el=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e;};
+  const ic=name=>`<svg class="icon"><use href="#i-${name}"/></svg>`;
+
+  $("#hero-date").textContent=CONFIG.dateDisplay;
+  $("#hero-time").textContent=CONFIG.timeDisplay;
+  $("#hero-venue").textContent=CONFIG.venueName;
+  $("#goal-people").textContent=CONFIG.targetPeople;
+  $("#goal-class").textContent=CONFIG.targetClasses;
+  $("#venue-address").textContent=CONFIG.venueAddress;
+  $("#year").textContent=new Date().getFullYear();
+
+  const expList=$("#exp-list");
+  CONFIG.experiences.forEach(e=>{
+    expList.appendChild(el("div","exp-card reveal",`<span class="medallion">${ic(e.icon)}</span><span class="txt">${e.txt}</span>`));
+  });
+
+  const tl=$("#timeline");
+  CONFIG.program.forEach(p=>{
+    tl.appendChild(el("div","tl-item",
+      `<span class="tl-dot" aria-hidden="true"></span><div class="tl-time">${p.time}</div><div class="tl-title">${p.title}</div><div class="tl-desc">${p.desc}</div>`));
+  });
+
+  const cg=$("#class-grid"), sel=$("#f-class");
+  CONFIG.classes.forEach(c=>{
+    const rep=c.rep?`Đại diện: <b>${c.rep}</b>`:`Đại diện: <b>Đang cập nhật</b>`;
+    const call=c.repPhone?`<a class="btn btn-outline" href="tel:${c.repPhone}">${ic("phone")}Gọi đại diện</a>`
+                         :`<a class="btn btn-outline" href="#dang-ky" onclick="window.__preClass='${c.code}'">Đăng ký cùng lớp</a>`;
+    cg.appendChild(el("div","class-card",`<div class="class-badge">${c.code}</div><div class="rep">${rep}</div>${call}`));
+    const o=el("option");o.value=c.code;o.textContent="Lớp "+c.code;sel.appendChild(o);
+  });
+
+  const pb=$("#pkg-body");
+  CONFIG.packages.forEach(p=>pb.appendChild(el("tr",null,`<td><b>${p.name}</b></td><td class="amt">${p.amount}</td><td>${p.benefit}</td>`)));
+
+  const album=$("#album");
+  CONFIG.albumLabels.forEach(l=>album.appendChild(el("div","ph",`${ic("camera")}${l}`)));
+
+  const ms=$("#messages");
+  CONFIG.messages.forEach(m=>ms.appendChild(el("div","msg",`${ic("quote").replace('class="icon"','class="icon qmark"')}<p>“${m.text}”</p><span class="who">— ${m.who}</span>`)));
+
+  const og=$("#org-grid");
+  const orgs=[
+    {name:"Trưởng ban tổ chức", role:"Điều phối chung", phone:CONFIG.hotline},
+    {name:"Đầu mối đăng ký", role:"Hỗ trợ ghi danh & suất ăn", phone:""},
+    {name:"Đầu mối tài trợ", role:"Tiếp nhận đồng hành & quỹ", phone:""}
+  ];
+  orgs.forEach(o=>{
+    const tel=o.phone?`<a class="tel" href="tel:${o.phone}">${ic("phone")}${o.phone}</a>`:`<span class="tel-muted">Đang cập nhật</span>`;
+    og.appendChild(el("div","org-card",`<div class="av">${o.name.trim().charAt(0)}</div><div><div class="name">${o.name}</div><div class="role">${o.role}</div></div>${tel}`));
+  });
+
+  if(CONFIG.mapEmbedUrl){
+    const w=$("#map-wrap");w.innerHTML="";
+    const f=el("iframe");f.src=CONFIG.mapEmbedUrl;f.loading="lazy";f.title="Bản đồ tới "+CONFIG.venueName;
+    f.setAttribute("referrerpolicy","no-referrer-when-downgrade");w.appendChild(f);
+  }
+  if(CONFIG.bank.accountName)$("#bank-name-acc").textContent=CONFIG.bank.accountName;
+  if(CONFIG.bank.accountNumber)$("#bank-number").textContent=CONFIG.bank.accountNumber;
+  if(CONFIG.bank.bankName)$("#bank-bank").textContent=CONFIG.bank.bankName;
+  $("#transfer-content").textContent=`${CONFIG.bank.transferPrefix} [Họ tên] [Lớp]`;
+  if(CONFIG.qrImage){const slot=$("#qr-slot");slot.className="";slot.innerHTML="";const img=el("img");img.src=CONFIG.qrImage;img.alt="Mã QR chuyển khoản quỹ hội khóa";slot.appendChild(img);}
+  if(CONFIG.hotline){const h=$("#foot-hotline");h.textContent=CONFIG.hotline;h.href="tel:"+CONFIG.hotline;}
+  if(CONFIG.email){const e=$("#foot-email");e.textContent=CONFIG.email;e.href="mailto:"+CONFIG.email;}
+
+  $("#copy-transfer").addEventListener("click",async function(){
+    const txt=$("#transfer-content").textContent.trim();
+    try{await navigator.clipboard.writeText(txt);this.innerHTML=ic("check")+"Đã sao chép";}
+    catch(e){this.textContent="Hãy sao chép thủ công";}
+    setTimeout(()=>this.innerHTML=ic("copy")+"Sao chép",1800);
+  });
+})();
+
+/* ============================================================
+   ĐẾM NGƯỢC
+   ============================================================ */
+(function(){
+  const target=new Date(CONFIG.eventDateISO).getTime();
+  const d=document.getElementById("cd-days"),h=document.getElementById("cd-hours"),
+        m=document.getElementById("cd-mins"),s=document.getElementById("cd-secs"),note=document.getElementById("cd-note");
+  const pad=n=>String(n).padStart(2,"0");
+  function tick(){
+    const diff=target-Date.now();
+    if(diff<=0){d.textContent="0";h.textContent="00";m.textContent="00";s.textContent="00";
+      note.textContent="Ngày hội đã đến — hẹn gặp bạn tại trường!";clearInterval(t);return;}
+    d.textContent=Math.floor(diff/86400000);
+    h.textContent=pad(Math.floor(diff%86400000/3600000));
+    m.textContent=pad(Math.floor(diff%3600000/60000));
+    s.textContent=pad(Math.floor(diff%60000/1000));
+  }
+  tick();const t=setInterval(tick,1000);
+})();
+
+/* ============================================================
+   REVEAL
+   ============================================================ */
+(function(){
+  const items=document.querySelectorAll(".reveal");
+  const reduce=window.matchMedia("(prefers-reduced-motion:reduce)").matches;
+  if(reduce||!("IntersectionObserver" in window)){items.forEach(i=>i.classList.add("in"));return;}
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}});},
+    {threshold:.12,rootMargin:"0px 0px -40px 0px"});
+  items.forEach(i=>io.observe(i));
+})();
+
+/* ============================================================
+   FORM ĐĂNG KÝ
+   ============================================================ */
+(function(){
+  const form=document.getElementById("reg-form"),success=document.getElementById("reg-success"),
+        codeEl=document.getElementById("reg-code"),KEY="hoikhoa2004_2007_dangky";
+  const normPhone=v=>(v||"").replace(/[\s.\-()]/g,"").replace(/^\+84/,"0");
+  const validPhone=v=>/^0\d{9}$/.test(normPhone(v));
+  const setErr=(id,bad)=>document.getElementById(id).closest(".field").classList.toggle("invalid",bad);
+  const load=()=>{try{return JSON.parse(localStorage.getItem(KEY))||[];}catch(e){return[];}};
+  const save=l=>{try{localStorage.setItem(KEY,JSON.stringify(l));}catch(e){}};
+  const genCode=cls=>`HK20-${cls}-${String(load().length+1).padStart(5,"0")}`;
+
+  window.addEventListener("hashchange",()=>{if(window.__preClass)document.getElementById("f-class").value=window.__preClass;});
+
+  let submitting=false;
+  form.addEventListener("submit",function(ev){
+    ev.preventDefault();if(submitting)return;
+    const name=document.getElementById("f-name").value.trim(),
+          cls=document.getElementById("f-class").value,
+          phoneRaw=document.getElementById("f-phone").value;
+    const bN=name.length<2,bC=!cls,bP=!validPhone(phoneRaw);
+    setErr("f-name",bN);setErr("f-class",bC);setErr("f-phone",bP);
+    if(bN||bC||bP){const first=form.querySelector(".field.invalid input,.field.invalid select");if(first)first.focus();return;}
+    submitting=true;
+    const rec={code:genCode(cls),name,class:cls,phone:normPhone(phoneRaw),
+      guests:parseInt(document.getElementById("f-guests").value||"0",10),
+      meal:document.getElementById("f-meal").value,
+      nick:document.getElementById("f-nick").value.trim(),
+      message:document.getElementById("f-msg").value.trim(),at:new Date().toISOString()};
+    const list=load();list.push(rec);save(list);
+    if(CONFIG.formEndpoint){try{fetch(CONFIG.formEndpoint,{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/json"},body:JSON.stringify(rec)}).catch(()=>{});}catch(e){}}
+    codeEl.textContent=rec.code;form.style.display="none";success.classList.add("show");
+    success.scrollIntoView({behavior:"smooth",block:"center"});submitting=false;
+  });
+  document.getElementById("reg-again").addEventListener("click",function(){
+    form.reset();form.style.display="block";success.classList.remove("show");
+    form.querySelectorAll(".invalid").forEach(f=>f.classList.remove("invalid"));
+    form.scrollIntoView({behavior:"smooth",block:"center"});
+  });
+})();
+</script>
+
+<!--
+==================================================================
+ HƯỚNG DẪN NHANH CHO BTC (không hiển thị trên trang)
+==================================================================
+1) THÔNG TIN: sửa phần "const CONFIG = { ... }" ở đầu <script>.
+   - STK/ngân hàng, hotline, email, tên+SĐT đại diện 14 lớp, URL bản đồ, ảnh QR.
+2) ẢNH: logo 4.png & 13.png đã dùng sẵn (để cùng thư mục).
+   - QR: đặt ảnh vào cùng thư mục rồi điền tên vào CONFIG.qrImage (VD "qr.png").
+   - Album kỷ niệm: hiện là ô placeholder; đổi CONFIG.albumLabels hoặc thay bằng ảnh thật.
+3) BẢN ĐỒ: Google Maps → Share → "Embed a map" → copy link trong src="..." → dán vào CONFIG.mapEmbedUrl.
+4) NHẬN ĐĂNG KÝ THẬT (tùy chọn): tạo Google Apps Script Web App (doPost lưu Google Sheet) → dán URL vào CONFIG.formEndpoint.
+   Hiện đăng ký lưu trong localStorage trình duyệt người đăng ký.
+5) DEPLOY MIỄN PHÍ (GitHub Pages): đẩy index.html + logo 4.png + 13.png lên nhánh main →
+   Settings → Pages → Deploy from branch → main → /(root). Site chạy tại https://<tài-khoản>.github.io/<repo>/
+ ICON: bộ SVG line-icon nằm trong <svg> sprite đầu <body>; dùng lại qua <use href="#i-tên">. Không dùng emoji.
+==================================================================
+-->
+</body>
+</html>
