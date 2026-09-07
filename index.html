@@ -173,10 +173,10 @@ section{padding:clamp(52px,7.5vw,96px) 0}
 
 .hero-art{justify-self:center;position:relative}
 .medal{position:relative;width:min(360px,82vw);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;
-  background:radial-gradient(circle at 50% 42%, #fff 0 62%, #fbf6ea 100%);
-  box-shadow:0 30px 70px rgba(0,0,0,.4), inset 0 0 0 2px rgba(199,151,47,.35)}
-.medal::before{content:"";position:absolute;inset:14px;border-radius:50%;border:2px dashed rgba(199,151,47,.55)}
-.medal img{width:74%;height:auto;position:relative}
+  background:#fff;overflow:hidden;
+  box-shadow:0 30px 70px rgba(0,0,0,.4), inset 0 0 0 3px var(--gold)}
+.medal::before{content:"";position:absolute;inset:14px;border-radius:50%;border:2px dashed rgba(199,151,47,.55);z-index:2;pointer-events:none}
+.medal img{width:84%;height:auto;position:relative}
 
 /* Countdown */
 .countdown{display:flex;gap:10px;margin-top:28px;flex-wrap:wrap}
