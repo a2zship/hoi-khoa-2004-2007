@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Vật phẩm kỷ niệm — Gây quỹ Hội khóa 2004–2007 THPT Phạm Văn Nghị</title>
+<meta name="description" content="Gian hàng vật phẩm kỷ niệm 20 năm Hội khóa 2004–2007 THPT Phạm Văn Nghị. Toàn bộ nguồn thu dùng để tổ chức ngày hội khóa." />
+<meta name="theme-color" content="#0E2438" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Vật phẩm kỷ niệm — Gây quỹ Hội khóa 2004–2007" />
+<meta property="og:description" content="Mỗi vật phẩm bạn mua là một viên gạch cho ngày trở về. Toàn bộ nguồn thu gây quỹ tổ chức hội khóa." />
+<meta property="og:image" content="13.png" />
+<meta property="og:locale" content="vi_VN" />
+<link rel="icon" href="logo%204.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+:root{
+  --navy:#123C9E; --navy-700:#1B54CC; --navy-900:#0C2A66;
+  --blue:#1B54CC; --blue-bright:#2E6AE6;
+  --gold:#C7972F; --gold-soft:#F0CE7A; --gold-ink:#1B4BB0;
+  --red:#A63D40;
+  --paper:#FFFFFF; --cream:#EEF4FD; --cream-2:#E1EAFB;
+  --ink:#15233F; --muted:#586176; --line:#DCE6F5; --line-cool:#D3DEEF;
+  --shadow-xs:0 1px 2px rgba(14,36,56,.06); --shadow-sm:0 2px 10px rgba(14,36,56,.07);
+  --shadow-md:0 14px 34px rgba(14,36,56,.12); --shadow-lg:0 26px 60px rgba(14,36,56,.20);
+  --radius:16px; --radius-sm:12px; --radius-pill:999px; --maxw:1140px;
+  --ff-head:"EB Garamond", Georgia, "Times New Roman", serif;
+  --ff-body:"Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--ff-body);color:var(--ink);background:var(--paper);line-height:1.65;font-size:16px;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit}
+h1,h2,h3,h4{font-family:var(--ff-head);line-height:1.15;margin:0 0 .4em;font-weight:600;letter-spacing:.2px}
+h2{font-size:clamp(26px,4.2vw,38px);color:var(--navy)}
+h3{font-size:clamp(18px,2.4vw,22px);color:var(--navy)}
+p{margin:0 0 1em}
+.container{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 22px}
+section{padding:clamp(40px,6vw,72px) 0}
+.section-cream{background:var(--cream)}
+.center{text-align:center}
+.eyebrow{display:inline-flex;align-items:center;gap:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;font-size:12.5px;color:var(--gold-ink);margin-bottom:12px}
+.eyebrow::before,.eyebrow::after{content:"";width:28px;height:1px;background:var(--gold);opacity:.7}
+.lead{font-size:clamp(16px,1.9vw,18px);color:var(--muted);max-width:64ch;margin-inline:auto}
+
+.icon{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:none;display:block}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;cursor:pointer;min-height:48px;padding:12px 24px;border-radius:var(--radius-pill);font-weight:600;font-size:15.5px;border:1.5px solid transparent;transition:transform .2s,box-shadow .2s,background .2s,color .2s;white-space:nowrap}
+.btn .icon{width:19px;height:19px;stroke-width:2}
+.btn:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.btn-primary{background:linear-gradient(180deg,var(--blue-bright),var(--blue));color:#fff;box-shadow:0 6px 18px rgba(27,84,204,.32)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(27,84,204,.42)}
+.btn-white{background:#fff;color:var(--blue);box-shadow:0 6px 18px rgba(0,0,0,.18)}
+.btn-white:hover{transform:translateY(-2px);background:#f3f7ff}
+.btn-outline{background:var(--paper);color:var(--blue);border-color:var(--blue)}
+.btn-outline:hover{background:var(--blue);color:#fff}
+.btn-block{width:100%}
+.btn[disabled]{opacity:.5;cursor:not-allowed;transform:none!important}
+
+.badge{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;padding:3px 10px;border-radius:var(--radius-pill);line-height:1.6}
+.badge-plan{background:#E1EAFB;color:#1B4BB0}
+
+/* Header */
+.site-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:14px;height:66px}
+.brand{display:flex;align-items:center;gap:11px;color:var(--navy)}
+.brand img{height:46px;width:auto}
+.brand .brand-txt{font-family:var(--ff-head);font-weight:600;font-size:15px;line-height:1.2}
+.brand .brand-txt b{display:block;font-size:17px}
+.brand .brand-txt span{font-family:var(--ff-body);font-size:12px;color:var(--muted);font-weight:500}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-back{display:none;font-weight:500;font-size:15px;color:var(--ink);padding:6px 0}
+.nav-back:hover{color:var(--blue)}
+.cart-btn{position:relative;display:inline-flex;align-items:center;gap:8px;background:var(--blue);color:#fff;border:0;border-radius:var(--radius-pill);padding:10px 18px;font-weight:600;font-size:14.5px;cursor:pointer;transition:background .2s}
+.cart-btn:hover{background:var(--navy)}
+.cart-count{position:absolute;top:-6px;right:-6px;min-width:22px;height:22px;padding:0 6px;border-radius:11px;background:var(--gold);color:#3a2905;font-size:12px;font-weight:700;display:grid;place-items:center;border:2px solid #fff}
+@media(min-width:760px){.nav-back{display:inline-flex;margin-right:6px}}
+
+/* Hero compact */
+.hero{position:relative;color:#fff;overflow:hidden;background:radial-gradient(900px 460px at 12% -10%,rgba(120,161,245,.45),transparent 60%),linear-gradient(165deg,#2A63DD,var(--blue) 48%,var(--navy-900))}
+.hero-inner{padding:clamp(40px,6vw,72px) 0;max-width:760px}
+.hero .eyebrow{color:var(--gold-soft)}
+.hero .eyebrow::before,.hero .eyebrow::after{background:var(--gold-soft)}
+.hero h1{font-size:clamp(30px,5vw,48px);color:#fff;margin-bottom:14px;text-wrap:balance}
+.hero p{color:#e8eefb;font-size:clamp(15px,2vw,18px);margin:0}
+.hero .fund-pill{display:inline-flex;align-items:center;gap:9px;margin-top:20px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);padding:10px 16px;border-radius:var(--radius-pill);font-size:14.5px}
+.hero .fund-pill .icon{width:18px;height:18px;color:var(--gold-soft)}
+
+/* Products */
+.shop-head{display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end;justify-content:space-between;margin-bottom:30px}
+.grid{display:grid;gap:22px;grid-template-columns:repeat(2,1fr)}
+@media(min-width:720px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:1000px){.grid{grid-template-columns:repeat(4,1fr)}}
+.product-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-xs);display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
+.product-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.product-media{aspect-ratio:4/3;display:grid;place-items:center;position:relative;background:linear-gradient(150deg,var(--blue-bright),var(--blue))}
+.product-media:nth-child(1){background:linear-gradient(150deg,var(--navy-700),var(--navy))}
+.product-media .icon{width:56px;height:56px;color:rgba(255,255,255,.92);stroke-width:1.4}
+.product-media img{width:100%;height:100%;object-fit:cover}
+.product-media .tag{position:absolute;top:10px;left:10px;background:var(--gold);color:#3a2905;font-size:11.5px;font-weight:700;padding:3px 10px;border-radius:var(--radius-pill)}
+.product-body{padding:16px 16px 18px;display:flex;flex-direction:column;flex:1}
+.product-name{font-family:var(--ff-head);font-weight:600;font-size:18px;color:var(--navy);margin:0 0 4px}
+.product-desc{color:var(--muted);font-size:13.5px;margin:0 0 12px;flex:1}
+.product-price{font-weight:700;font-size:18px;color:var(--blue);margin-bottom:12px}
+.product-actions{display:flex;gap:8px;align-items:center}
+.qty{display:inline-flex;align-items:center;border:1.5px solid var(--line-cool);border-radius:10px;overflow:hidden}
+.qty button{width:34px;height:40px;background:#fff;border:0;cursor:pointer;color:var(--blue);display:grid;place-items:center}
+.qty button:hover{background:var(--cream)}
+.qty button .icon{width:16px;height:16px;stroke-width:2.4}
+.qty input{width:38px;height:40px;border:0;text-align:center;font-family:inherit;font-size:15px;font-weight:600;color:var(--ink);-moz-appearance:textfield}
+.qty input::-webkit-outer-spin-button,.qty input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.add-btn{flex:1;min-height:40px;padding:8px 10px;font-size:13.5px;border-radius:10px}
+
+/* Cart drawer */
+.cart-overlay{position:fixed;inset:0;background:rgba(12,42,102,.45);z-index:80;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s;backdrop-filter:blur(2px)}
+.cart-overlay.open{opacity:1;visibility:visible}
+.cart-drawer{position:fixed;top:0;right:0;bottom:0;width:min(440px,100%);background:#fff;z-index:90;transform:translateX(100%);transition:transform .32s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;box-shadow:-20px 0 60px rgba(0,0,0,.25)}
+.cart-drawer.open{transform:translateX(0)}
+.cart-hd{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid var(--line)}
+.cart-hd h3{margin:0;color:var(--navy)}
+.cart-close{background:var(--cream);border:0;width:38px;height:38px;border-radius:10px;cursor:pointer;color:var(--navy);display:grid;place-items:center}
+.cart-close:hover{background:var(--cream-2)}
+.cart-body{flex:1;overflow-y:auto;padding:18px 20px}
+.cart-empty{text-align:center;color:var(--muted);padding:40px 10px}
+.cart-empty .icon{width:52px;height:52px;color:var(--line-cool);margin:0 auto 12px}
+.cart-item{display:flex;gap:12px;padding:12px 0;border-bottom:1px dashed var(--line)}
+.cart-item .thumb{width:54px;height:54px;border-radius:10px;flex:none;display:grid;place-items:center;background:linear-gradient(150deg,var(--blue-bright),var(--blue))}
+.cart-item .thumb .icon{width:26px;height:26px;color:#fff}
+.cart-item .ci-name{font-weight:600;font-size:14.5px;line-height:1.3}
+.cart-item .ci-price{color:var(--muted);font-size:13px}
+.cart-item .ci-right{margin-left:auto;text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.cart-item .ci-line{font-weight:700;color:var(--blue);font-size:14.5px}
+.mini-qty{display:inline-flex;align-items:center;border:1px solid var(--line-cool);border-radius:8px}
+.mini-qty button{width:26px;height:28px;background:#fff;border:0;cursor:pointer;color:var(--blue);display:grid;place-items:center}
+.mini-qty button .icon{width:13px;height:13px;stroke-width:2.6}
+.mini-qty span{min-width:26px;text-align:center;font-weight:600;font-size:13.5px}
+.ci-remove{background:none;border:0;color:var(--red);cursor:pointer;font-size:12px;display:inline-flex;align-items:center;gap:4px}
+.ci-remove .icon{width:13px;height:13px}
+.cart-foot{border-top:1px solid var(--line);padding:16px 20px;background:var(--cream)}
+.cart-total{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+.cart-total .lbl{color:var(--muted);font-size:14px}
+.cart-total .amt{font-family:var(--ff-head);font-weight:700;font-size:24px;color:var(--navy)}
+.cart-foot .note{font-size:12px;color:var(--muted);margin:0 0 12px}
+
+/* Checkout form */
+.field{margin-bottom:14px}
+.field label{display:block;font-weight:600;font-size:14px;margin-bottom:6px}
+.field label .req{color:var(--red)}
+.field input,.field select,.field textarea{width:100%;font-family:inherit;font-size:16px;color:var(--ink);padding:11px 13px;border:1.5px solid var(--line-cool);border-radius:10px;background:#fff}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(27,84,204,.14)}
+.field textarea{min-height:64px;resize:vertical}
+.field .err{font-size:12px;color:var(--red);margin-top:4px;display:none}
+.field.invalid input,.field.invalid select{border-color:var(--red)}
+.field.invalid .err{display:block}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
+.deliver{display:grid;gap:8px;margin-bottom:14px}
+.deliver label{display:flex;gap:10px;align-items:flex-start;border:1.5px solid var(--line-cool);border-radius:10px;padding:11px 13px;cursor:pointer;font-size:14px}
+.deliver label:has(input:checked){border-color:var(--blue);background:var(--cream)}
+.deliver input{margin-top:3px;accent-color:var(--blue)}
+.deliver .d-title{font-weight:600}
+.deliver .d-sub{color:var(--muted);font-size:12.5px}
+
+/* Success */
+.order-success{text-align:center;padding:10px}
+.order-success .ok{width:60px;height:60px;border-radius:50%;background:#e4f2e6;display:grid;place-items:center;margin:0 auto 10px}
+.order-success .ok .icon{width:30px;height:30px;color:#2f8a45}
+.order-success .code{font-family:var(--ff-head);font-size:24px;font-weight:700;color:var(--navy);background:var(--cream);border:1px dashed var(--gold);border-radius:10px;padding:8px 18px;display:inline-block;margin:10px 0;letter-spacing:1px}
+.pay-box{text-align:left;background:var(--cream);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-top:12px}
+.pay-line{display:flex;justify-content:space-between;gap:10px;font-size:14px;padding:6px 0;border-bottom:1px dashed var(--line)}
+.pay-line:last-child{border-bottom:0}
+.pay-line .k{color:var(--muted)}
+.pay-line .v{font-weight:600;text-align:right}
+.qr-mini{width:150px;height:150px;margin:12px auto 0;background:#fff;border:2px dashed var(--gold);border-radius:10px;display:grid;place-items:center;color:var(--muted);font-size:12px;text-align:center;padding:10px}
+.qr-mini img{width:100%;height:100%;object-fit:contain}
+.copy-btn{display:inline-flex;align-items:center;gap:6px;background:var(--navy);color:#fff;border:0;border-radius:8px;padding:6px 12px;font-size:12.5px;cursor:pointer;font-weight:600}
+.copy-btn .icon{width:13px;height:13px;stroke-width:2.2}
+
+/* Why buy */
+.why{display:grid;gap:18px;grid-template-columns:1fr}
+@media(min-width:760px){.why{grid-template-columns:repeat(3,1fr)}}
+.why-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow-xs)}
+.why-card .medallion{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:var(--cream);border:1px solid var(--line);color:var(--gold-ink);margin-bottom:12px}
+.why-card .medallion .icon{width:24px;height:24px}
+
+/* Footer */
+.site-footer{background:var(--navy-900);color:#c7d2ea;padding:44px 0 40px;position:relative}
+.site-footer::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--gold),var(--gold-soft),var(--gold))}
+.site-footer a:hover{color:var(--gold-soft)}
+.foot-flex{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center}
+.foot-brand{display:flex;align-items:center;gap:12px}
+.foot-brand img{height:52px;background:#fff;border-radius:10px;padding:4px}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.14);margin-top:24px;padding-top:16px;font-size:13px;color:#93a4cf;text-align:center}
+
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+.skip-link{position:absolute;left:-999px;top:0;background:var(--gold);color:#3a2905;padding:10px 16px;z-index:100;font-weight:600}
+.skip-link:focus{left:0}
+</style>
+</head>
+<body>
+<a href="#gian-hang" class="skip-link">Tới gian hàng</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="i-cart" viewBox="0 0 24 24"><circle cx="9" cy="20" r="1.6"/><circle cx="17.5" cy="20" r="1.6"/><path d="M3 4h2.2l2.3 12a1 1 0 0 0 1 .8h8.4a1 1 0 0 0 1-.78L20.5 8H6.2"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M9.5 7V5.2a1.2 1.2 0 0 1 1.2-1.2h2.6a1.2 1.2 0 0 1 1.2 1.2V7M6.5 7l1 12.2a1.2 1.2 0 0 0 1.2 1.1h6.6a1.2 1.2 0 0 0 1.2-1.1L17.5 7"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 6a5 5 0 0 0-7-.2L12 7.3l-1.8-1.5a5 5 0 0 0-7 7L12 21.5l8.8-8.7a5 5 0 0 0 0-6.8Z"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.4 3 8 7 9 4-1 7-4.6 7-9V6l-7-3Z"/><path d="m9.5 12 1.8 1.8 3.4-3.6"/></symbol>
+  <symbol id="i-truck" viewBox="0 0 24 24"><path d="M3 6.5h11v9H3Z"/><path d="M14 9.5h3.5L21 12v3.5h-7Z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></symbol>
+  <symbol id="i-gift" viewBox="0 0 24 24"><rect x="3" y="8.5" width="18" height="4" rx="1"/><path d="M12 8.5v12M5 12.5v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/><path d="M12 8.5S10.5 3.5 8 3.5a2.5 2.5 0 0 0 0 5M12 8.5s1.5-5 4-5a2.5 2.5 0 0 1 0 5"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2 4.2 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L9.8 11.8a16 16 0 0 0 6 6l1.4-1.4a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2Z"/></symbol>
+  <!-- product icons -->
+  <symbol id="p-shirt" viewBox="0 0 24 24"><path d="M15 3.2 12 5.8 9 3.2 3.6 5.9 5.2 10H8v10.8h8V10h2.8l1.6-4.1L15 3.2Z"/></symbol>
+  <symbol id="p-cap" viewBox="0 0 24 24"><path d="M4 13.5a8 8 0 0 1 16 0"/><path d="M4 13.5h9"/><path d="M13 13.5h6.5a2.5 2.5 0 0 1 2.5 2.5H13Z"/></symbol>
+  <symbol id="p-mug" viewBox="0 0 24 24"><path d="M5 8.5h11v8a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4Z"/><path d="M16 10.5h2a2.5 2.5 0 0 1 0 5h-2"/><path d="M8 3.5v2M11.5 3.5v2"/></symbol>
+  <symbol id="p-book" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2Z"/><path d="M19 19v2H6a2 2 0 0 1-2-2"/><path d="M8 7h7M8 10.5h7"/></symbol>
+  <symbol id="p-pin" viewBox="0 0 24 24"><circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 7 5-3 5 3-1.5-7"/></symbol>
+  <symbol id="p-tote" viewBox="0 0 24 24"><path d="M6 8.5h12l1 12H5Z"/><path d="M9.3 8.5V6.8a2.7 2.7 0 0 1 5.4 0v1.7"/></symbol>
+  <symbol id="p-flag" viewBox="0 0 24 24"><path d="M5 22V3"/><path d="M5 4h13l-3 4 3 4H5"/></symbol>
+  <symbol id="p-keychain" viewBox="0 0 24 24"><circle cx="8" cy="8" r="4.5"/><path d="M11 11l7 7M15 15l2-2 2 2-2 2Z"/></symbol>
+</defs></svg>
+
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="index.html" aria-label="Về trang chủ hội khóa">
+      <img src="logo%204.png" alt="Logo hội khóa 20 năm — THPT Phạm Văn Nghị" />
+      <span class="brand-txt"><b>Hội khóa 2004–2007</b><span>Vật phẩm kỷ niệm</span></span>
+    </a>
+    <div class="nav-right">
+      <a class="nav-back" href="index.html"><svg class="icon" style="width:18px;height:18px"><use href="#i-back"/></svg>Trang chủ</a>
+      <button class="cart-btn" id="open-cart"><svg class="icon" style="width:19px;height:19px"><use href="#i-cart"/></svg>Giỏ hàng<span class="cart-count" id="cart-count" hidden>0</span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-inner">
+    <span class="eyebrow">Gây quỹ hội khóa</span>
+    <h1>Vật phẩm kỷ niệm 20 năm ngày trở về</h1>
+    <p>Mỗi món quà nhỏ mang dấu ấn mái trường xưa — và là một viên gạch góp vào ngày hội ngộ. Toàn bộ nguồn thu được dùng để tổ chức chương trình hội khóa.</p>
+    <span class="fund-pill"><svg class="icon"><use href="#i-heart"/></svg>100% lợi nhuận dành cho quỹ tổ chức ngày hội khóa</span>
+  </div>
+</section>
+
+<!-- GIAN HÀNG -->
+<section id="gian-hang">
+  <div class="container">
+    <div class="shop-head">
+      <div>
+        <span class="eyebrow">Gian hàng</span>
+        <h2 style="margin:0">Chọn vật phẩm của bạn</h2>
+      </div>
+      <p style="color:var(--muted);font-size:14px;margin:0;max-width:42ch">Giá dưới đây là mức gợi ý <span class="badge badge-plan">Chờ BTC chốt</span>. Đặt trước để BTC chuẩn bị số lượng.</p>
+    </div>
+    <div class="grid" id="product-grid"></div>
+  </div>
+</section>
+
+<!-- VÌ SAO MUA -->
+<section class="section-cream">
+  <div class="container">
+    <div class="center" style="margin-bottom:30px">
+      <span class="eyebrow">Vì sao nên ủng hộ</span>
+      <h2>Mua một vật phẩm — góp một tấm lòng</h2>
+    </div>
+    <div class="why">
+      <div class="why-card"><div class="medallion"><svg class="icon"><use href="#i-heart"/></svg></div><h3>Gây quỹ minh bạch</h3><p style="color:var(--muted);font-size:14.5px;margin:0">Toàn bộ nguồn thu dùng để tổ chức ngày hội; thu – chi sẽ được Ban tài chính công khai.</p></div>
+      <div class="why-card"><div class="medallion"><svg class="icon"><use href="#i-gift"/></svg></div><h3>Kỷ vật một thời</h3><p style="color:var(--muted);font-size:14.5px;margin:0">Áo, nón, ly, kỷ yếu… in dấu ấn khóa 2004–2007 để giữ mãi ký ức tuổi học trò.</p></div>
+      <div class="why-card"><div class="medallion"><svg class="icon"><use href="#i-truck"/></svg></div><h3>Nhận tiện lợi</h3><p style="color:var(--muted);font-size:14.5px;margin:0">Nhận trực tiếp tại ngày hội (miễn phí) hoặc giao tận nơi nếu bạn ở xa.</p></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="foot-flex">
+      <div class="foot-brand">
+        <img src="logo%204.png" alt="Logo hội khóa" />
+        <div><strong style="color:#fff;font-size:17px;font-family:var(--ff-head)">Hội khóa 2004–2007</strong><br><span style="font-size:14px">THPT Phạm Văn Nghị</span></div>
+      </div>
+      <div style="display:flex;gap:22px;flex-wrap:wrap;font-size:14.5px">
+        <a href="index.html">Trang chủ hội khóa</a>
+        <a href="index.html#tai-tro">Đồng hành tài trợ</a>
+        <a href="index.html#ban-to-chuc">Liên hệ BTC</a>
+      </div>
+    </div>
+    <div class="foot-bottom"><p style="margin:0">© <span id="year"></span> Ban tổ chức Hội khóa 2004–2007 — THPT Phạm Văn Nghị. Gian hàng gây quỹ dành cho cựu học sinh.</p></div>
+  </div>
+</footer>
+
+<!-- CART DRAWER -->
+<div class="cart-overlay" id="cart-overlay"></div>
+<aside class="cart-drawer" id="cart-drawer" aria-label="Giỏ hàng" aria-hidden="true">
+  <div class="cart-hd">
+    <h3 id="cart-title">Giỏ hàng của bạn</h3>
+    <button class="cart-close" id="close-cart" aria-label="Đóng giỏ hàng"><svg class="icon"><use href="#i-close"/></svg></button>
+  </div>
+  <div class="cart-body" id="cart-body"><!-- items or checkout or success --></div>
+  <div class="cart-foot" id="cart-foot" hidden>
+    <div class="cart-total"><span class="lbl">Tạm tính</span><span class="amt" id="cart-total">0đ</span></div>
+    <p class="note">Chưa gồm phí giao hàng (nếu chọn giao tận nơi). Thanh toán bằng chuyển khoản sau khi đặt.</p>
+    <button class="btn btn-primary btn-block" id="to-checkout">Tiến hành đặt hàng<svg class="icon"><use href="#i-arrow"/></svg></button>
+  </div>
+</aside>
+
+<script>
+/* ============================================================
+   ⚙️ CONFIG — chỉnh sản phẩm, giá, ngân hàng ở đây
+   ============================================================ */
+const CONFIG = {
+  bank: { accountName:"", accountNumber:"", bankName:"", transferPrefix:"HK20SHOP" },
+  qrImage: "",
+  hotline: "",
+  formEndpoint: "", // (tùy chọn) Google Apps Script để nhận đơn thật
+
+  // icon = id trong sprite (p-*). Muốn dùng ảnh thật: thêm img:"ten-anh.jpg" (để cùng thư mục)
+  products: [
+    {id:"ao",   name:"Áo thun kỷ niệm",     desc:"Áo cotton in logo 20 năm, đủ size S–XXL.", price:180000, icon:"p-shirt", tag:"Bán chạy"},
+    {id:"non",  name:"Nón kết in logo",      desc:"Nón lưỡi trai thêu biểu tượng hội khóa.",  price:90000,  icon:"p-cap"},
+    {id:"ly",   name:"Ly sứ in logo",        desc:"Ly sứ trắng in logo & dòng chữ kỷ niệm.",  price:120000, icon:"p-mug"},
+    {id:"ky",   name:"Kỷ yếu ảnh (photobook)",desc:"Album ảnh xưa & nay của khóa 2004–2007.", price:250000, icon:"p-book", tag:"Đặt trước"},
+    {id:"mk",   name:"Móc khóa khắc tên",     desc:"Móc khóa kim loại khắc tên & lớp.",        price:45000,  icon:"p-keychain"},
+    {id:"pin",  name:"Huy hiệu cài áo",       desc:"Pin cài áo biểu tượng 20 năm.",            price:35000,  icon:"p-pin"},
+    {id:"tote", name:"Túi tote vải",          desc:"Túi vải canvas in logo, bền & tiện dùng.", price:85000,  icon:"p-tote"},
+    {id:"co",   name:"Cờ lưu niệm lớp",       desc:"Cờ mini để bàn, in tên lớp A1–A14.",       price:60000,  icon:"p-flag"}
+  ]
+};
+
+/* ============================================================ */
+(function(){
+  const $=s=>document.querySelector(s);
+  const el=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e;};
+  const ic=n=>`<svg class="icon"><use href="#${n}"/></svg>`;
+  const vnd=n=>new Intl.NumberFormat("vi-VN").format(n)+"đ";
+  const KEY="hoikhoa_shop_cart", ORDKEY="hoikhoa_shop_orders";
+  const byId=id=>CONFIG.products.find(p=>p.id===id);
+
+  let cart=load();
+  function load(){try{return JSON.parse(localStorage.getItem(KEY))||{};}catch(e){return {};}}
+  function persist(){try{localStorage.setItem(KEY,JSON.stringify(cart));}catch(e){}}
+  const count=()=>Object.values(cart).reduce((a,b)=>a+b,0);
+  const total=()=>Object.entries(cart).reduce((a,[id,q])=>a+(byId(id)?.price||0)*q,0);
+
+  $("#year").textContent=new Date().getFullYear();
+
+  // Render products
+  const grid=$("#product-grid");
+  CONFIG.products.forEach(p=>{
+    const media = p.img ? `<div class="product-media"><img src="${p.img}" alt="${p.name}"></div>`
+                        : `<div class="product-media">${p.tag?`<span class="tag">${p.tag}</span>`:""}${ic(p.icon)}</div>`;
+    const card=el("div","product-card",
+      `${media}
+       <div class="product-body">
+         <div class="product-name">${p.name}</div>
+         <div class="product-desc">${p.desc}</div>
+         <div class="product-price">${vnd(p.price)}</div>
+         <div class="product-actions">
+           <div class="qty">
+             <button type="button" data-dec aria-label="Giảm">${ic("i-minus")}</button>
+             <input type="number" value="1" min="1" max="99" inputmode="numeric" aria-label="Số lượng ${p.name}">
+             <button type="button" data-inc aria-label="Tăng">${ic("i-plus")}</button>
+           </div>
+           <button class="btn btn-primary add-btn" data-add="${p.id}">Thêm</button>
+         </div>
+       </div>`);
+    const input=card.querySelector("input");
+    card.querySelector("[data-dec]").onclick=()=>input.value=Math.max(1,(+input.value||1)-1);
+    card.querySelector("[data-inc]").onclick=()=>input.value=Math.min(99,(+input.value||1)+1);
+    card.querySelector("[data-add]").onclick=()=>{addToCart(p.id,Math.max(1,+input.value||1));input.value=1;};
+    grid.appendChild(card);
+  });
+
+  function addToCart(id,q){cart[id]=(cart[id]||0)+q;persist();updateBadge();renderCart();openCart();}
+  function setQty(id,q){if(q<=0)delete cart[id];else cart[id]=q;persist();updateBadge();renderCart();}
+  function updateBadge(){const c=count();const b=$("#cart-count");b.textContent=c;b.hidden=c===0;}
+
+  // Drawer
+  const overlay=$("#cart-overlay"),drawer=$("#cart-drawer");
+  function openCart(){overlay.classList.add("open");drawer.classList.add("open");drawer.setAttribute("aria-hidden","false");document.body.style.overflow="hidden";}
+  function closeCart(){overlay.classList.remove("open");drawer.classList.remove("open");drawer.setAttribute("aria-hidden","true");document.body.style.overflow="";}
+  $("#open-cart").onclick=()=>{renderCart();openCart();};
+  $("#close-cart").onclick=closeCart;
+  overlay.onclick=closeCart;
+  document.addEventListener("keydown",e=>{if(e.key==="Escape")closeCart();});
+
+  // Render cart (items view)
+  function renderCart(){
+    const body=$("#cart-body"),foot=$("#cart-foot");
+    $("#cart-title").textContent="Giỏ hàng của bạn";
+    const ids=Object.keys(cart);
+    if(!ids.length){
+      body.innerHTML=`<div class="cart-empty">${ic("i-cart")}<p>Giỏ hàng đang trống.<br>Hãy chọn vật phẩm kỷ niệm nhé!</p></div>`;
+      foot.hidden=true;return;
+    }
+    body.innerHTML="";
+    ids.forEach(id=>{
+      const p=byId(id),q=cart[id];if(!p)return;
+      const row=el("div","cart-item",
+        `<div class="thumb">${p.img?`<img src="${p.img}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:10px">`:ic(p.icon)}</div>
+         <div><div class="ci-name">${p.name}</div><div class="ci-price">${vnd(p.price)}</div>
+           <div class="mini-qty" style="margin-top:6px"><button data-mdec aria-label="Giảm">${ic("i-minus")}</button><span>${q}</span><button data-minc aria-label="Tăng">${ic("i-plus")}</button></div>
+         </div>
+         <div class="ci-right"><div class="ci-line">${vnd(p.price*q)}</div><button class="ci-remove" data-rm>${ic("i-trash")}Xóa</button></div>`);
+      row.querySelector("[data-mdec]").onclick=()=>setQty(id,q-1);
+      row.querySelector("[data-minc]").onclick=()=>setQty(id,q+1);
+      row.querySelector("[data-rm]").onclick=()=>setQty(id,0);
+      body.appendChild(row);
+    });
+    $("#cart-total").textContent=vnd(total());
+    foot.hidden=false;
+  }
+
+  // Checkout view
+  $("#to-checkout").onclick=renderCheckout;
+  function renderCheckout(){
+    $("#cart-foot").hidden=true;
+    $("#cart-title").textContent="Thông tin đặt hàng";
+    const body=$("#cart-body");
+    body.innerHTML=`
+      <form id="order-form" novalidate>
+        <div class="field"><label for="o-name">Họ và tên <span class="req">*</span></label><input id="o-name" type="text" autocomplete="name" required><div class="err">Vui lòng nhập họ tên.</div></div>
+        <div class="row2">
+          <div class="field"><label for="o-class">Lớp cũ</label>
+            <select id="o-class"><option value="">— Chọn —</option>${Array.from({length:14},(_,i)=>`<option>A${i+1}</option>`).join("")}<option value="Khách">Khách/Thầy cô</option></select></div>
+          <div class="field"><label for="o-phone">Số điện thoại <span class="req">*</span></label><input id="o-phone" type="tel" inputmode="tel" autocomplete="tel" required placeholder="0912 345 678"><div class="err">SĐT chưa hợp lệ (10 số).</div></div>
+        </div>
+        <div class="deliver">
+          <label><input type="radio" name="deliver" value="Nhận tại ngày hội" checked><span><span class="d-title">Nhận tại ngày hội</span><br><span class="d-sub">Miễn phí — nhận trực tiếp ngày 01/05/2027</span></span></label>
+          <label><input type="radio" name="deliver" value="Giao tận nơi"><span><span class="d-title">Giao tận nơi</span><br><span class="d-sub">Dành cho bạn ở xa — phí ship BTC báo sau</span></span></label>
+        </div>
+        <div class="field" id="addr-field" hidden><label for="o-addr">Địa chỉ nhận hàng <span class="req">*</span></label><textarea id="o-addr" placeholder="Số nhà, đường, phường/xã, quận/huyện, tỉnh/thành"></textarea><div class="err">Vui lòng nhập địa chỉ giao hàng.</div></div>
+        <div class="field"><label for="o-note">Ghi chú (size áo, tên khắc…)</label><textarea id="o-note" placeholder="VD: Áo size L, móc khóa khắc tên Minh - A3"></textarea></div>
+        <div class="cart-total" style="margin:4px 0 12px"><span class="lbl">Tổng tạm tính (${count()} món)</span><span class="amt">${vnd(total())}</span></div>
+        <button type="submit" class="btn btn-primary btn-block">${ic("i-check")}Xác nhận đặt hàng</button>
+        <button type="button" class="btn btn-outline btn-block" id="back-cart" style="margin-top:8px">Quay lại giỏ hàng</button>
+      </form>`;
+    const form=body.querySelector("#order-form");
+    const addrField=body.querySelector("#addr-field");
+    form.querySelectorAll('input[name="deliver"]').forEach(r=>r.onchange=()=>{addrField.hidden=form.deliver.value!=="Giao tận nơi";});
+    body.querySelector("#back-cart").onclick=renderCart;
+    form.onsubmit=submitOrder;
+  }
+
+  const normPhone=v=>(v||"").replace(/[\s.\-()]/g,"").replace(/^\+84/,"0");
+  const validPhone=v=>/^0\d{9}$/.test(normPhone(v));
+
+  function submitOrder(ev){
+    ev.preventDefault();
+    const f=ev.target;
+    const name=f.querySelector("#o-name"), phone=f.querySelector("#o-phone");
+    const deliver=f.deliver.value, addr=f.querySelector("#o-addr");
+    let bad=false;
+    const mark=(inp,cond)=>{inp.closest(".field").classList.toggle("invalid",cond);if(cond)bad=true;};
+    mark(name,name.value.trim().length<2);
+    mark(phone,!validPhone(phone.value));
+    if(deliver==="Giao tận nơi") mark(addr,addr.value.trim().length<6);
+    if(bad){f.querySelector(".field.invalid input,.field.invalid textarea,.field.invalid select")?.focus();return;}
+
+    const orders=(()=>{try{return JSON.parse(localStorage.getItem(ORDKEY))||[];}catch(e){return[];}})();
+    const code=`HK20-SHOP-${String(orders.length+1).padStart(5,"0")}`;
+    const items=Object.entries(cart).map(([id,q])=>({id,name:byId(id).name,qty:q,price:byId(id).price}));
+    const order={code,name:name.value.trim(),class:f.querySelector("#o-class").value,phone:normPhone(phone.value),
+      deliver,address:deliver==="Giao tận nơi"?addr.value.trim():"",note:f.querySelector("#o-note").value.trim(),
+      items,total:total(),at:new Date().toISOString()};
+    orders.push(order);try{localStorage.setItem(ORDKEY,JSON.stringify(orders));}catch(e){}
+    if(CONFIG.formEndpoint){try{fetch(CONFIG.formEndpoint,{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/json"},body:JSON.stringify(order)}).catch(()=>{});}catch(e){}}
+
+    cart={};persist();updateBadge();
+    renderSuccess(order);
+  }
+
+  function renderSuccess(o){
+    $("#cart-title").textContent="Đặt hàng thành công";
+    const b=CONFIG.bank;
+    const transfer=o.code; // mã đơn đã có tiền tố HK20-SHOP, dùng luôn làm nội dung CK
+    const bankRows = (b.accountName||b.accountNumber||b.bankName) ? `
+      <div class="pay-line"><span class="k">Chủ TK</span><span class="v">${b.accountName||"[BTC cập nhật]"}</span></div>
+      <div class="pay-line"><span class="k">Số TK</span><span class="v">${b.accountNumber||"[BTC cập nhật]"}</span></div>
+      <div class="pay-line"><span class="k">Ngân hàng</span><span class="v">${b.bankName||"[BTC cập nhật]"}</span></div>`
+      : `<div class="pay-line"><span class="k">Thông tin CK</span><span class="v">BTC sẽ liên hệ hướng dẫn</span></div>`;
+    const qr = CONFIG.qrImage ? `<div class="qr-mini"><img src="${CONFIG.qrImage}" alt="QR chuyển khoản"></div>`
+      : `<div class="qr-mini">Mã QR sẽ hiển thị khi BTC gắn ảnh</div>`;
+    $("#cart-body").innerHTML=`
+      <div class="order-success">
+        <div class="ok">${ic("i-check")}</div>
+        <h3 style="color:var(--navy);margin:.2em 0">Cảm ơn bạn đã ủng hộ quỹ hội khóa!</h3>
+        <p style="color:var(--muted);font-size:14px;margin:0">Mã đơn của bạn:</p>
+        <div class="code">${o.code}</div>
+        <p style="color:var(--muted);font-size:13.5px">Tổng: <b style="color:var(--blue)">${vnd(o.total)}</b> · ${o.deliver}</p>
+        <div class="pay-box">
+          <div style="font-weight:700;color:var(--navy);margin-bottom:6px">Thanh toán bằng chuyển khoản</div>
+          ${bankRows}
+          <div class="pay-line"><span class="k">Nội dung CK</span><span class="v" id="tf">${transfer} ${o.name}</span></div>
+          <div style="text-align:right;margin-top:8px"><button class="copy-btn" id="copy-tf">${ic("i-copy")}Sao chép nội dung</button></div>
+          ${qr}
+          <p style="font-size:12px;color:var(--muted);margin:10px 0 0">Ghi đúng nội dung CK giúp BTC đối soát. Không nhập mật khẩu ngân hàng ở bất kỳ đâu trên trang này. BTC sẽ liên hệ xác nhận đơn của bạn.</p>
+        </div>
+        <button class="btn btn-primary btn-block" id="continue" style="margin-top:14px">Tiếp tục mua sắm</button>
+      </div>`;
+    $("#copy-tf").onclick=async function(){try{await navigator.clipboard.writeText($("#tf").textContent.trim());this.innerHTML=ic("i-check")+"Đã sao chép";}catch(e){this.textContent="Sao chép thủ công";}setTimeout(()=>this.innerHTML=ic("i-copy")+"Sao chép nội dung",1800);};
+    $("#continue").onclick=()=>{closeCart();renderCart();};
+  }
+
+  updateBadge();renderCart();
+})();
+</script>
+
+<!--
+==================================================================
+ HƯỚNG DẪN BTC (không hiển thị)
+==================================================================
+1) SẢN PHẨM/GIÁ: sửa mảng CONFIG.products (name, desc, price, icon, tag). Thêm ảnh thật: thêm img:"ten-anh.jpg" (để cùng thư mục) — sẽ thay icon.
+2) NGÂN HÀNG/QR: điền CONFIG.bank + CONFIG.qrImage để hiện ở bước thanh toán.
+3) ĐƠN HÀNG: hiện lưu trong localStorage của trình duyệt người mua. Muốn nhận đơn tập trung: tạo Google Apps Script Web App → dán URL vào CONFIG.formEndpoint.
+4) LIÊN KẾT: trang này liên kết với index.html (Trang chủ). Nhớ để cùng thư mục với logo 4.png & 13.png.
+5) An toàn: trang KHÔNG xử lý thẻ/thanh toán trực tuyến — chỉ đặt hàng + chuyển khoản thủ công, đúng cho hoạt động gây quỹ nội bộ.
+==================================================================
+-->
+</body>
+</html>
