@@ -133,6 +133,10 @@ section{padding:clamp(52px,7.5vw,96px) 0}
 .nav-links a:hover::after{width:100%}
 .nav .btn{min-height:44px;padding:9px 20px;font-size:14.5px}
 .nav-cta{display:none}
+.nav-fb{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;color:#fff;background:var(--blue);transition:background .2s,transform .15s;flex:none}
+.nav-fb:hover{background:var(--navy);transform:translateY(-1px)}
+.nav-fb .icon{width:20px;height:20px}
+.nav-end{display:flex;align-items:center;gap:12px}
 @media(min-width:1000px){.nav-links{display:flex}.nav-cta{display:inline-flex}}
 
 /* ============================================================
@@ -424,6 +428,7 @@ section{padding:clamp(52px,7.5vw,96px) 0}
     <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 8.5A1.5 1.5 0 0 1 5.5 7h1.7l1.3-2h7l1.3 2h1.7A1.5 1.5 0 0 1 20 8.5v9A1.5 1.5 0 0 1 18.5 19h-13A1.5 1.5 0 0 1 4 17.5Z"/><circle cx="12" cy="12.5" r="3.3"/></symbol>
     <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2 4.2 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L9.8 11.8a16 16 0 0 0 6 6l1.4-1.4a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2Z"/></symbol>
     <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="m3 7 9 6 9-6"/></symbol>
+    <symbol id="i-fb" viewBox="0 0 24 24"><path d="M15 8h2.2V4.8h-2.4c-2.2 0-3.6 1.4-3.6 3.7V11H9v3.2h2.2V21h3.3v-6.8h2.4l.4-3.2h-2.8V8.9c0-.6.3-.9 1-.9Z"/></symbol>
     <symbol id="i-film" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="15" rx="2"/><path d="M7 4.5v15M17 4.5v15M3 9.5h4M3 14.5h4M17 9.5h4M17 14.5h4"/></symbol>
     <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="15" rx="2"/><circle cx="8.5" cy="10" r="2"/><path d="m4 18 5-4.5 3.5 3 3-2.5 4.5 4"/></symbol>
     <symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 3s5 4.2 5 9a5 5 0 0 1-10 0c0-1.6.7-3 1.5-4.2.6 1 1.3 1.6 2.2 2C10 7 12 5 12 3Z"/></symbol>
@@ -461,7 +466,10 @@ section{padding:clamp(52px,7.5vw,96px) 0}
       <a href="cua-hang.html">Vật phẩm</a>
       <a href="#hoi-dap">Hỏi đáp</a>
     </nav>
-    <a href="#dang-ky" class="btn btn-primary nav-cta">Đăng ký tham dự<svg class="icon"><use href="#i-arrow"/></svg></a>
+    <span class="nav-end">
+      <a class="nav-fb" id="nav-fanpage" href="#" target="_blank" rel="noopener" aria-label="Fanpage hội khóa" hidden><svg class="icon"><use href="#i-fb"/></svg></a>
+      <a href="#dang-ky" class="btn btn-primary nav-cta">Đăng ký tham dự<svg class="icon"><use href="#i-arrow"/></svg></a>
+    </span>
   </div>
 </header>
 
@@ -794,6 +802,7 @@ section{padding:clamp(52px,7.5vw,96px) 0}
         <ul>
           <li><svg class="icon"><use href="#i-phone"/></svg>Hotline BTC: <a id="foot-hotline" href="tel:">[Điền số hotline]</a></li>
           <li><svg class="icon"><use href="#i-mail"/></svg>Email: <a id="foot-email" href="mailto:">[Điền email BTC]</a></li>
+          <li id="foot-fanpage-li" hidden><svg class="icon"><use href="#i-fb"/></svg>Fanpage: <a id="foot-fanpage" href="#" target="_blank" rel="noopener">Ảnh & video hội khóa</a></li>
           <li><svg class="icon"><use href="#i-shield"/></svg>Không công khai thông tin cá nhân của cựu học sinh.</li>
         </ul>
       </div>
@@ -981,7 +990,11 @@ const CONFIG = {
   if(CONFIG.qrImage){const slot=$("#qr-slot");slot.className="";slot.innerHTML="";const img=el("img");img.src=CONFIG.qrImage;img.alt="Mã QR chuyển khoản quỹ hội khóa";slot.appendChild(img);}
   if(CONFIG.hotline){const h=$("#foot-hotline");h.textContent=CONFIG.hotline;h.href="tel:"+CONFIG.hotline;}
   if(CONFIG.email){const e=$("#foot-email");e.textContent=CONFIG.email;e.href="mailto:"+CONFIG.email;}
-  if(CONFIG.fanpageUrl){const fb=$("#fanpage-btn");if(fb){fb.href=CONFIG.fanpageUrl;fb.hidden=false;}}
+  if(CONFIG.fanpageUrl){
+    const fb=$("#fanpage-btn");if(fb){fb.href=CONFIG.fanpageUrl;fb.hidden=false;}
+    const nf=$("#nav-fanpage");if(nf){nf.href=CONFIG.fanpageUrl;nf.hidden=false;}
+    const ff=$("#foot-fanpage"),ffl=$("#foot-fanpage-li");if(ff){ff.href=CONFIG.fanpageUrl;} if(ffl){ffl.hidden=false;}
+  }
 
   $("#copy-transfer").addEventListener("click",async function(){
     const txt=$("#transfer-content").textContent.trim();
