@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Quản trị sản phẩm — Hội khóa 2004–2007</title>
+<meta name="robots" content="noindex" />
+<link rel="icon" href="logo%204.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@600;700&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --navy:#123C9E; --navy-700:#1B54CC; --navy-900:#0C2A66; --blue:#1B54CC; --blue-bright:#2E6AE6;
+  --gold:#C7972F; --gold-ink:#1B4BB0; --red:#A63D40; --green:#2f8a45;
+  --paper:#FFFFFF; --cream:#EEF4FD; --cream-2:#E1EAFB; --ink:#15233F; --muted:#586176; --line:#DCE6F5; --line-cool:#D3DEEF;
+  --shadow-xs:0 1px 2px rgba(14,36,56,.06); --shadow-sm:0 2px 10px rgba(14,36,56,.08); --shadow-md:0 14px 34px rgba(14,36,56,.14);
+  --radius:14px; --radius-pill:999px;
+  --ff-head:"EB Garamond",Georgia,serif; --ff-body:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;font-family:var(--ff-body);color:var(--ink);background:var(--cream);line-height:1.55;font-size:16px;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit}
+.container{width:100%;max-width:1040px;margin:0 auto;padding:0 18px}
+h1,h2{font-family:var(--ff-head);margin:0}
+.icon{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;min-height:44px;padding:10px 18px;border-radius:var(--radius-pill);font-weight:600;font-size:14.5px;border:1.5px solid transparent;transition:transform .15s,box-shadow .15s,background .15s,color .15s}
+.btn:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.btn-primary{background:linear-gradient(180deg,var(--blue-bright),var(--blue));color:#fff;box-shadow:0 5px 14px rgba(27,84,204,.3)}
+.btn-primary:hover{transform:translateY(-1px)}
+.btn-gold{background:linear-gradient(180deg,#E7C25A,var(--gold));color:#3a2905;box-shadow:0 6px 16px rgba(199,151,47,.35)}
+.btn-gold:hover{transform:translateY(-1px)}
+.btn-outline{background:#fff;color:var(--blue);border-color:var(--blue)}
+.btn-outline:hover{background:var(--blue);color:#fff}
+.btn-sm{min-height:36px;padding:6px 12px;font-size:13px}
+.btn-danger{background:#fff;color:var(--red);border-color:var(--red)}
+.btn-danger:hover{background:var(--red);color:#fff}
+
+.site-header{background:var(--navy-900);color:#fff}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:12px;height:62px}
+.brand{display:flex;align-items:center;gap:10px}
+.brand img{height:40px;background:#fff;border-radius:8px;padding:3px}
+.brand b{font-family:var(--ff-head);font-size:17px;display:block;line-height:1.1}
+.brand span{font-size:12px;color:#bcccef}
+.nav a.back{color:#dbe6ff;font-size:14px;display:inline-flex;align-items:center;gap:6px}
+
+/* Gate */
+.gate{max-width:420px;margin:60px auto;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:30px;box-shadow:var(--shadow-md);text-align:center}
+.gate .lock{width:56px;height:56px;border-radius:50%;background:var(--cream);display:grid;place-items:center;margin:0 auto 14px;color:var(--gold-ink)}
+.gate h2{color:var(--navy);margin-bottom:6px;font-size:24px}
+.gate p{color:var(--muted);font-size:14px;margin:0 0 18px}
+.gate input{width:100%;font-size:16px;padding:12px 14px;border:1.5px solid var(--line-cool);border-radius:10px;text-align:center;letter-spacing:2px;margin-bottom:12px}
+.gate input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(27,84,204,.14)}
+.gate .err{color:var(--red);font-size:13px;min-height:18px;margin-bottom:8px}
+
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow-xs);position:sticky;top:10px;z-index:20;margin-bottom:18px}
+.toolbar .sp{flex:1}
+.toolbar .hint{font-size:12.5px;color:var(--muted);flex-basis:100%}
+
+.prod{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow-xs);margin-bottom:14px}
+.prod-top{display:flex;gap:14px;align-items:flex-start}
+.thumb{width:74px;height:74px;border-radius:12px;flex:none;background:linear-gradient(150deg,var(--blue-bright),var(--blue));display:grid;place-items:center;overflow:hidden;color:#fff}
+.thumb img{width:100%;height:100%;object-fit:cover}
+.thumb .icon{width:30px;height:30px}
+.pfields{flex:1;display:grid;grid-template-columns:1fr;gap:10px}
+@media(min-width:640px){.pfields{grid-template-columns:1.4fr .8fr}}
+.f label{display:block;font-size:12.5px;font-weight:600;color:var(--muted);margin-bottom:4px}
+.f input,.f textarea{width:100%;font-family:inherit;font-size:15px;padding:9px 11px;border:1.5px solid var(--line-cool);border-radius:9px;color:var(--ink)}
+.f input:focus,.f textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(27,84,204,.12)}
+.f textarea{min-height:44px;resize:vertical}
+.price-wrap{position:relative}
+.price-wrap .cur{position:absolute;right:11px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:13px;pointer-events:none}
+.price-preview{font-size:12.5px;color:var(--gold-ink);font-weight:600;margin-top:3px}
+.img-row{display:flex;gap:8px;align-items:center}
+.img-row input{flex:1}
+.prod-actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+.chk{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;color:var(--ink);cursor:pointer}
+.chk input{width:17px;height:17px;accent-color:var(--red)}
+.prod.hidden-prod{opacity:.6}
+.prod.hidden-prod .thumb{filter:grayscale(1)}
+.move{display:inline-flex;gap:4px}
+.icon-btn{width:34px;height:34px;border-radius:8px;border:1.5px solid var(--line-cool);background:#fff;color:var(--blue);cursor:pointer;display:grid;place-items:center}
+.icon-btn:hover{background:var(--cream)}
+.icon-btn:disabled{opacity:.4;cursor:not-allowed}
+.tag-pill{margin-left:auto;font-size:12px;color:var(--muted)}
+
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:var(--navy);color:#fff;padding:11px 20px;border-radius:var(--radius-pill);font-size:14px;box-shadow:var(--shadow-md);opacity:0;transition:.25s;z-index:50}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast.ok{background:var(--green)}
+
+.export-box{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow-xs);margin:6px 0 40px}
+.export-box h2{color:var(--navy);font-size:20px;margin-bottom:8px}
+.export-box ol{margin:0;padding-left:20px;color:var(--muted);font-size:14px}
+.export-box code{background:var(--cream);padding:1px 6px;border-radius:5px;font-size:13px}
+.section-title{font-family:var(--ff-head);color:var(--navy);font-size:22px;margin:22px 0 12px}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M9.5 7V5.2a1.2 1.2 0 0 1 1.2-1.2h2.6a1.2 1.2 0 0 1 1.2 1.2V7M6.5 7l1 12.2a1.2 1.2 0 0 0 1.2 1.1h6.6a1.2 1.2 0 0 0 1.2-1.1L17.5 7"/></symbol>
+  <symbol id="i-save" viewBox="0 0 24 24"><path d="M5 3h11l3 3v15H5Z"/><path d="M8 3v6h7M8 21v-7h8v7"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></symbol>
+  <symbol id="i-restore" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
+  <symbol id="i-gift" viewBox="0 0 24 24"><rect x="3" y="8.5" width="18" height="4" rx="1"/><path d="M12 8.5v12M5 12.5v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/><path d="M12 8.5S10.5 3.5 8 3.5a2.5 2.5 0 0 0 0 5M12 8.5s1.5-5 4-5a2.5 2.5 0 0 1 0 5"/></symbol>
+</defs></svg>
+
+<header class="site-header">
+  <div class="container nav">
+    <div class="brand"><img src="logo%204.png" alt="Logo"><div><b>Quản trị sản phẩm</b><span>Hội khóa 2004–2007</span></div></div>
+    <a class="back" href="cua-hang.html"><svg class="icon"><use href="#i-back"/></svg>Xem gian hàng</a>
+  </div>
+</header>
+
+<!-- GATE -->
+<div class="container" id="gate-wrap">
+  <div class="gate">
+    <div class="lock"><svg class="icon" style="width:26px;height:26px"><use href="#i-lock"/></svg></div>
+    <h2>Khu vực quản trị</h2>
+    <p>Nhập mật khẩu quản trị để chỉnh sửa giá & ảnh sản phẩm.</p>
+    <input id="pin" type="password" inputmode="numeric" placeholder="Mật khẩu" autocomplete="off" />
+    <div class="err" id="pin-err"></div>
+    <button class="btn btn-primary" id="pin-go" style="width:100%">Vào quản trị</button>
+  </div>
+</div>
+
+<!-- EDITOR -->
+<main class="container" id="editor" hidden>
+  <div class="toolbar">
+    <button class="btn btn-gold" id="btn-export"><svg class="icon"><use href="#i-download"/></svg>Xuất file cập nhật</button>
+    <button class="btn btn-outline btn-sm" id="btn-add"><svg class="icon"><use href="#i-plus"/></svg>Thêm sản phẩm</button>
+    <button class="btn btn-outline btn-sm" id="btn-save"><svg class="icon"><use href="#i-save"/></svg>Lưu nháp</button>
+    <button class="btn btn-outline btn-sm" id="btn-restore"><svg class="icon"><use href="#i-restore"/></svg>Khôi phục nháp</button>
+    <span class="sp"></span>
+    <span class="hint">Sửa xong bấm <b>“Xuất file cập nhật”</b> để tải <code>san-pham.js</code> mới, rồi đưa lên web (đẩy GitHub hoặc gửi trợ lý).</span>
+  </div>
+
+  <div id="list"></div>
+
+  <button class="btn btn-outline" id="btn-add2" style="margin:4px 0 20px"><svg class="icon"><use href="#i-plus"/></svg>Thêm sản phẩm</button>
+
+  <div class="export-box">
+    <h2>Cách đưa thay đổi lên web</h2>
+    <ol>
+      <li>Bấm <b>“Xuất file cập nhật”</b> → máy tải về file <code>san-pham.js</code>.</li>
+      <li>Nếu có đổi/thêm <b>ảnh</b>: chép ảnh vào thư mục <code>anh/</code> (ghi đúng tên đã điền ở ô Ảnh).</li>
+      <li>Thay file <code>san-pham.js</code> cũ bằng file mới (và ảnh) rồi <b>đẩy lên GitHub</b> — hoặc gửi cả cho trợ lý để cập nhật giúp. Sau ~1 phút web sẽ hiện giá mới cho mọi người.</li>
+    </ol>
+  </div>
+</main>
+
+<div class="toast" id="toast"></div>
+
+<script src="san-pham.js"></script>
+<script>
+(function(){
+  /* ====== ĐỔI MẬT KHẨU QUẢN TRỊ TẠI ĐÂY ====== */
+  const ADMIN_PIN = "hoikhoa2027";
+  /* ============================================ */
+
+  const $=s=>document.querySelector(s);
+  const el=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e;};
+  const vnd=n=>new Intl.NumberFormat("vi-VN").format(Math.max(0,+n||0))+"đ";
+  const ICONMAP = window.SHOP_ICON_BY_ID || {};
+  const DRAFT="hoikhoa_admin_draft";
+  let items=[];
+
+  function seed(){
+    const base = (window.SHOP_PRODUCTS && window.SHOP_PRODUCTS.length) ? window.SHOP_PRODUCTS : [];
+    return base.map(p=>({id:p.id||("sp-"+Math.random().toString(36).slice(2,7)),name:p.name||"",desc:p.desc||"",price:+p.price||0,img:p.img||"",tag:p.tag||"",hide:!!p.hide}));
+  }
+
+  // ---- Gate ----
+  function unlock(){ $("#gate-wrap").hidden=true; $("#editor").hidden=false; items=seed(); render(); }
+  $("#pin-go").onclick=()=>{
+    if($("#pin").value===ADMIN_PIN){ sessionStorage.setItem("hk_admin","1"); unlock(); }
+    else { $("#pin-err").textContent="Mật khẩu chưa đúng."; }
+  };
+  $("#pin").addEventListener("keydown",e=>{if(e.key==="Enter")$("#pin-go").click();});
+  if(sessionStorage.getItem("hk_admin")==="1") unlock();
+
+  // ---- Toast ----
+  let tt; function toast(msg,ok){const t=$("#toast");t.textContent=msg;t.className="toast show"+(ok?" ok":"");clearTimeout(tt);tt=setTimeout(()=>t.className="toast",2200);}
+
+  // ---- Render ----
+  function iconFor(it){ return ICONMAP[it.id] || "i-gift"; }
+  function render(){
+    const list=$("#list"); list.innerHTML="";
+    items.forEach((it,idx)=>{
+      const card=el("div","prod"+(it.hide?" hidden-prod":""));
+      const thumb = it.img
+        ? `<div class="thumb"><img src="${it.img}" alt="" onerror="this.parentElement.innerHTML='ảnh?';this.parentElement.style.fontSize='12px'"></div>`
+        : `<div class="thumb"><svg class="icon"><use href="#${iconFor(it)}"/></svg></div>`;
+      card.innerHTML=`
+        ${thumb}
+        <div style="flex:1">
+          <div class="pfields">
+            <div class="f"><label>Tên sản phẩm</label><input data-k="name" value="${escAttr(it.name)}"></div>
+            <div class="f"><label>Giá (chỉ nhập số)</label>
+              <div class="price-wrap"><input data-k="price" type="number" min="0" step="1000" value="${it.price}"><span class="cur">đ</span></div>
+              <div class="price-preview" data-price-pre>= ${vnd(it.price)}</div>
+            </div>
+            <div class="f" style="grid-column:1/-1"><label>Mô tả ngắn</label><textarea data-k="desc">${escHtml(it.desc)}</textarea></div>
+            <div class="f"><label>Ảnh (tên file trong thư mục anh/)</label>
+              <div class="img-row"><input data-k="img" placeholder="VD: anh/ao-polo.jpg" value="${escAttr(it.img)}"><button type="button" class="btn btn-outline btn-sm" data-pick>Chọn ảnh</button></div>
+            </div>
+            <div class="f"><label>Nhãn góc (tuỳ chọn)</label><input data-k="tag" placeholder="VD: Bán chạy" value="${escAttr(it.tag)}"></div>
+          </div>
+          <div class="prod-actions">
+            <label class="chk"><input type="checkbox" data-k="hide" ${it.hide?"checked":""}>Tạm ẩn khỏi trang</label>
+            <span class="tag-pill">Mã: ${it.id}</span>
+            <div class="move">
+              <button class="icon-btn" data-up title="Lên" ${idx===0?"disabled":""}><svg class="icon"><use href="#i-up"/></svg></button>
+              <button class="icon-btn" data-down title="Xuống" ${idx===items.length-1?"disabled":""}><svg class="icon"><use href="#i-down"/></svg></button>
+              <button class="icon-btn" data-del title="Xóa" style="color:var(--red);border-color:#f0c9ca"><svg class="icon"><use href="#i-trash"/></svg></button>
+            </div>
+          </div>
+        </div>`;
+      // wire fields
+      card.querySelectorAll("[data-k]").forEach(inp=>{
+        const k=inp.dataset.k;
+        inp.addEventListener("input",()=>{
+          if(k==="hide"){ it.hide=inp.checked; card.classList.toggle("hidden-prod",it.hide); }
+          else if(k==="price"){ it.price=+inp.value||0; card.querySelector("[data-price-pre]").textContent="= "+vnd(it.price); }
+          else { it[k]=inp.value; if(k==="img"||k==="name"){ refreshThumb(card,it);} }
+        });
+      });
+      card.querySelector("[data-pick]").onclick=()=>pickImg(it,card);
+      card.querySelector("[data-up]").onclick=()=>{ if(idx>0){ [items[idx-1],items[idx]]=[items[idx],items[idx-1]]; render(); } };
+      card.querySelector("[data-down]").onclick=()=>{ if(idx<items.length-1){ [items[idx+1],items[idx]]=[items[idx],items[idx+1]]; render(); } };
+      card.querySelector("[data-del]").onclick=()=>{ if(confirm("Xóa sản phẩm “"+(it.name||it.id)+"”?")){ items.splice(idx,1); render(); toast("Đã xóa (nhớ Xuất file để lưu)."); } };
+      list.appendChild(card);
+    });
+  }
+  function refreshThumb(card,it){
+    const t=card.querySelector(".thumb");
+    if(it.img){ t.innerHTML=`<img src="${it.img}" alt="" onerror="this.parentElement.textContent='ảnh?';this.parentElement.style.fontSize='12px'">`; }
+    else { t.innerHTML=`<svg class="icon"><use href="#${iconFor(it)}"/></svg>`; }
+  }
+  function pickImg(it,card){
+    const f=document.createElement("input"); f.type="file"; f.accept="image/*";
+    f.onchange=()=>{ const file=f.files[0]; if(!file) return;
+      it.img="anh/"+file.name;
+      card.querySelector('[data-k="img"]').value=it.img;
+      // preview ngay bằng ảnh vừa chọn
+      const url=URL.createObjectURL(file); const t=card.querySelector(".thumb");
+      t.innerHTML=`<img src="${url}" alt="">`;
+      toast('Đã ghi tên ảnh. Nhớ chép file "'+file.name+'" vào thư mục anh/.');
+    };
+    f.click();
+  }
+
+  const escAttr=s=>String(s||"").replace(/"/g,"&quot;").replace(/</g,"&lt;");
+  const escHtml=s=>String(s||"").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+
+  // ---- Add / Save / Restore ----
+  function addProduct(){
+    const id="sp-"+Math.random().toString(36).slice(2,7);
+    items.push({id,name:"Sản phẩm mới",desc:"",price:0,img:"",tag:"",hide:false});
+    render(); window.scrollTo({top:document.body.scrollHeight,behavior:"smooth"});
+  }
+  $("#btn-add").onclick=addProduct; $("#btn-add2").onclick=addProduct;
+  $("#btn-save").onclick=()=>{ try{localStorage.setItem(DRAFT,JSON.stringify(items));toast("Đã lưu nháp trên máy này.",true);}catch(e){toast("Không lưu được nháp.");} };
+  $("#btn-restore").onclick=()=>{ try{const d=JSON.parse(localStorage.getItem(DRAFT));if(d&&d.length){items=d;render();toast("Đã khôi phục bản nháp.",true);}else toast("Chưa có bản nháp nào.");}catch(e){toast("Không đọc được nháp.");} };
+
+  // ---- Export san-pham.js ----
+  $("#btn-export").onclick=()=>{
+    const lines=items.map(it=>{
+      const s=k=>JSON.stringify(it[k]||"");
+      return `  { id:${JSON.stringify(it.id)}, name:${s("name")}, desc:${s("desc")}, price:${Math.max(0,+it.price||0)}, img:${s("img")}, tag:${s("tag")}${it.hide?", hide:true":""} }`;
+    }).join(",\n");
+    const iconmap = JSON.stringify(ICONMAP,null,2);
+    const content =
+`/* =====================================================================
+   DANH SÁCH SẢN PHẨM — Tạo tự động từ trang Quản trị (quan-tri.html)
+   Có thể mở sửa tay: price = số (VD 150000), img = "anh/ten-anh.jpg" (để trống = dùng icon).
+   ===================================================================== */
+
+window.SHOP_PRODUCTS = [
+${lines}
+];
+
+window.SHOP_ICON_BY_ID = ${iconmap};
+`;
+    const blob=new Blob([content],{type:"text/javascript;charset=utf-8"});
+    const url=URL.createObjectURL(blob); const a=document.createElement("a");
+    a.href=url; a.download="san-pham.js"; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+    toast("Đã tải file san-pham.js — đưa lên web để cập nhật.",true);
+  };
+})();
+</script>
+</body>
+</html>
