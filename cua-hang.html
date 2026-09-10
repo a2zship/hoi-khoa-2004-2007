@@ -415,6 +415,7 @@ const CONFIG = {
   const vnd=n=>new Intl.NumberFormat("vi-VN").format(n)+"đ";
   const KEY="hoikhoa_shop_cart", ORDKEY="hoikhoa_shop_orders";
   const byId=id=>CONFIG.products.find(p=>p.id===id);
+  window.imgFallback=(img,icon)=>{try{img.outerHTML='<svg class="icon"><use href="#'+(icon||"i-gift")+'"/></svg>';}catch(e){}};
 
   let cart=load();
   function load(){try{return JSON.parse(localStorage.getItem(KEY))||{};}catch(e){return {};}}
@@ -429,8 +430,7 @@ const CONFIG = {
   const grid=$("#product-grid");
   function renderGrid(){ grid.innerHTML="";
   CONFIG.products.forEach(p=>{
-    const media = p.img ? `<div class="product-media"><img src="${p.img}" alt="${p.name}"></div>`
-                        : `<div class="product-media">${p.tag?`<span class="tag">${p.tag}</span>`:""}${ic(p.icon)}</div>`;
+    const media = `<div class="product-media">${p.tag?`<span class="tag">${p.tag}</span>`:""}${ p.img ? `<img src="${p.img}" alt="${p.name}" loading="lazy" onerror="imgFallback(this,'${p.icon}')">` : ic(p.icon) }</div>`;
     const card=el("div","product-card",
       `${media}
        <div class="product-body">
@@ -480,7 +480,7 @@ const CONFIG = {
     ids.forEach(id=>{
       const p=byId(id),q=cart[id];if(!p)return;
       const row=el("div","cart-item",
-        `<div class="thumb">${p.img?`<img src="${p.img}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:10px">`:ic(p.icon)}</div>
+        `<div class="thumb">${p.img?`<img src="${p.img}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:10px" onerror="imgFallback(this,'${p.icon}')">`:ic(p.icon)}</div>
          <div><div class="ci-name">${p.name}</div><div class="ci-price">${vnd(p.price)}</div>
            <div class="mini-qty" style="margin-top:6px"><button data-mdec aria-label="Giảm">${ic("i-minus")}</button><span>${q}</span><button data-minc aria-label="Tăng">${ic("i-plus")}</button></div>
          </div>

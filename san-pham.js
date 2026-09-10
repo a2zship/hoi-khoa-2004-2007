@@ -18,14 +18,14 @@
    ===================================================================== */
 
 window.SHOP_PRODUCTS = [
-  { id:"ao-polo",  name:"Áo polo",          desc:"Polo trắng phối xanh, thêu logo 20 năm, in được tên lớp.", price:200000, img:"", tag:"Bán chạy" },
-  { id:"ao-thun",  name:"Áo thun",          desc:"Áo thun cotton in logo & hình bóng học trò, đủ size.",     price:150000, img:"", tag:"" },
-  { id:"mu",       name:"Mũ lưỡi trai",     desc:"Nón kết trắng–xanh thêu biểu tượng hội khóa.",             price:90000,  img:"", tag:"" },
-  { id:"binh",     name:"Bình giữ nhiệt",   desc:"Bình giữ nhiệt inox in logo, khắc được tên lớp.",          price:180000, img:"", tag:"" },
-  { id:"tui",      name:"Túi vải",          desc:"Túi vải canvas in logo, bền & tiện dùng hằng ngày.",       price:85000,  img:"", tag:"" },
-  { id:"moc-khoa", name:"Móc khóa",         desc:"Móc khóa kim loại in logo, khắc được tên & lớp.",          price:45000,  img:"", tag:"" },
-  { id:"chuong",   name:"Kỷ niệm chương",   desc:"Kỷ niệm chương pha lê khắc logo 20 năm, đế trang trọng.",  price:250000, img:"", tag:"Sang trọng" },
-  { id:"hop-qua",  name:"Hộp quà kỷ niệm",  desc:"Set quà: bình giữ nhiệt + móc khóa + thiệp, đóng hộp đẹp.",price:350000, img:"", tag:"Set quà" }
+  { id:"ao-polo",  name:"Áo polo",          desc:"Polo trắng phối xanh, thêu logo 20 năm, in được tên lớp.", price:200000, img:"anh/ao-polo.jpg", tag:"Bán chạy" },
+  { id:"ao-thun",  name:"Áo thun",          desc:"Áo thun cotton in logo & hình bóng học trò, đủ size.",     price:150000, img:"anh/ao-thun.jpg", tag:"" },
+  { id:"mu",       name:"Mũ lưỡi trai",     desc:"Nón kết trắng–xanh thêu biểu tượng hội khóa.",             price:90000,  img:"anh/mu-luoi-trai.jpg", tag:"" },
+  { id:"binh",     name:"Bình giữ nhiệt",   desc:"Bình giữ nhiệt inox in logo, khắc được tên lớp.",          price:180000, img:"anh/binh-giu-nhiet.jpg", tag:"" },
+  { id:"tui",      name:"Túi vải",          desc:"Túi vải canvas in logo, bền & tiện dùng hằng ngày.",       price:85000,  img:"anh/tui-vai.jpg", tag:"" },
+  { id:"moc-khoa", name:"Móc khóa",         desc:"Móc khóa kim loại in logo, khắc được tên & lớp.",          price:45000,  img:"anh/moc-khoa.jpg", tag:"" },
+  { id:"chuong",   name:"Kỷ niệm chương",   desc:"Kỷ niệm chương pha lê khắc logo 20 năm, đế trang trọng.",  price:250000, img:"anh/ky-niem-chuong.jpg", tag:"Sang trọng" },
+  { id:"hop-qua",  name:"Hộp quà kỷ niệm",  desc:"Set quà: bình giữ nhiệt + móc khóa + thiệp, đóng hộp đẹp.",price:350000, img:"anh/hop-qua.jpg", tag:"Set quà" }
 
   // Muốn THÊM sản phẩm mới: copy một dòng ở trên, dán xuống đây, đổi id (không trùng),
   // tên, giá, ảnh. Nhớ thêm dấu phẩy "," ở cuối dòng phía trên.
