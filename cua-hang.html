@@ -415,7 +415,7 @@ const CONFIG = {
     {id:"moc-khoa",name:"Móc khóa",        desc:"Móc khóa kim loại in logo, khắc được tên & lớp.",          price:45000,  icon:"p-keychain"},
     {id:"chuong",  name:"Kỷ niệm chương",  desc:"Kỷ niệm chương pha lê khắc logo 20 năm, đế trang trọng.",  price:250000, icon:"p-award", tag:"Sang trọng"},
     {id:"hop-qua", name:"Hộp quà kỷ niệm", desc:"Set quà: bình giữ nhiệt + móc khóa + thiệp, đóng hộp đẹp.",price:350000, icon:"i-gift", tag:"Set quà"}
-  ]).filter(p=>!p.hide).map(p=>({...p, icon:p.icon||(window.SHOP_ICON_BY_ID&&window.SHOP_ICON_BY_ID[p.id])||"i-gift", tag:p.tag||"", cat:p.cat||"hoi-khoa"}))
+  ]).filter(p=>!p.hide && p.img).map(p=>({...p, icon:p.icon||(window.SHOP_ICON_BY_ID&&window.SHOP_ICON_BY_ID[p.id])||"i-gift", tag:p.tag||"", cat:p.cat||"hoi-khoa"}))
 };
 
 /* ============================================================ */
@@ -427,6 +427,7 @@ const CONFIG = {
   const KEY="hoikhoa_shop_cart", ORDKEY="hoikhoa_shop_orders";
   const byId=id=>CONFIG.products.find(p=>p.id===id);
   window.imgFallback=(img,icon)=>{try{img.outerHTML='<svg class="icon"><use href="#'+(icon||"i-gift")+'"/></svg>';}catch(e){}};
+  window.imgHideCard=(img)=>{try{const c=img.closest(".product-card"); if(c) c.remove();}catch(e){}};
 
   let cart=load();
   function load(){try{return JSON.parse(localStorage.getItem(KEY))||{};}catch(e){return {};}}
@@ -447,7 +448,7 @@ const CONFIG = {
   }
   function renderGrid(){ grid.innerHTML="";
   CONFIG.products.filter(p=>activeCat==="all"||p.cat===activeCat).forEach(p=>{
-    const media = `<div class="product-media">${p.tag?`<span class="tag">${p.tag}</span>`:""}${ p.img ? `<img src="${p.img}" alt="${p.name}" loading="lazy" onerror="imgFallback(this,'${p.icon}')">` : ic(p.icon) }</div>`;
+    const media = `<div class="product-media">${p.tag?`<span class="tag">${p.tag}</span>`:""}${ p.img ? `<img src="${p.img}" alt="${p.name}" loading="lazy" onerror="imgHideCard(this)">` : ic(p.icon) }</div>`;
     const card=el("div","product-card",
       `${media}
        <div class="product-body">
@@ -667,7 +668,7 @@ const CONFIG = {
       clearTimeout(to);
       const j=await r.json();
       if(j&&j.feature==="products"&&Array.isArray(j.products)&&j.products.length){
-        CONFIG.products=j.products.filter(p=>!p.hide).map(p=>({...p,price:+p.price||0,
+        CONFIG.products=j.products.filter(p=>!p.hide && p.img).map(p=>({...p,price:+p.price||0,
           icon:p.icon||(window.SHOP_ICON_BY_ID&&window.SHOP_ICON_BY_ID[p.id])||"i-gift",tag:p.tag||"",cat:p.cat||"hoi-khoa"}));
         renderCatTabs(); renderGrid(); if(rebuildClassRows) rebuildClassRows();
       }
