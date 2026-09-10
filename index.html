@@ -835,13 +835,20 @@ const CONFIG = {
   classes: Array.from({length:14}, (_,i)=>({ code:"A"+(i+1), rep:"", repPhone:"" })),
 
   program: [
-    {time:"07:30", title:"Đón khách & check-in", desc:"Nhận thẻ tên, áo kỷ niệm, chụp ảnh check-in tại cổng trường."},
-    {time:"08:30", title:"Về thăm lớp học cũ", desc:"Cựu học sinh trở lại phòng học xưa, ôn kỷ niệm cùng bạn bè."},
-    {time:"09:00", title:"Lễ khai mạc", desc:"Chào cờ, phát biểu, tri ân và tưởng nhớ thầy cô, bạn học cũ."},
-    {time:"10:00", title:"Chương trình “20 năm – Ngày trở về”", desc:"Chiếu phim kỷ niệm, tái hiện ảnh cũ từng lớp, giao lưu."},
-    {time:"11:30", title:"Tiệc hội ngộ", desc:"Cùng dùng bữa, văn nghệ và trò chơi ký ức."},
-    {time:"14:00", title:"Giao lưu tự do & chụp ảnh lớp", desc:"Gặp gỡ theo lớp, viết thông điệp gửi hội khóa 30 năm."},
-    {time:"16:00", title:"Bế mạc", desc:"Chia tay, hẹn ngày gặp lại. Nhận ảnh & kỷ yếu số sau sự kiện."}
+    // — BUỔI SÁNG: KẾT NỐI & TRI ÂN (07:30 – 11:00) —
+    {time:"07:30", title:"Đón tiếp & Check-in", desc:"Phát đồng phục, băng rôn, huy hiệu kỷ niệm; chụp ảnh check-in tại backdrop chính."},
+    {time:"08:30", title:"Thăm trường & lớp học cũ", desc:"Về lại phòng học xưa tâm sự, chụp ảnh và ôn lại kỷ niệm một thời."},
+    {time:"11:00", title:"Ăn trưa tự túc", desc:"Nghỉ trưa, tự do gặp gỡ bạn bè."},
+    // — BUỔI CHIỀU: CHƯƠNG TRÌNH CHÍNH (14:30 – 17:30) tại Hội trường / Sân khấu lớn —
+    {time:"14:30", title:"Đón tiếp thầy cô & Khai mạc", desc:"Ổn định chỗ ngồi; chiếu video phóng sự “20 năm – Ngày trở về”."},
+    {time:"15:00", title:"Văn nghệ chào mừng", desc:"5 tiết mục đặc sắc do cựu học sinh và học sinh nhà trường biểu diễn."},
+    {time:"15:30", title:"Tuyên bố lý do & Phát biểu khai mạc", desc:"MC giới thiệu Ban giám hiệu, thầy cô cũ và đại diện các lớp; đại diện BTC phát biểu khai mạc."},
+    {time:"16:00", title:"Tri ân & Gắn kết", desc:"Thầy cô đại diện chia sẻ cảm xúc; các lớp dâng hoa, quà tri ân thầy cô và trao quà lưu niệm cho nhà trường."},
+    {time:"16:30", title:"Chụp ảnh tập thể & Giao lưu", desc:"Chụp ảnh kỷ niệm toàn thể quanh sân khấu chính; giao lưu tự do giữa các thành viên."},
+    {time:"17:00", title:"Phát biểu bế mạc", desc:"Toàn hội trường cùng hát bài ca về mái trường; kết thúc chương trình chính."},
+    // — BUỔI TỐI —
+    {time:"18:00", title:"Tiệc liên hoan", desc:"Tiệc tối ấm cúng, kết nối giao lưu toàn khóa."},
+    {time:"20:00", title:"Lửa trại & Pháo hoa", desc:"Đốt lửa trại giao lưu, hát ca và bắn pháo hoa kỷ niệm. 21:00 chính thức kết thúc ngày hội."}
   ],
 
   // icon = id trong sprite (không dùng emoji)
