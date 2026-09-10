@@ -24,14 +24,14 @@ window.SHOP_CATEGORIES = [
 
 window.SHOP_PRODUCTS = [
   /* ===================== HỘI KHÓA 20 NĂM ===================== */
-  { id:"ao-polo", cat:"hoi-khoa", name:"Áo polo",          desc:"Polo trắng phối xanh, thêu logo 20 năm, in được tên lớp.", price:200000, img:"anh/ao-polo.jpg", tag:"Bán chạy" },
-  { id:"ao-thun", cat:"hoi-khoa", name:"Áo thun",          desc:"Áo thun cotton in logo & hình bóng học trò, đủ size.",     price:150000, img:"anh/ao-thun.jpg", tag:"" },
-  { id:"mu",      cat:"hoi-khoa", name:"Mũ lưỡi trai",     desc:"Nón kết trắng–xanh thêu biểu tượng hội khóa.",             price:90000,  img:"anh/mu-luoi-trai.jpg", tag:"" },
-  { id:"binh",    cat:"hoi-khoa", name:"Bình giữ nhiệt",   desc:"Bình giữ nhiệt inox in logo, khắc được tên lớp.",          price:180000, img:"anh/binh-giu-nhiet.jpg", tag:"" },
-  { id:"tui",     cat:"hoi-khoa", name:"Túi vải",          desc:"Túi vải canvas in logo, bền & tiện dùng hằng ngày.",       price:85000,  img:"anh/tui-vai.jpg", tag:"" },
-  { id:"moc-khoa",cat:"hoi-khoa", name:"Móc khóa",         desc:"Móc khóa kim loại in logo, khắc được tên & lớp.",          price:45000,  img:"anh/moc-khoa.jpg", tag:"" },
-  { id:"chuong",  cat:"hoi-khoa", name:"Kỷ niệm chương",   desc:"Kỷ niệm chương pha lê khắc logo 20 năm, đế trang trọng.",  price:250000, img:"anh/ky-niem-chuong.jpg", tag:"Sang trọng" },
-  { id:"hop-qua", cat:"hoi-khoa", name:"Hộp quà kỷ niệm",  desc:"Set quà: bình giữ nhiệt + móc khóa + thiệp, đóng hộp đẹp.",price:350000, img:"anh/hop-qua.jpg", tag:"Set quà" },
+  { id:"ao-polo", cat:"hoi-khoa", name:"Áo polo",          desc:"Polo trắng phối xanh, thêu logo 20 năm, in được tên lớp.", price:200000, img:"anh/ao-polo.png", tag:"Bán chạy" },
+  { id:"ao-thun", cat:"hoi-khoa", name:"Áo thun",          desc:"Áo thun cotton in logo & hình bóng học trò, đủ size.",     price:150000, img:"anh/ao-thun.png", tag:"" },
+  { id:"mu",      cat:"hoi-khoa", name:"Mũ lưỡi trai",     desc:"Nón kết trắng–xanh thêu biểu tượng hội khóa.",             price:90000,  img:"anh/mu-luoi-trai.png", tag:"" },
+  { id:"binh",    cat:"hoi-khoa", name:"Bình giữ nhiệt",   desc:"Bình giữ nhiệt inox in logo, khắc được tên lớp.",          price:180000, img:"anh/binh-giu-nhiet.png", tag:"" },
+  { id:"tui",     cat:"hoi-khoa", name:"Túi vải",          desc:"Túi vải canvas in logo, bền & tiện dùng hằng ngày.",       price:85000,  img:"anh/tui-vai.png", tag:"" },
+  { id:"moc-khoa",cat:"hoi-khoa", name:"Móc khóa",         desc:"Móc khóa kim loại in logo, khắc được tên & lớp.",          price:45000,  img:"anh/moc-khoa.png", tag:"" },
+  { id:"chuong",  cat:"hoi-khoa", name:"Kỷ niệm chương",   desc:"Kỷ niệm chương pha lê khắc logo 20 năm, đế trang trọng.",  price:250000, img:"anh/ky-niem-chuong.png", tag:"Sang trọng" },
+  { id:"hop-qua", cat:"hoi-khoa", name:"Hộp quà kỷ niệm",  desc:"Set quà: bình giữ nhiệt + móc khóa + thiệp, đóng hộp đẹp.",price:350000, img:"anh/hop-qua.png", tag:"Set quà" },
 
   /* ===================== 20/11 NHÀ GIÁO (mẫu — chỉnh lại giá/ảnh) ===================== */
   { id:"nv-hoa",   cat:"20-11", name:"Bó hoa tri ân thầy cô", desc:"Bó hoa tươi kèm thiệp lời chúc 20/11.",              price:150000, img:"", tag:"" },
