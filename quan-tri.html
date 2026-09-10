@@ -105,6 +105,7 @@ h1,h2{font-family:var(--ff-head);margin:0}
   <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M9.5 7V5.2a1.2 1.2 0 0 1 1.2-1.2h2.6a1.2 1.2 0 0 1 1.2 1.2V7M6.5 7l1 12.2a1.2 1.2 0 0 0 1.2 1.1h6.6a1.2 1.2 0 0 0 1.2-1.1L17.5 7"/></symbol>
   <symbol id="i-save" viewBox="0 0 24 24"><path d="M5 3h11l3 3v15H5Z"/><path d="M8 3v6h7M8 21v-7h8v7"/></symbol>
   <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></symbol>
+  <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 19a4 4 0 0 1 0-8 5 5 0 0 1 9.6-1.4A3.5 3.5 0 0 1 18 19Z"/><path d="M12 21v-7M9.5 16.5 12 14l2.5 2.5"/></symbol>
   <symbol id="i-restore" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></symbol>
   <symbol id="i-back" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
   <symbol id="i-gift" viewBox="0 0 24 24"><rect x="3" y="8.5" width="18" height="4" rx="1"/><path d="M12 8.5v12M5 12.5v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/><path d="M12 8.5S10.5 3.5 8 3.5a2.5 2.5 0 0 0 0 5M12 8.5s1.5-5 4-5a2.5 2.5 0 0 1 0 5"/></symbol>
@@ -132,12 +133,13 @@ h1,h2{font-family:var(--ff-head);margin:0}
 <!-- EDITOR -->
 <main class="container" id="editor" hidden>
   <div class="toolbar">
-    <button class="btn btn-gold" id="btn-export"><svg class="icon"><use href="#i-download"/></svg>Xuất file cập nhật</button>
+    <button class="btn btn-gold" id="btn-publish"><svg class="icon"><use href="#i-cloud"/></svg>Lưu &amp; đăng lên web</button>
     <button class="btn btn-outline btn-sm" id="btn-add"><svg class="icon"><use href="#i-plus"/></svg>Thêm sản phẩm</button>
+    <button class="btn btn-outline btn-sm" id="btn-export"><svg class="icon"><use href="#i-download"/></svg>Xuất file (dự phòng)</button>
     <button class="btn btn-outline btn-sm" id="btn-save"><svg class="icon"><use href="#i-save"/></svg>Lưu nháp</button>
     <button class="btn btn-outline btn-sm" id="btn-restore"><svg class="icon"><use href="#i-restore"/></svg>Khôi phục nháp</button>
     <span class="sp"></span>
-    <span class="hint">Sửa xong bấm <b>“Xuất file cập nhật”</b> để tải <code>san-pham.js</code> mới, rồi đưa lên web (đẩy GitHub hoặc gửi trợ lý).</span>
+    <span class="hint">Bấm <b>“Lưu &amp; đăng lên web”</b> là giá mới hiện cho mọi người ngay (cần đã cập nhật Apps Script bản 2). Nút <b>“Xuất file”</b> là cách dự phòng khi chưa dùng Sheet.</span>
   </div>
 
   <div id="list"></div>
@@ -160,7 +162,9 @@ h1,h2{font-family:var(--ff-head);margin:0}
 <script>
 (function(){
   /* ====== ĐỔI MẬT KHẨU QUẢN TRỊ TẠI ĐÂY ====== */
-  const ADMIN_PIN = "hoikhoa2027";
+  const ADMIN_PIN = "hoikhoa2027";                 // mật khẩu mở trang admin
+  // Địa chỉ Google Apps Script (giống trang bán hàng) — để "Lưu & đăng lên web".
+  const ENDPOINT  = "https://script.google.com/macros/s/AKfycbxQbZvPw3Q6QusMUh4gnVMTJ-w-vt8C2cNEEA1G6IwleOpf8v8xl4vDD_CQQMqUz8dV/exec";
   /* ============================================ */
 
   const $=s=>document.querySelector(s);
@@ -176,7 +180,20 @@ h1,h2{font-family:var(--ff-head);margin:0}
   }
 
   // ---- Gate ----
-  function unlock(){ $("#gate-wrap").hidden=true; $("#editor").hidden=false; items=seed(); render(); }
+  async function unlock(){
+    $("#gate-wrap").hidden=true; $("#editor").hidden=false;
+    items=seed(); render();                       // hiện ngay từ san-pham.js
+    if(ENDPOINT){                                 // rồi lấy bản MỚI NHẤT trên web (nếu có)
+      try{
+        const r=await fetch(ENDPOINT+"?resource=products&_="+Date.now(),{cache:"no-store"});
+        const j=await r.json();
+        if(j&&j.feature==="products"&&Array.isArray(j.products)&&j.products.length){
+          items=j.products.map(p=>({id:p.id||("sp-"+Math.random().toString(36).slice(2,7)),name:p.name||"",desc:p.desc||"",price:+p.price||0,img:p.img||"",tag:p.tag||"",hide:!!p.hide}));
+          render(); toast("Đã tải danh sách đang hiển thị trên web.",true);
+        }
+      }catch(e){}
+    }
+  }
   $("#pin-go").onclick=()=>{
     if($("#pin").value===ADMIN_PIN){ sessionStorage.setItem("hk_admin","1"); unlock(); }
     else { $("#pin-err").textContent="Mật khẩu chưa đúng."; }
@@ -267,6 +284,34 @@ h1,h2{font-family:var(--ff-head);margin:0}
   $("#btn-add").onclick=addProduct; $("#btn-add2").onclick=addProduct;
   $("#btn-save").onclick=()=>{ try{localStorage.setItem(DRAFT,JSON.stringify(items));toast("Đã lưu nháp trên máy này.",true);}catch(e){toast("Không lưu được nháp.");} };
   $("#btn-restore").onclick=()=>{ try{const d=JSON.parse(localStorage.getItem(DRAFT));if(d&&d.length){items=d;render();toast("Đã khôi phục bản nháp.",true);}else toast("Chưa có bản nháp nào.");}catch(e){toast("Không đọc được nháp.");} };
+
+  // ---- Lưu & đăng lên web (Google Sheet) ----
+  $("#btn-publish").onclick=async ()=>{
+    if(!ENDPOINT){ alert("Chưa cấu hình ENDPOINT trong file."); return; }
+    // Kiểm tra máy chủ đã hỗ trợ lưu sản phẩm chưa
+    let feature=null;
+    try{ const r=await fetch(ENDPOINT+"?resource=products&_="+Date.now(),{cache:"no-store"}); const j=await r.json(); feature=j&&j.feature; }catch(e){}
+    if(feature!=="products"){
+      alert("Máy chủ chưa bật chức năng 'Lưu lên web'.\n\nSếp cần: mở Apps Script → dán bản 2 (file GoogleSheet_AppsScript.gs) → đặt ADMIN_KEY → Deploy lại bản mới. Xem hướng dẫn HUONG_DAN_LUU_LEN_WEB.md.");
+      return;
+    }
+    let key=sessionStorage.getItem("hk_pub_key");
+    if(!key){ key=prompt("Nhập MẬT KHẨU ĐĂNG (khóa admin đã đặt trong Apps Script — ADMIN_KEY):"); if(!key) return; }
+    const products=items.map(it=>({id:it.id,name:it.name,desc:it.desc,price:Math.max(0,+it.price||0),img:it.img||"",tag:it.tag||"",hide:!!it.hide}));
+    toast("Đang đăng lên web…");
+    try{ await fetch(ENDPOINT,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({type:"products_save",key,products})}); }catch(e){}
+    await new Promise(r=>setTimeout(r,1600));
+    // xác minh bằng cách đọc lại
+    try{
+      const r2=await fetch(ENDPOINT+"?resource=products&_="+Date.now(),{cache:"no-store"});
+      const j2=await r2.json(); const saved=(j2&&j2.products)||[];
+      const ok = saved.length===products.length
+        && String(saved[0]&&saved[0].name)===String(products[0]&&products[0].name)
+        && Number(saved[0]&&saved[0].price)===Number(products[0]&&products[0].price);
+      if(ok){ sessionStorage.setItem("hk_pub_key",key); toast("✓ Đã đăng lên web! Mọi người mở trang bán hàng sẽ thấy giá mới.",true); }
+      else { sessionStorage.removeItem("hk_pub_key"); alert("Chưa lưu được.\nCó thể SAI MẬT KHẨU ĐĂNG, hoặc Apps Script chưa đặt ADMIN_KEY / chưa Deploy bản mới.\nHãy thử lại và nhập đúng khóa."); }
+    }catch(e){ toast("Đã gửi. Không kiểm tra được do mạng — hãy mở lại trang bán hàng để xem."); }
+  };
 
   // ---- Export san-pham.js ----
   $("#btn-export").onclick=()=>{

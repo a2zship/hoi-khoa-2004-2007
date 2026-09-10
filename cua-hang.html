@@ -425,7 +425,9 @@ const CONFIG = {
   $("#year").textContent=new Date().getFullYear();
 
   // Render products
+  let rebuildClassRows=null;
   const grid=$("#product-grid");
+  function renderGrid(){ grid.innerHTML="";
   CONFIG.products.forEach(p=>{
     const media = p.img ? `<div class="product-media"><img src="${p.img}" alt="${p.name}"></div>`
                         : `<div class="product-media">${p.tag?`<span class="tag">${p.tag}</span>`:""}${ic(p.icon)}</div>`;
@@ -449,7 +451,8 @@ const CONFIG = {
     card.querySelector("[data-inc]").onclick=()=>input.value=Math.min(99,(+input.value||1)+1);
     card.querySelector("[data-add]").onclick=()=>{addToCart(p.id,Math.max(1,+input.value||1));input.value=1;};
     grid.appendChild(card);
-  });
+  }); }
+  renderGrid();
 
   function addToCart(id,q){cart[id]=(cart[id]||0)+q;persist();updateBadge();renderCart();openCart();}
   function setQty(id,q){if(q<=0)delete cart[id];else cart[id]=q;persist();updateBadge();renderCart();}
@@ -586,6 +589,7 @@ const CONFIG = {
   (function(){
     const tbody=$("#cls-rows"), sel=$("#cls-class"); if(!tbody||!sel) return;
     Array.from({length:14},(_,i)=>"A"+(i+1)).forEach(c=>{const o=el("option");o.value=c;o.textContent="Lớp "+c;sel.appendChild(o);});
+    function buildRows(){ tbody.innerHTML="";
     CONFIG.products.forEach(p=>{
       const tr=el("tr",null,
         `<td>${p.name}</td><td class="ta-r">${vnd(p.price)}</td>
@@ -596,7 +600,8 @@ const CONFIG = {
       tr.querySelector("[data-inc]").onclick=()=>{input.value=(+input.value||0)+1;recalc();};
       input.oninput=recalc;
       tbody.appendChild(tr);
-    });
+    }); recalc(); }
+    rebuildClassRows=buildRows; buildRows();
     function recalc(){
       let t=0;
       tbody.querySelectorAll("input[data-pid]").forEach(inp=>{
@@ -633,6 +638,23 @@ const CONFIG = {
   })();
 
   updateBadge();renderCart();
+
+  // ===== Tự tải giá/sản phẩm MỚI NHẤT từ Google Sheet (nếu có) =====
+  (async function(){
+    if(!CONFIG.formEndpoint) return;
+    try{
+      const ctrl=new AbortController(); const to=setTimeout(()=>ctrl.abort(),4000);
+      const sep=CONFIG.formEndpoint.includes("?")?"&":"?";
+      const r=await fetch(CONFIG.formEndpoint+sep+"resource=products",{cache:"no-store",signal:ctrl.signal});
+      clearTimeout(to);
+      const j=await r.json();
+      if(j&&j.feature==="products"&&Array.isArray(j.products)&&j.products.length){
+        CONFIG.products=j.products.filter(p=>!p.hide).map(p=>({...p,price:+p.price||0,
+          icon:p.icon||(window.SHOP_ICON_BY_ID&&window.SHOP_ICON_BY_ID[p.id])||"i-gift",tag:p.tag||""}));
+        renderGrid(); if(rebuildClassRows) rebuildClassRows();
+      }
+    }catch(e){ /* mạng lỗi -> dùng giá trong san-pham.js */ }
+  })();
 })();
 </script>
 
