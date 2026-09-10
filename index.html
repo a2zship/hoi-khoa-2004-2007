@@ -728,7 +728,8 @@ section{padding:clamp(52px,7.5vw,96px) 0}
     <div class="center section-head">
       <span class="eyebrow">Bức tường thanh xuân</span>
       <h2 id="ku-h">Ký ức một thời áo trắng</h2>
-      <p class="lead">Album ảnh “xưa & nay” và những lời nhắn của thành viên hội khóa. Ảnh sẽ được BTC cập nhật và chỉ đăng khi có sự đồng ý.</p>
+      <p class="lead">Album ảnh “xưa & nay” và những lời nhắn của thành viên hội khóa. Toàn bộ ảnh & video được cập nhật liên tục trên Fanpage hội khóa.</p>
+      <a id="fanpage-btn" class="btn btn-primary" href="#" target="_blank" rel="noopener" style="margin-top:14px" hidden><svg class="icon"><use href="#i-image"/></svg>Xem toàn bộ ảnh &amp; video trên Fanpage</a>
     </div>
     <div class="album" style="margin-top:34px" id="album"></div>
     <div class="messages" id="messages"></div>
@@ -830,6 +831,7 @@ const CONFIG = {
   qrImage: "anh/qr-quy.png",
 
   hotline: "", email: "",
+  fanpageUrl: "https://www.facebook.com/profile.php?id=61593840160213",   // Fanpage hội khóa
   formEndpoint: "https://script.google.com/macros/s/AKfycbxQbZvPw3Q6QusMUh4gnVMTJ-w-vt8C2cNEEA1G6IwleOpf8v8xl4vDD_CQQMqUz8dV/exec", // Google Apps Script → Google Sheet
 
   classes: Array.from({length:14}, (_,i)=>({ code:"A"+(i+1), rep:"", repPhone:"" })),
@@ -979,6 +981,7 @@ const CONFIG = {
   if(CONFIG.qrImage){const slot=$("#qr-slot");slot.className="";slot.innerHTML="";const img=el("img");img.src=CONFIG.qrImage;img.alt="Mã QR chuyển khoản quỹ hội khóa";slot.appendChild(img);}
   if(CONFIG.hotline){const h=$("#foot-hotline");h.textContent=CONFIG.hotline;h.href="tel:"+CONFIG.hotline;}
   if(CONFIG.email){const e=$("#foot-email");e.textContent=CONFIG.email;e.href="mailto:"+CONFIG.email;}
+  if(CONFIG.fanpageUrl){const fb=$("#fanpage-btn");if(fb){fb.href=CONFIG.fanpageUrl;fb.hidden=false;}}
 
   $("#copy-transfer").addEventListener("click",async function(){
     const txt=$("#transfer-content").textContent.trim();
