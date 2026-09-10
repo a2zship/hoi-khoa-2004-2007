@@ -171,12 +171,13 @@ h1,h2{font-family:var(--ff-head);margin:0}
   const el=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e;};
   const vnd=n=>new Intl.NumberFormat("vi-VN").format(Math.max(0,+n||0))+"đ";
   const ICONMAP = window.SHOP_ICON_BY_ID || {};
+  const CATS = (window.SHOP_CATEGORIES && window.SHOP_CATEGORIES.length) ? window.SHOP_CATEGORIES : [{id:"hoi-khoa",label:"Hội khóa"}];
   const DRAFT="hoikhoa_admin_draft";
   let items=[];
 
   function seed(){
     const base = (window.SHOP_PRODUCTS && window.SHOP_PRODUCTS.length) ? window.SHOP_PRODUCTS : [];
-    return base.map(p=>({id:p.id||("sp-"+Math.random().toString(36).slice(2,7)),name:p.name||"",desc:p.desc||"",price:+p.price||0,img:p.img||"",tag:p.tag||"",hide:!!p.hide}));
+    return base.map(p=>({id:p.id||("sp-"+Math.random().toString(36).slice(2,7)),cat:p.cat||"hoi-khoa",name:p.name||"",desc:p.desc||"",price:+p.price||0,img:p.img||"",tag:p.tag||"",hide:!!p.hide}));
   }
 
   // ---- Gate ----
@@ -188,7 +189,7 @@ h1,h2{font-family:var(--ff-head);margin:0}
         const r=await fetch(ENDPOINT+"?resource=products&_="+Date.now(),{cache:"no-store"});
         const j=await r.json();
         if(j&&j.feature==="products"&&Array.isArray(j.products)&&j.products.length){
-          items=j.products.map(p=>({id:p.id||("sp-"+Math.random().toString(36).slice(2,7)),name:p.name||"",desc:p.desc||"",price:+p.price||0,img:p.img||"",tag:p.tag||"",hide:!!p.hide}));
+          items=j.products.map(p=>({id:p.id||("sp-"+Math.random().toString(36).slice(2,7)),cat:p.cat||"hoi-khoa",name:p.name||"",desc:p.desc||"",price:+p.price||0,img:p.img||"",tag:p.tag||"",hide:!!p.hide}));
           render(); toast("Đã tải danh sách đang hiển thị trên web.",true);
         }
       }catch(e){}
@@ -227,6 +228,7 @@ h1,h2{font-family:var(--ff-head);margin:0}
               <div class="img-row"><input data-k="img" placeholder="VD: anh/ao-polo.jpg" value="${escAttr(it.img)}"><button type="button" class="btn btn-outline btn-sm" data-pick>Chọn ảnh</button></div>
             </div>
             <div class="f"><label>Nhãn góc (tuỳ chọn)</label><input data-k="tag" placeholder="VD: Bán chạy" value="${escAttr(it.tag)}"></div>
+            <div class="f"><label>Dịp / Danh mục</label><select data-k="cat">${CATS.map(c=>`<option value="${c.id}" ${it.cat===c.id?"selected":""}>${escAttr(c.label)}</option>`).join("")}</select></div>
           </div>
           <div class="prod-actions">
             <label class="chk"><input type="checkbox" data-k="hide" ${it.hide?"checked":""}>Tạm ẩn khỏi trang</label>
@@ -278,7 +280,7 @@ h1,h2{font-family:var(--ff-head);margin:0}
   // ---- Add / Save / Restore ----
   function addProduct(){
     const id="sp-"+Math.random().toString(36).slice(2,7);
-    items.push({id,name:"Sản phẩm mới",desc:"",price:0,img:"",tag:"",hide:false});
+    items.push({id,cat:(CATS[0]&&CATS[0].id)||"hoi-khoa",name:"Sản phẩm mới",desc:"",price:0,img:"",tag:"",hide:false});
     render(); window.scrollTo({top:document.body.scrollHeight,behavior:"smooth"});
   }
   $("#btn-add").onclick=addProduct; $("#btn-add2").onclick=addProduct;
@@ -297,7 +299,7 @@ h1,h2{font-family:var(--ff-head);margin:0}
     }
     let key=sessionStorage.getItem("hk_pub_key");
     if(!key){ key=prompt("Nhập MẬT KHẨU ĐĂNG (khóa admin đã đặt trong Apps Script — ADMIN_KEY):"); if(!key) return; }
-    const products=items.map(it=>({id:it.id,name:it.name,desc:it.desc,price:Math.max(0,+it.price||0),img:it.img||"",tag:it.tag||"",hide:!!it.hide}));
+    const products=items.map(it=>({id:it.id,cat:it.cat||"hoi-khoa",name:it.name,desc:it.desc,price:Math.max(0,+it.price||0),img:it.img||"",tag:it.tag||"",hide:!!it.hide}));
     toast("Đang đăng lên web…");
     try{ await fetch(ENDPOINT,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({type:"products_save",key,products})}); }catch(e){}
     await new Promise(r=>setTimeout(r,1600));
@@ -317,14 +319,18 @@ h1,h2{font-family:var(--ff-head);margin:0}
   $("#btn-export").onclick=()=>{
     const lines=items.map(it=>{
       const s=k=>JSON.stringify(it[k]||"");
-      return `  { id:${JSON.stringify(it.id)}, name:${s("name")}, desc:${s("desc")}, price:${Math.max(0,+it.price||0)}, img:${s("img")}, tag:${s("tag")}${it.hide?", hide:true":""} }`;
+      return `  { id:${JSON.stringify(it.id)}, cat:${JSON.stringify(it.cat||"hoi-khoa")}, name:${s("name")}, desc:${s("desc")}, price:${Math.max(0,+it.price||0)}, img:${s("img")}, tag:${s("tag")}${it.hide?", hide:true":""} }`;
     }).join(",\n");
     const iconmap = JSON.stringify(ICONMAP,null,2);
+    const cats = JSON.stringify(CATS,null,2);
     const content =
 `/* =====================================================================
    DANH SÁCH SẢN PHẨM — Tạo tự động từ trang Quản trị (quan-tri.html)
-   Có thể mở sửa tay: price = số (VD 150000), img = "anh/ten-anh.jpg" (để trống = dùng icon).
+   price = số (VD 150000); img = "anh/ten-anh.jpg" (để trống = dùng icon);
+   cat = dịp lễ (mã trong SHOP_CATEGORIES bên dưới).
    ===================================================================== */
+
+window.SHOP_CATEGORIES = ${cats};
 
 window.SHOP_PRODUCTS = [
 ${lines}
