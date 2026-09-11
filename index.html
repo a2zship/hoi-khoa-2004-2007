@@ -194,7 +194,9 @@ section{padding:clamp(52px,7.5vw,96px) 0}
 /* Showcase band */
 .showcase{padding:0;background:var(--navy-900);position:relative}
 .showcase img{width:100%;height:auto}
-.showcase::after{content:"";position:absolute;left:0;right:0;bottom:0;height:5px;background:linear-gradient(90deg,var(--gold),var(--gold-soft),var(--gold))}
+.showcase::after{content:"";position:absolute;left:0;right:0;bottom:0;height:5px;background:linear-gradient(90deg,var(--gold),var(--gold-soft),var(--gold));z-index:3}
+.showcase-logo{position:absolute;inset:0 40% 0 0;z-index:2;display:flex;align-items:center;justify-content:center;padding:2% 2% 3%;background:linear-gradient(90deg,#fff 0%,#fff 88%,rgba(255,255,255,0) 100%);pointer-events:none}
+.showcase .showcase-logo img{width:auto;height:82%;max-height:82%;max-width:92%;object-fit:contain}
 
 /* ============================================================
    LỜI MỜI
@@ -515,6 +517,7 @@ section{padding:clamp(52px,7.5vw,96px) 0}
 
 <div class="showcase">
   <img src="13.png" alt="Cổng Trường THPT Phạm Văn Nghị rực rỡ hoa phượng — Ngày hội khóa 2004–2007" loading="lazy" />
+  <div class="showcase-logo"><img src="logo.jpg" alt="Logo hội khóa 20 năm — Gặp lại thanh xuân" /></div>
 </div>
 
 <!-- ============================ LỜI MỜI ============================ -->
