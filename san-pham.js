@@ -32,6 +32,7 @@ window.SHOP_PRODUCTS = [
   { id:"moc-khoa",cat:"hoi-khoa", name:"Móc khóa",         desc:"Móc khóa kim loại in logo, khắc được tên & lớp.",          price:45000,  img:"anh/moc-khoa.png", tag:"" },
   { id:"chuong",  cat:"hoi-khoa", name:"Kỷ niệm chương",   desc:"Kỷ niệm chương pha lê khắc logo 20 năm, đế trang trọng.",  price:250000, img:"anh/ky-niem-chuong.png", tag:"Sang trọng" },
   { id:"hop-qua", cat:"hoi-khoa", name:"Hộp quà kỷ niệm",  desc:"Set quà: bình giữ nhiệt + móc khóa + thiệp, đóng hộp đẹp.",price:350000, img:"anh/hop-qua.png", tag:"Set quà" },
+  { id:"am-chen", cat:"hoi-khoa", name:"Bộ ấm chén",       desc:"Bộ ấm chén sứ in logo 20 năm, quà lưu niệm sang trọng.",   price:450000, img:"", tag:"" },
 
   /* ===================== 20/11 NHÀ GIÁO (mẫu — chỉnh lại giá/ảnh) ===================== */
   { id:"nv-hoa",   cat:"20-11", name:"Bó hoa tri ân thầy cô", desc:"Bó hoa tươi kèm thiệp lời chúc 20/11.",              price:150000, img:"", tag:"" },
@@ -55,7 +56,7 @@ window.SHOP_PRODUCTS = [
 /* Icon vẽ sẵn theo id (dùng khi img để trống). id mới -> mặc định "i-gift". */
 window.SHOP_ICON_BY_ID = {
   "ao-polo":"p-shirt","ao-thun":"p-shirt","mu":"p-cap","binh":"p-bottle",
-  "tui":"p-tote","moc-khoa":"p-keychain","chuong":"p-award","hop-qua":"i-gift",
+  "tui":"p-tote","moc-khoa":"p-keychain","chuong":"p-award","hop-qua":"i-gift","am-chen":"p-mug",
   "nv-hoa":"p-flower","nv-thiep":"p-book","nv-coc":"p-mug","nv-qua":"i-gift",
   "tet-lich":"p-calendar","tet-lixi":"i-gift","tet-gio":"i-gift","tet-ao":"p-shirt",
   "kh-hoa":"p-flower","kh-so":"p-book"
