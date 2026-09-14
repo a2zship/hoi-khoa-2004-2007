@@ -1050,7 +1050,8 @@ const CONFIG = {
   const setErr=(id,bad)=>document.getElementById(id).closest(".field").classList.toggle("invalid",bad);
   const load=()=>{try{return JSON.parse(localStorage.getItem(KEY))||[];}catch(e){return[];}};
   const save=l=>{try{localStorage.setItem(KEY,JSON.stringify(l));}catch(e){}};
-  const genCode=cls=>`HK20-${cls}-${String(load().length+1).padStart(3,"0")}`;
+  const randId=(n)=>{const c="ABCDEFGHJKLMNPQRSTUVWXYZ23456789";let a;try{a=crypto.getRandomValues(new Uint32Array(n));}catch(e){a=null;}let s="";for(let i=0;i<n;i++)s+=c[(a?a[i]:Math.floor(Math.random()*4294967296))%c.length];return s;};
+  const genCode=cls=>{const list=load();let c;do{c=`HK20-${cls}-${randId(5)}`;}while(list.some(r=>r.code===c));return c;};
 
   window.addEventListener("hashchange",()=>{if(window.__preClass)document.getElementById("f-class").value=window.__preClass;});
 

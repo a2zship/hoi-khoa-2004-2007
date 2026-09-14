@@ -426,6 +426,7 @@ const CONFIG = {
   const vnd=n=>new Intl.NumberFormat("vi-VN").format(n)+"đ";
   const ASSET_VER="1"; // tăng số này mỗi lần thay ảnh để trình duyệt hiện ảnh mới ngay
   const ver=u=>u?(u+(u.indexOf("?")<0?"?":"&")+"v="+ASSET_VER):u;
+  const randId=(n)=>{const c="ABCDEFGHJKLMNPQRSTUVWXYZ23456789";let a;try{a=crypto.getRandomValues(new Uint32Array(n));}catch(e){a=null;}let s="";for(let i=0;i<n;i++)s+=c[(a?a[i]:Math.floor(Math.random()*4294967296))%c.length];return s;};
   const KEY="hoikhoa_shop_cart", ORDKEY="hoikhoa_shop_orders";
   const byId=id=>CONFIG.products.find(p=>p.id===id);
   window.imgFallback=(img,icon)=>{try{img.outerHTML='<svg class="icon"><use href="#'+(icon||"i-gift")+'"/></svg>';}catch(e){}};
@@ -562,7 +563,7 @@ const CONFIG = {
     if(bad){f.querySelector(".field.invalid input,.field.invalid textarea,.field.invalid select")?.focus();return;}
 
     const orders=(()=>{try{return JSON.parse(localStorage.getItem(ORDKEY))||[];}catch(e){return[];}})();
-    const code=`HK20-SHOP-${String(orders.length+1).padStart(3,"0")}`;
+    let code;do{code="HK20-SHOP-"+randId(5);}while(orders.some(o=>o.code===code));
     const items=Object.entries(cart).map(([id,q])=>({id,name:byId(id).name,qty:q,price:byId(id).price}));
     const order={type:"don_hang",code,name:name.value.trim(),class:f.querySelector("#o-class").value,phone:normPhone(phone.value),
       deliver,address:deliver==="Giao tận nơi"?addr.value.trim():"",note:f.querySelector("#o-note").value.trim(),
@@ -640,8 +641,7 @@ const CONFIG = {
       const items=[]; tbody.querySelectorAll("input[data-pid]").forEach(inp=>{const q=Math.max(0,+inp.value||0);if(q>0){const p=byId(inp.dataset.pid);items.push({id:p.id,name:p.name,qty:q,price:p.price});}});
       if(!items.length){ const r=$("#cls-total-row"); r.style.outline="2px solid var(--red)"; r.scrollIntoView({behavior:"smooth",block:"center"}); setTimeout(()=>r.style.outline="",1600); return; }
       const orders=(()=>{try{return JSON.parse(localStorage.getItem(ORDKEY))||[];}catch(e){return[];}})();
-      const seq=orders.filter(o=>String(o.code||"").startsWith("HK20-LOP")).length+1;
-      const code=`HK20-LOP-${cls}-${String(seq).padStart(3,"0")}`;
+      let code;do{code=`HK20-LOP-${cls}-${randId(5)}`;}while(orders.some(o=>o.code===code));
       const total=items.reduce((a,it)=>a+it.price*it.qty,0);
       const printTxt=$("#cls-print").value.trim(), when=$("#cls-when").value.trim(), extra=$("#cls-note").value.trim();
       const note=`[ĐẶT IN RIÊNG LỚP ${cls}]`+(printTxt?" ND in: "+printTxt:"")+(when?" | Cần nhận: "+when:"")+(extra?" | Ghi chú: "+extra:"");
