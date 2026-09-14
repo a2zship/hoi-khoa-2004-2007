@@ -11,7 +11,7 @@
 <meta property="og:description" content="Mỗi vật phẩm bạn mua là một viên gạch cho ngày trở về. Toàn bộ nguồn thu gây quỹ tổ chức hội khóa." />
 <meta property="og:image" content="13.png" />
 <meta property="og:locale" content="vi_VN" />
-<link rel="icon" href="logo.jpg" />
+<link rel="icon" href="logo.jpg?v=1" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -259,7 +259,7 @@ section{padding:clamp(40px,6vw,72px) 0}
 <header class="site-header">
   <div class="container nav">
     <a class="brand" href="index.html" aria-label="Về trang chủ hội khóa">
-      <img src="logo.jpg" alt="Logo hội khóa 20 năm — THPT Phạm Văn Nghị" />
+      <img src="logo.jpg?v=1" alt="Logo hội khóa 20 năm — THPT Phạm Văn Nghị" />
       <span class="brand-txt"><b>Hội khóa 2004–2007</b><span>Vật phẩm kỷ niệm</span></span>
     </a>
     <div class="nav-right">
@@ -362,7 +362,7 @@ section{padding:clamp(40px,6vw,72px) 0}
   <div class="container">
     <div class="foot-flex">
       <div class="foot-brand">
-        <img src="logo.jpg" alt="Logo hội khóa" />
+        <img src="logo.jpg?v=1" alt="Logo hội khóa" />
         <div><strong style="color:#fff;font-size:17px;font-family:var(--ff-head)">Hội khóa 2004–2007</strong><br><span style="font-size:14px">THPT Phạm Văn Nghị</span></div>
       </div>
       <div style="display:flex;gap:22px;flex-wrap:wrap;font-size:14.5px">
@@ -424,6 +424,8 @@ const CONFIG = {
   const el=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e;};
   const ic=n=>`<svg class="icon"><use href="#${n}"/></svg>`;
   const vnd=n=>new Intl.NumberFormat("vi-VN").format(n)+"đ";
+  const ASSET_VER="1"; // tăng số này mỗi lần thay ảnh để trình duyệt hiện ảnh mới ngay
+  const ver=u=>u?(u+(u.indexOf("?")<0?"?":"&")+"v="+ASSET_VER):u;
   const KEY="hoikhoa_shop_cart", ORDKEY="hoikhoa_shop_orders";
   const byId=id=>CONFIG.products.find(p=>p.id===id);
   window.imgFallback=(img,icon)=>{try{img.outerHTML='<svg class="icon"><use href="#'+(icon||"i-gift")+'"/></svg>';}catch(e){}};
@@ -448,7 +450,7 @@ const CONFIG = {
   }
   function renderGrid(){ grid.innerHTML="";
   CONFIG.products.filter(p=>activeCat==="all"||p.cat===activeCat).forEach(p=>{
-    const media = `<div class="product-media">${p.tag?`<span class="tag">${p.tag}</span>`:""}${ p.img ? `<img src="${p.img}" alt="${p.name}" loading="lazy" onerror="imgHideCard(this)">` : ic(p.icon) }</div>`;
+    const media = `<div class="product-media">${p.tag?`<span class="tag">${p.tag}</span>`:""}${ p.img ? `<img src="${ver(p.img)}" alt="${p.name}" loading="lazy" onerror="imgHideCard(this)">` : ic(p.icon) }</div>`;
     const card=el("div","product-card",
       `${media}
        <div class="product-body">
@@ -499,7 +501,7 @@ const CONFIG = {
     ids.forEach(id=>{
       const p=byId(id),q=cart[id];if(!p)return;
       const row=el("div","cart-item",
-        `<div class="thumb">${p.img?`<img src="${p.img}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:10px" onerror="imgFallback(this,'${p.icon}')">`:ic(p.icon)}</div>
+        `<div class="thumb">${p.img?`<img src="${ver(p.img)}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:10px" onerror="imgFallback(this,'${p.icon}')">`:ic(p.icon)}</div>
          <div><div class="ci-name">${p.name}</div><div class="ci-price">${vnd(p.price)}</div>
            <div class="mini-qty" style="margin-top:6px"><button data-mdec aria-label="Giảm">${ic("i-minus")}</button><span>${q}</span><button data-minc aria-label="Tăng">${ic("i-plus")}</button></div>
          </div>
