@@ -150,6 +150,9 @@ section{padding:clamp(40px,6vw,72px) 0}
 .cls-total-row .amt{font-family:var(--ff-head);font-weight:700;font-size:24px;color:var(--navy)}
 .cls-note-line{font-size:12.5px;color:var(--muted);margin:0 0 16px;display:flex;gap:8px;align-items:flex-start}
 .cls-note-line .icon{width:16px;height:16px;color:var(--gold-ink);flex:none;margin-top:2px}
+.shop-note{display:flex;gap:10px;align-items:flex-start;max-width:760px;margin:0 auto 24px;background:#FFF6E5;border:1px solid #EFD284;border-radius:12px;padding:12px 16px;color:#7a5b12;font-size:14px;line-height:1.5}
+.shop-note .icon{width:19px;height:19px;color:#C7972F;flex:none;margin-top:1px}
+.shop-note b{color:#5a430c}
 
 /* Cart drawer */
 .cart-overlay{position:fixed;inset:0;background:rgba(12,42,102,.45);z-index:80;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s;backdrop-filter:blur(2px)}
@@ -305,6 +308,7 @@ section{padding:clamp(40px,6vw,72px) 0}
       </div>
       <p style="color:var(--muted);font-size:14px;margin:0;max-width:42ch">Giá dưới đây là mức gợi ý <span class="badge badge-plan">Chờ BTC chốt</span>. Đặt trước để BTC chuẩn bị số lượng.</p>
     </div>
+    <div class="shop-note"><svg class="icon"><use href="#i-shield"/></svg><span><b>Lưu ý:</b> Việc <b>khắc tên riêng</b> (lên áo, bình giữ nhiệt, móc khóa…) chỉ áp dụng cho <b>đơn hàng từ 30 sản phẩm trở lên</b>.</span></div>
     <div class="cat-tabs" id="cat-tabs"></div>
     <div class="grid" id="product-grid"></div>
   </div>
@@ -363,7 +367,7 @@ section{padding:clamp(40px,6vw,72px) 0}
         </div>
         <div class="cls-total-row" id="cls-total-row"><span class="lbl">Tạm tính (chưa gồm phí in riêng)</span><span class="amt" id="cls-total">0đ</span></div>
         <div class="field"><label for="cls-note">Ghi chú thêm</label><textarea id="cls-note" placeholder="Yêu cầu khác của lớp…"></textarea></div>
-        <p class="cls-note-line"><svg class="icon"><use href="#i-shield"/></svg>Đây là <b>yêu cầu đặt</b> — BTC sẽ liên hệ xác nhận mẫu in, số lượng và <b>báo giá cuối</b> trước khi thu tiền. Chưa thanh toán ở bước này.</p>
+        <p class="cls-note-line"><svg class="icon"><use href="#i-shield"/></svg>Đây là <b>yêu cầu đặt</b> — BTC sẽ liên hệ xác nhận mẫu in, số lượng và <b>báo giá cuối</b> trước khi thu tiền. Chưa thanh toán ở bước này. <b>Khắc tên riêng chỉ áp dụng cho đơn từ 30 sản phẩm trở lên.</b></p>
         <button type="submit" class="btn btn-primary btn-block"><svg class="icon"><use href="#i-check"/></svg>Gửi yêu cầu đặt cho lớp</button>
       </form>
       <div id="cls-success" hidden class="order-success">
