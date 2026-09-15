@@ -1072,6 +1072,7 @@ const CONFIG = {
       nick:document.getElementById("f-nick").value.trim(),
       message:document.getElementById("f-msg").value.trim(),at:new Date().toISOString()};
     const list=load();list.push(rec);save(list);
+    try{localStorage.setItem("hoikhoa_me",JSON.stringify({name:rec.name,phone:rec.phone,class:rec.class,code:rec.code}));}catch(e){} // để trang vật phẩm tự điền
     if(CONFIG.formEndpoint){try{fetch(CONFIG.formEndpoint,{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/json"},body:JSON.stringify(rec)}).catch(()=>{});}catch(e){}}
     codeEl.textContent=rec.code;form.style.display="none";success.classList.add("show");
     success.scrollIntoView({behavior:"smooth",block:"center"});submitting=false;

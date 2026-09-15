@@ -643,6 +643,15 @@ const CONFIG = {
       if(USED_VOUCHERS&&USED_VOUCHERS.has(code)){updTotals();setMsg("Mã này đã được dùng nhận áo rồi.","err");return;}
       voucherCode=code;voucherDiscount=poloPrice();updTotals();setMsg("✓ Hợp lệ — được miễn phí 1 áo polo!","ok");
     };
+    // Tự điền thông tin người đã đăng ký (khỏi nhập lại)
+    try{const me=JSON.parse(localStorage.getItem("hoikhoa_me")||"null");
+      if(me){
+        if(me.name)body.querySelector("#o-name").value=me.name;
+        if(me.phone)body.querySelector("#o-phone").value=me.phone;
+        if(me.class){const cs=body.querySelector("#o-class");if(cs&&[...cs.options].some(o=>o.value===me.class))cs.value=me.class;}
+        if(me.code){vInput.value=me.code; if(poloInCart())body.querySelector("#apply-voucher").click();}
+      }
+    }catch(e){}
     updTotals();
   }
 
