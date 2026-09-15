@@ -476,6 +476,7 @@ const CONFIG = {
   const byId=id=>CONFIG.products.find(p=>p.id===id);
   const SIZE_OPTS={nam:["S","M","L","X","XL","2XL","3XL"],nu:["S","M","L","XL","2XL","3XL"]};
   const mLabel=g=>g==="nu"?"Nữ":"Nam";
+  let REG_CODES=null, USED_VOUCHERS=null, voucherCode="", voucherDiscount=0; // mã nhận áo polo miễn phí
   window.imgFallback=(img,icon)=>{try{img.outerHTML='<svg class="icon"><use href="#'+(icon||"i-gift")+'"/></svg>';}catch(e){}};
   window.imgHideCard=(img)=>{try{const c=img.closest(".product-card"); if(c) c.remove();}catch(e){}};
 
@@ -599,7 +600,18 @@ const CONFIG = {
         </div>
         <div class="field" id="addr-field" hidden><label for="o-addr">Địa chỉ nhận hàng <span class="req">*</span></label><textarea id="o-addr" placeholder="Số nhà, đường, phường/xã, quận/huyện, tỉnh/thành"></textarea><div class="err">Vui lòng nhập địa chỉ giao hàng.</div></div>
         <div class="field"><label for="o-note">Ghi chú (size áo, tên khắc…)</label><textarea id="o-note" placeholder="VD: Áo size L, móc khóa khắc tên Minh - A3"></textarea></div>
-        <div class="cart-total" style="margin:4px 0 12px"><span class="lbl">Tổng tạm tính (${count()} món)</span><span class="amt">${vnd(total())}</span></div>
+        <div class="field"><label for="o-voucher">Mã nhận áo polo miễn phí <span style="font-weight:400;color:var(--muted)">(dành cho người đã đăng ký)</span></label>
+          <div style="display:flex;gap:8px">
+            <input id="o-voucher" type="text" placeholder="VD: HK20-A3-ABC12" style="flex:1;text-transform:uppercase">
+            <button type="button" class="btn btn-outline" id="apply-voucher" style="min-height:44px;padding:0 18px;white-space:nowrap">Áp dụng</button>
+          </div>
+          <div class="hint" id="voucher-msg"></div>
+        </div>
+        <div style="margin:4px 0 12px">
+          <div class="cart-total"><span class="lbl">Tạm tính (${count()} món)</span><span class="amt" id="ck-subtotal" style="font-size:17px">${vnd(total())}</span></div>
+          <div class="cart-total" id="ck-discount-row" hidden style="margin-top:2px"><span class="lbl" style="color:var(--gold-ink)">Ưu đãi: miễn phí 1 áo polo</span><span class="amt" id="ck-discount" style="color:var(--gold-ink);font-size:17px">-0đ</span></div>
+          <div class="cart-total" style="margin-top:2px"><span class="lbl"><b>Thành tiền</b></span><span class="amt" id="ck-final">${vnd(total())}</span></div>
+        </div>
         <button type="submit" class="btn btn-primary btn-block">${ic("i-check")}Xác nhận đặt hàng</button>
         <button type="button" class="btn btn-outline btn-block" id="back-cart" style="margin-top:8px">Quay lại giỏ hàng</button>
       </form>`;
@@ -608,6 +620,30 @@ const CONFIG = {
     form.querySelectorAll('input[name="deliver"]').forEach(r=>r.onchange=()=>{addrField.hidden=form.deliver.value!=="Giao tận nơi";});
     body.querySelector("#back-cart").onclick=renderCart;
     form.onsubmit=submitOrder;
+
+    // --- Mã nhận áo polo miễn phí ---
+    voucherCode=""; voucherDiscount=0;
+    const vInput=body.querySelector("#o-voucher"), vMsg=body.querySelector("#voucher-msg");
+    const poloInCart=()=>Object.values(cart).some(it=>it.id==="ao-polo"&&it.qty>0);
+    const poloPrice=()=>{const p=byId("ao-polo");return p?p.price:0;};
+    function updTotals(){
+      body.querySelector("#ck-subtotal").textContent=vnd(total());
+      const dr=body.querySelector("#ck-discount-row");
+      if(voucherDiscount>0){dr.hidden=false;body.querySelector("#ck-discount").textContent="-"+vnd(voucherDiscount);}else{dr.hidden=true;}
+      body.querySelector("#ck-final").innerHTML="<b>"+vnd(Math.max(0,total()-voucherDiscount))+"</b>";
+    }
+    const setMsg=(t,c)=>{vMsg.textContent=t;vMsg.style.color=(c==="ok"?"#2f8a45":c==="err"?"var(--red)":"var(--muted)");};
+    body.querySelector("#apply-voucher").onclick=()=>{
+      const code=(vInput.value||"").trim().toUpperCase();
+      voucherCode=""; voucherDiscount=0;
+      if(!code){updTotals();setMsg("Đã bỏ mã ưu đãi.","");return;}
+      if(!poloInCart()){updTotals();setMsg("Hãy thêm 1 áo polo vào giỏ để nhận miễn phí.","err");return;}
+      if(REG_CODES===null){voucherCode=code;voucherDiscount=poloPrice();updTotals();setMsg("Đã ghi mã. (Chưa kiểm tra được lúc này — BTC sẽ đối chiếu khi giao.)","");return;}
+      if(!REG_CODES.has(code)){updTotals();setMsg("Mã không có trong danh sách người đã đăng ký.","err");return;}
+      if(USED_VOUCHERS&&USED_VOUCHERS.has(code)){updTotals();setMsg("Mã này đã được dùng nhận áo rồi.","err");return;}
+      voucherCode=code;voucherDiscount=poloPrice();updTotals();setMsg("✓ Hợp lệ — được miễn phí 1 áo polo!","ok");
+    };
+    updTotals();
   }
 
   const normPhone=v=>(v||"").replace(/[\s.\-()]/g,"").replace(/^\+84/,"0");
@@ -628,9 +664,13 @@ const CONFIG = {
     const orders=(()=>{try{return JSON.parse(localStorage.getItem(ORDKEY))||[];}catch(e){return[];}})();
     let code;do{code="HK20-SHOP-"+randId(5);}while(orders.some(o=>o.code===code));
     const items=Object.values(cart).map(it=>{const p=byId(it.id)||{};return {id:it.id,name:(p.name||it.id)+(it.model?` (${it.model}${it.size?", size "+it.size:""})`:""),qty:it.qty,price:p.price||0,model:it.model||"",size:it.size||""};});
+    const disc=voucherCode?voucherDiscount:0;
+    const noteBase=f.querySelector("#o-note").value.trim();
     const order={type:"don_hang",code,name:name.value.trim(),class:f.querySelector("#o-class").value,phone:normPhone(phone.value),
-      deliver,address:deliver==="Giao tận nơi"?addr.value.trim():"",note:f.querySelector("#o-note").value.trim(),
-      items,total:total(),at:new Date().toISOString()};
+      deliver,address:deliver==="Giao tận nơi"?addr.value.trim():"",
+      note:noteBase+(voucherCode?`${noteBase?" | ":""}Ưu đãi: MIỄN PHÍ 1 áo polo (mã ${voucherCode})`:""),
+      voucher:voucherCode||"", items,total:Math.max(0,total()-disc),at:new Date().toISOString()};
+    if(voucherCode&&USED_VOUCHERS){USED_VOUCHERS.add(voucherCode);}
     orders.push(order);try{localStorage.setItem(ORDKEY,JSON.stringify(orders));}catch(e){}
     if(CONFIG.formEndpoint){try{fetch(CONFIG.formEndpoint,{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/json"},body:JSON.stringify(order)}).catch(()=>{});}catch(e){}}
 
@@ -758,6 +798,20 @@ const CONFIG = {
   })();
 
   updateBadge();renderCart();
+
+  // ===== Tải danh sách MÃ ĐĂNG KÝ (voucher nhận áo polo miễn phí) =====
+  (async function(){
+    if(!CONFIG.formEndpoint) return;
+    try{
+      const sep=CONFIG.formEndpoint.includes("?")?"&":"?";
+      const r=await fetch(CONFIG.formEndpoint+sep+"resource=regcodes&_="+Date.now(),{cache:"no-store"});
+      const j=await r.json();
+      if(j&&j.feature==="regcodes"){
+        REG_CODES=new Set((j.codes||[]).map(c=>String(c).toUpperCase()));
+        USED_VOUCHERS=new Set((j.used||[]).map(c=>String(c).toUpperCase()));
+      }
+    }catch(e){ /* mạng lỗi -> BTC đối chiếu mã thủ công */ }
+  })();
 
   // ===== Tự tải giá/sản phẩm MỚI NHẤT từ Google Sheet (nếu có) =====
   (async function(){
