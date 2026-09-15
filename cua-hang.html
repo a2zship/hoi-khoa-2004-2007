@@ -123,6 +123,20 @@ section{padding:clamp(40px,6vw,72px) 0}
 .cat-tab:hover{border-color:var(--blue)}
 .cat-tab.active{background:linear-gradient(180deg,var(--blue-bright),var(--blue));color:#fff;border-color:transparent;box-shadow:0 5px 14px rgba(27,84,204,.3)}
 
+/* Hướng dẫn chọn size */
+.size-tabs{display:flex;gap:10px;justify-content:center;margin:0 0 18px}
+.size-tab{cursor:pointer;border:1.5px solid var(--line-cool);background:#fff;color:var(--navy);font-family:var(--ff-body);font-weight:600;font-size:15px;padding:11px 30px;border-radius:var(--radius-pill);transition:background .15s,color .15s,border-color .15s,box-shadow .15s}
+.size-tab:hover{border-color:var(--blue)}
+.size-tab.active{background:linear-gradient(180deg,var(--blue-bright),var(--blue));color:#fff;border-color:transparent;box-shadow:0 5px 14px rgba(27,84,204,.3)}
+.size-card{max-width:640px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px 16px;box-shadow:var(--shadow-sm)}
+.size-table{width:100%;border-collapse:collapse;font-size:15px;min-width:360px}
+.size-table th,.size-table td{padding:11px 10px;border-bottom:1px solid var(--line);text-align:left}
+.size-table thead th{font-family:var(--ff-head);color:var(--navy);font-size:16px;background:var(--cream)}
+.size-table td:first-child{font-weight:700;color:var(--blue);white-space:nowrap}
+.size-table tbody tr:hover{background:var(--cream)}
+.size-note{display:flex;gap:8px;align-items:flex-start;font-size:13px;color:var(--muted);margin:12px 0 0}
+.size-note .icon{width:16px;height:16px;color:var(--gold-ink);flex:none;margin-top:2px}
+
 /* Đặt in ấn theo lớp */
 .cls-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:clamp(22px,3vw,34px);box-shadow:var(--shadow-md);max-width:840px;margin:0 auto}
 .cls-table{width:100%;border-collapse:collapse;margin:6px 0 4px;min-width:440px}
@@ -293,6 +307,30 @@ section{padding:clamp(40px,6vw,72px) 0}
     </div>
     <div class="cat-tabs" id="cat-tabs"></div>
     <div class="grid" id="product-grid"></div>
+  </div>
+</section>
+
+<!-- HƯỚNG DẪN CHỌN SIZE ÁO -->
+<section id="huong-dan-size">
+  <div class="container">
+    <div class="center" style="max-width:640px;margin:0 auto 22px">
+      <span class="eyebrow" style="justify-content:center;display:inline-flex">Chọn đúng size</span>
+      <h2 style="margin:0 0 8px">Hướng dẫn chọn size áo</h2>
+      <p style="color:var(--muted);margin:0">Áp dụng cho áo polo & áo thun đồng phục. Chọn theo chiều cao và cân nặng của bạn.</p>
+    </div>
+    <div class="size-tabs" role="tablist">
+      <button type="button" class="size-tab active" data-g="nam">Áo Nam</button>
+      <button type="button" class="size-tab" data-g="nu">Áo Nữ</button>
+    </div>
+    <div class="size-card">
+      <div style="overflow-x:auto">
+        <table class="size-table">
+          <thead><tr><th>Size</th><th>Chiều cao</th><th>Cân nặng</th></tr></thead>
+          <tbody id="size-rows"></tbody>
+        </table>
+      </div>
+      <p class="size-note"><svg class="icon"><use href="#i-shield"/></svg><span id="size-note-text"></span></p>
+    </div>
   </div>
 </section>
 
@@ -656,6 +694,42 @@ const CONFIG = {
     };
     $("#cls-again").onclick=()=>{ $("#cls-form").reset(); tbody.querySelectorAll("input[data-pid]").forEach(i=>i.value=0); recalc(); $("#cls-form").querySelectorAll(".invalid").forEach(f=>f.classList.remove("invalid")); $("#cls-form").hidden=false; $("#cls-success").hidden=true; };
     recalc();
+  })();
+
+  // ===== Hướng dẫn chọn size áo (Nam/Nữ) =====
+  (function(){
+    const tbody=$("#size-rows"); if(!tbody) return;
+    const SIZE_DATA={
+      nam:[
+        {s:"S",h:"1m58 – 1m65",w:"48 – 53 kg"},
+        {s:"M",h:"1m66 – 1m72",w:"54 – 60 kg"},
+        {s:"L",h:"1m73 – 1m77",w:"61 – 66 kg"},
+        {s:"X",h:"1m73 – 1m77",w:"61 – 66 kg"},
+        {s:"XL",h:"1m78 – 1m80",w:"67 – 72 kg"},
+        {s:"2XL",h:"—",w:"72 – 78 kg"},
+        {s:"3XL",h:"—",w:"trên 80 kg"}
+      ],
+      nu:[
+        {s:"S",h:"1m48 – 1m53",w:"37 – 41 kg"},
+        {s:"M",h:"1m54 – 1m58",w:"42 – 46 kg"},
+        {s:"L",h:"1m59 – 1m65",w:"47 – 52 kg"},
+        {s:"XL",h:"1m65 – 1m70",w:"53 – 58 kg"},
+        {s:"2XL",h:"—",w:"59 – 65 kg"},
+        {s:"3XL",h:"—",w:"trên 65 kg"}
+      ]
+    };
+    const NOTE={
+      nam:"Ngoại cỡ (ngoài bảng): báo riêng chiều cao + cân nặng để BTC may vừa. Nếu ở giữa 2 size, nên chọn size lớn hơn.",
+      nu:"Ngoại cỡ (ngoài bảng): đăng ký riêng chiều cao + cân nặng để BTC may vừa. Nếu ở giữa 2 size, nên chọn size lớn hơn."
+    };
+    function render(g){
+      tbody.innerHTML="";
+      SIZE_DATA[g].forEach(r=>{ tbody.appendChild(el("tr",null,`<td>${r.s}</td><td>${r.h}</td><td>${r.w}</td>`)); });
+      $("#size-note-text").textContent=NOTE[g];
+      document.querySelectorAll(".size-tab").forEach(b=>b.classList.toggle("active",b.dataset.g===g));
+    }
+    document.querySelectorAll(".size-tab").forEach(b=>b.onclick=()=>render(b.dataset.g));
+    render("nam");
   })();
 
   updateBadge();renderCart();
