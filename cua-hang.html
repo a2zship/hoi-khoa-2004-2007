@@ -116,6 +116,9 @@ section{padding:clamp(40px,6vw,72px) 0}
 .qty input{width:38px;height:40px;border:0;text-align:center;font-family:inherit;font-size:15px;font-weight:600;color:var(--ink);-moz-appearance:textfield}
 .qty input::-webkit-outer-spin-button,.qty input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
 .add-btn{flex:1;min-height:40px;padding:8px 10px;font-size:13.5px;border-radius:10px}
+.variant-row{display:flex;gap:8px;margin-bottom:10px}
+.variant-row select{flex:1;min-width:0;font-family:inherit;font-size:13px;padding:8px 8px;border:1.5px solid var(--line-cool);border-radius:9px;background:#fff;color:var(--ink)}
+.variant-row select:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(27,84,204,.12)}
 
 /* Tab lọc theo dịp */
 .cat-tabs{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:6px 0 28px}
@@ -471,14 +474,16 @@ const CONFIG = {
   const randId=(n)=>{const c="ABCDEFGHJKLMNPQRSTUVWXYZ23456789";let a;try{a=crypto.getRandomValues(new Uint32Array(n));}catch(e){a=null;}let s="";for(let i=0;i<n;i++)s+=c[(a?a[i]:Math.floor(Math.random()*4294967296))%c.length];return s;};
   const KEY="hoikhoa_shop_cart", ORDKEY="hoikhoa_shop_orders";
   const byId=id=>CONFIG.products.find(p=>p.id===id);
+  const SIZE_OPTS={nam:["S","M","L","X","XL","2XL","3XL"],nu:["S","M","L","XL","2XL","3XL"]};
+  const mLabel=g=>g==="nu"?"Nữ":"Nam";
   window.imgFallback=(img,icon)=>{try{img.outerHTML='<svg class="icon"><use href="#'+(icon||"i-gift")+'"/></svg>';}catch(e){}};
   window.imgHideCard=(img)=>{try{const c=img.closest(".product-card"); if(c) c.remove();}catch(e){}};
 
   let cart=load();
-  function load(){try{return JSON.parse(localStorage.getItem(KEY))||{};}catch(e){return {};}}
+  function load(){try{const raw=JSON.parse(localStorage.getItem(KEY))||{};const out={};for(const k in raw){const v=raw[k];out[k]=(v&&typeof v==="object")?v:{id:k,model:"",size:"",qty:+v||0};}return out;}catch(e){return {};}}
   function persist(){try{localStorage.setItem(KEY,JSON.stringify(cart));}catch(e){}}
-  const count=()=>Object.values(cart).reduce((a,b)=>a+b,0);
-  const total=()=>Object.entries(cart).reduce((a,[id,q])=>a+(byId(id)?.price||0)*q,0);
+  const count=()=>Object.values(cart).reduce((a,it)=>a+(it.qty||0),0);
+  const total=()=>Object.values(cart).reduce((a,it)=>a+((byId(it.id)?.price||0)*(it.qty||0)),0);
 
   $("#year").textContent=new Date().getFullYear();
 
@@ -500,6 +505,10 @@ const CONFIG = {
          <div class="product-name">${p.name}</div>
          <div class="product-desc">${p.desc}</div>
          <div class="product-price">${vnd(p.price)}</div>
+         ${p.variant==="ao"?`<div class="variant-row">
+           <select data-model aria-label="Mẫu ${p.name}"><option value="nam">Mẫu Nam</option><option value="nu">Mẫu Nữ</option></select>
+           <select data-size aria-label="Size ${p.name}"></select>
+         </div>`:""}
          <div class="product-actions">
            <div class="qty">
              <button type="button" data-dec aria-label="Giảm">${ic("i-minus")}</button>
@@ -512,14 +521,25 @@ const CONFIG = {
     const input=card.querySelector("input");
     card.querySelector("[data-dec]").onclick=()=>input.value=Math.max(1,(+input.value||1)-1);
     card.querySelector("[data-inc]").onclick=()=>input.value=Math.min(99,(+input.value||1)+1);
-    card.querySelector("[data-add]").onclick=()=>{addToCart(p.id,Math.max(1,+input.value||1));input.value=1;};
+    if(p.variant==="ao"){
+      const mSel=card.querySelector("[data-model]"), sSel=card.querySelector("[data-size]");
+      const fillSizes=()=>{sSel.innerHTML=SIZE_OPTS[mSel.value].map(s=>`<option value="${s}">Size ${s}</option>`).join("");};
+      fillSizes(); mSel.onchange=fillSizes;
+      card.querySelector("[data-add]").onclick=()=>{addToCart(p.id,Math.max(1,+input.value||1),mLabel(mSel.value),sSel.value);input.value=1;};
+    } else {
+      card.querySelector("[data-add]").onclick=()=>{addToCart(p.id,Math.max(1,+input.value||1));input.value=1;};
+    }
     grid.appendChild(card);
   });
   if(!grid.children.length) grid.innerHTML='<p style="grid-column:1/-1;text-align:center;color:var(--muted);padding:30px">Chưa có sản phẩm cho dịp này.</p>'; }
   renderCatTabs(); renderGrid();
 
-  function addToCart(id,q){cart[id]=(cart[id]||0)+q;persist();updateBadge();renderCart();openCart();}
-  function setQty(id,q){if(q<=0)delete cart[id];else cart[id]=q;persist();updateBadge();renderCart();}
+  function addToCart(id,q,model,size){
+    const key=model?`${id}::${model}::${size}`:id;
+    if(cart[key])cart[key].qty+=q; else cart[key]={id,model:model||"",size:size||"",qty:q};
+    persist();updateBadge();renderCart();openCart();
+  }
+  function setQty(key,q){if(q<=0)delete cart[key];else if(cart[key])cart[key].qty=q;persist();updateBadge();renderCart();}
   function updateBadge(){const c=count();const b=$("#cart-count");b.textContent=c;b.hidden=c===0;}
 
   // Drawer
@@ -535,23 +555,24 @@ const CONFIG = {
   function renderCart(){
     const body=$("#cart-body"),foot=$("#cart-foot");
     $("#cart-title").textContent="Giỏ hàng của bạn";
-    const ids=Object.keys(cart);
-    if(!ids.length){
+    const keys=Object.keys(cart);
+    if(!keys.length){
       body.innerHTML=`<div class="cart-empty">${ic("i-cart")}<p>Giỏ hàng đang trống.<br>Hãy chọn vật phẩm kỷ niệm nhé!</p></div>`;
       foot.hidden=true;return;
     }
     body.innerHTML="";
-    ids.forEach(id=>{
-      const p=byId(id),q=cart[id];if(!p)return;
+    keys.forEach(key=>{
+      const it=cart[key],p=byId(it.id);if(!p)return;
+      const vlabel=it.model?`<div class="ci-price" style="color:var(--gold-ink);font-weight:600">Mẫu ${it.model}${it.size?" · Size "+it.size:""}</div>`:"";
       const row=el("div","cart-item",
         `<div class="thumb">${p.img?`<img src="${ver(p.img)}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:10px" onerror="imgFallback(this,'${p.icon}')">`:ic(p.icon)}</div>
-         <div><div class="ci-name">${p.name}</div><div class="ci-price">${vnd(p.price)}</div>
-           <div class="mini-qty" style="margin-top:6px"><button data-mdec aria-label="Giảm">${ic("i-minus")}</button><span>${q}</span><button data-minc aria-label="Tăng">${ic("i-plus")}</button></div>
+         <div><div class="ci-name">${p.name}</div><div class="ci-price">${vnd(p.price)}</div>${vlabel}
+           <div class="mini-qty" style="margin-top:6px"><button data-mdec aria-label="Giảm">${ic("i-minus")}</button><span>${it.qty}</span><button data-minc aria-label="Tăng">${ic("i-plus")}</button></div>
          </div>
-         <div class="ci-right"><div class="ci-line">${vnd(p.price*q)}</div><button class="ci-remove" data-rm>${ic("i-trash")}Xóa</button></div>`);
-      row.querySelector("[data-mdec]").onclick=()=>setQty(id,q-1);
-      row.querySelector("[data-minc]").onclick=()=>setQty(id,q+1);
-      row.querySelector("[data-rm]").onclick=()=>setQty(id,0);
+         <div class="ci-right"><div class="ci-line">${vnd(p.price*it.qty)}</div><button class="ci-remove" data-rm>${ic("i-trash")}Xóa</button></div>`);
+      row.querySelector("[data-mdec]").onclick=()=>setQty(key,it.qty-1);
+      row.querySelector("[data-minc]").onclick=()=>setQty(key,it.qty+1);
+      row.querySelector("[data-rm]").onclick=()=>setQty(key,0);
       body.appendChild(row);
     });
     $("#cart-total").textContent=vnd(total());
@@ -606,7 +627,7 @@ const CONFIG = {
 
     const orders=(()=>{try{return JSON.parse(localStorage.getItem(ORDKEY))||[];}catch(e){return[];}})();
     let code;do{code="HK20-SHOP-"+randId(5);}while(orders.some(o=>o.code===code));
-    const items=Object.entries(cart).map(([id,q])=>({id,name:byId(id).name,qty:q,price:byId(id).price}));
+    const items=Object.values(cart).map(it=>{const p=byId(it.id)||{};return {id:it.id,name:(p.name||it.id)+(it.model?` (${it.model}${it.size?", size "+it.size:""})`:""),qty:it.qty,price:p.price||0,model:it.model||"",size:it.size||""};});
     const order={type:"don_hang",code,name:name.value.trim(),class:f.querySelector("#o-class").value,phone:normPhone(phone.value),
       deliver,address:deliver==="Giao tận nơi"?addr.value.trim():"",note:f.querySelector("#o-note").value.trim(),
       items,total:total(),at:new Date().toISOString()};

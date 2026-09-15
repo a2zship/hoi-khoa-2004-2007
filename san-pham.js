@@ -24,8 +24,8 @@ window.SHOP_CATEGORIES = [
 
 window.SHOP_PRODUCTS = [
   /* ===================== HỘI KHÓA 20 NĂM ===================== */
-  { id:"ao-polo", cat:"hoi-khoa", name:"Áo polo",          desc:"Polo trắng phối xanh, thêu logo 20 năm, in được tên lớp.", price:200000, img:"anh/ao-polo.png", tag:"Bán chạy" },
-  { id:"ao-thun", cat:"hoi-khoa", name:"Áo thun",          desc:"Áo thun cotton in logo & hình bóng học trò, đủ size.",     price:150000, img:"anh/ao-thun.png", tag:"" },
+  { id:"ao-polo", cat:"hoi-khoa", name:"Áo polo",          desc:"Polo trắng phối xanh, thêu logo 20 năm, in được tên lớp.", price:200000, img:"anh/ao-polo.png", tag:"Bán chạy", variant:"ao" },
+  { id:"ao-thun", cat:"hoi-khoa", name:"Áo thun",          desc:"Áo thun cotton in logo & hình bóng học trò, đủ size.",     price:150000, img:"anh/ao-thun.png", tag:"", variant:"ao" },
   { id:"mu",      cat:"hoi-khoa", name:"Mũ lưỡi trai",     desc:"Nón kết trắng–xanh thêu biểu tượng hội khóa.",             price:90000,  img:"anh/mu-luoi-trai.png", tag:"" },
   { id:"binh",    cat:"hoi-khoa", name:"Bình giữ nhiệt",   desc:"Bình giữ nhiệt inox in logo, khắc được tên lớp.",          price:180000, img:"anh/binh-giu-nhiet.png", tag:"" },
   { id:"tui",     cat:"hoi-khoa", name:"Túi vải",          desc:"Túi vải canvas in logo, bền & tiện dùng hằng ngày.",       price:85000,  img:"anh/tui-vai.png", tag:"" },
