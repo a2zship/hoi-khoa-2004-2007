@@ -24,7 +24,8 @@ window.SHOP_CATEGORIES = [
 
 window.SHOP_PRODUCTS = [
   /* ===================== HỘI KHÓA 20 NĂM ===================== */
-  { id:"ao-polo", cat:"hoi-khoa", name:"Áo polo",          desc:"Polo trắng phối xanh, thêu logo 20 năm, in được tên lớp.", price:200000, img:"anh/ao-polo.png", tag:"Bán chạy", variant:"ao" },
+  { id:"ao-polo", cat:"hoi-khoa", name:"Áo polo (mẫu 1)",   desc:"Polo trắng phối xanh, thêu logo 20 năm, in được tên lớp.", price:200000, img:"anh/ao-polo.png", tag:"Bán chạy", variant:"ao" },
+  { id:"ao-polo-2", cat:"hoi-khoa", name:"Áo polo (mẫu 2)", desc:"Polo trắng cổ & bo tay xanh, thêu logo 20 năm 'Gặp lại thanh xuân'.", price:200000, img:"anh/ao-polo-2.jpg", tag:"Mẫu mới", variant:"ao" },
   { id:"ao-thun", cat:"hoi-khoa", name:"Áo thun",          desc:"Áo thun cotton in logo & hình bóng học trò, đủ size.",     price:150000, img:"anh/ao-thun.png", tag:"", variant:"ao" },
   { id:"mu",      cat:"hoi-khoa", name:"Mũ lưỡi trai",     desc:"Nón kết trắng–xanh thêu biểu tượng hội khóa.",             price:90000,  img:"anh/mu-luoi-trai.png", tag:"" },
   { id:"binh",    cat:"hoi-khoa", name:"Bình giữ nhiệt",   desc:"Bình giữ nhiệt inox in logo, khắc được tên lớp.",          price:180000, img:"anh/binh-giu-nhiet.png", tag:"" },
@@ -55,7 +56,7 @@ window.SHOP_PRODUCTS = [
 
 /* Icon vẽ sẵn theo id (dùng khi img để trống). id mới -> mặc định "i-gift". */
 window.SHOP_ICON_BY_ID = {
-  "ao-polo":"p-shirt","ao-thun":"p-shirt","mu":"p-cap","binh":"p-bottle",
+  "ao-polo":"p-shirt","ao-polo-2":"p-shirt","ao-thun":"p-shirt","mu":"p-cap","binh":"p-bottle",
   "tui":"p-tote","moc-khoa":"p-keychain","chuong":"p-award","hop-qua":"i-gift","am-chen":"p-mug",
   "nv-hoa":"p-flower","nv-thiep":"p-book","nv-coc":"p-mug","nv-qua":"i-gift",
   "tet-lich":"p-calendar","tet-lixi":"i-gift","tet-gio":"i-gift","tet-ao":"p-shirt",
