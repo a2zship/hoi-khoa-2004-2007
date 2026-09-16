@@ -624,8 +624,12 @@ const CONFIG = {
     // --- Mã nhận áo polo miễn phí ---
     voucherCode=""; voucherDiscount=0;
     const vInput=body.querySelector("#o-voucher"), vMsg=body.querySelector("#voucher-msg");
-    const poloInCart=()=>Object.values(cart).some(it=>it.id==="ao-polo"&&it.qty>0);
-    const poloPrice=()=>{const p=byId("ao-polo");return p?p.price:0;};
+    const isPolo=id=>String(id).indexOf("ao-polo")===0; // áp dụng cho MỌI mẫu áo polo (ao-polo, ao-polo-2, ...)
+    const poloInCart=()=>Object.values(cart).some(it=>isPolo(it.id)&&it.qty>0);
+    const poloPrice=()=>{ // miễn phí 1 áo polo — nếu giỏ có nhiều mẫu, ưu đãi theo mẫu giá cao nhất
+      let best=0; Object.values(cart).forEach(it=>{ if(isPolo(it.id)&&it.qty>0){ const p=byId(it.id); if(p&&p.price>best)best=p.price; } });
+      if(best>0)return best; const p=byId("ao-polo"); return p?p.price:0;
+    };
     function updTotals(){
       body.querySelector("#ck-subtotal").textContent=vnd(total());
       const dr=body.querySelector("#ck-discount-row");
