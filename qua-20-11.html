@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Quà tặng thầy cô 20/11 — từ 39.000đ | Gian hàng gây quỹ Hội khóa 2004–2007</title>
+<title>Quà tặng thầy cô 20/11 — từ 39.000đ | Quà Tri Ân</title>
 <meta name="description" content="Quà tặng thầy cô nhân 20/11 cho phụ huynh, học sinh, học viên và cựu học sinh: bút ký, túi vải, cốc giữ nhiệt, bộ ấm trà, đồng hồ pha lê in lời tri ân. Đặt trước để kịp giao." />
 <meta name="theme-color" content="#8E1B40" />
 <meta property="og:type" content="website" />
@@ -11,7 +11,7 @@
 <meta property="og:description" content="Bút ký, túi vải, cốc giữ nhiệt, bộ ấm trà, đồng hồ pha lê in lời tri ân thầy cô. Từ 39.000đ. Đặt trước để kịp 20/11." />
 <meta property="og:image" content="anh/qua-coc-giu-nhiet-530.jpg" />
 <meta property="og:locale" content="vi_VN" />
-<link rel="icon" href="logo.jpg?v=1" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E%F0%9F%8E%81%3C/text%3E%3C/svg%3E" />
 <!-- Font tiêu đề giống các trang khác của site; đủ bộ chữ tiếng Việt (Georgia bị lỗi dấu ầ, ằ...) -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -58,7 +58,7 @@ section{padding-block:clamp(48px,7vw,84px)}
 .ghost:hover{background:var(--primary);color:#fff}
 @media(max-width:560px){.cta{width:100%}}
 
-/* Dải minh bạch gây quỹ */
+/* Dải thông báo đầu trang */
 .fund-bar{background:var(--primary-dark);color:#fbe3ea;font-size:14px;text-align:center;padding:9px 16px}
 .fund-bar b{color:#fff}
 
@@ -67,7 +67,7 @@ section{padding-block:clamp(48px,7vw,84px)}
 .hero-grid{display:grid;gap:32px;align-items:center}
 @media(min-width:880px){.hero-grid{grid-template-columns:1.05fr .95fr}}
 .hero .brand{display:flex;align-items:center;gap:10px;margin-bottom:22px;font-weight:600;color:var(--primary-dark);font-size:14px}
-.hero .brand img{width:44px;height:44px;border-radius:50%;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.hero .brand .brand-ic{width:44px;height:44px;border-radius:50%;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.08);display:grid;place-items:center;font-size:22px}
 .hero .sub{font-size:clamp(17px,2.1vw,19px);color:var(--text-light);max-width:52ch}
 .countdown{display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--border);border-radius:999px;padding:8px 16px;font-size:14.5px;margin:4px 0 22px;box-shadow:0 2px 10px rgba(142,27,64,.06)}
 .countdown b{font-size:20px;color:var(--primary);font-family:var(--ff-head)}
@@ -199,21 +199,21 @@ footer a:hover{text-decoration:underline}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 </style>
 </head>
-<body>
+<body id="top">
 
-<div class="fund-bar">🎗️ Trang gây quỹ của <b>Hội khóa 2004–2007 · THPT Phạm Văn Nghị</b> — phần dư sau chi phí dành cho quỹ tổ chức hội khóa.</div>
+<div class="fund-bar">🎁 <b>Quà tặng thầy cô 20/11</b> — đặt trước để kịp giao đúng dịp · nhận trực tiếp hoặc giao tận nơi</div>
 
 <!-- HERO -->
 <header class="hero">
   <div class="wrap hero-grid">
     <div>
-      <div class="brand"><img src="logo.jpg?v=1" alt="">Gian hàng gây quỹ · Hội khóa 2004–2007</div>
+      <div class="brand"><span class="brand-ic" aria-hidden="true">🎁</span>Quà Tri Ân · 20/11</div>
       <span class="kicker">Ngày Nhà giáo Việt Nam 20/11</span>
       <h1>Tri ân thầy cô bằng món quà dùng được mỗi ngày</h1>
       <p class="sub">Dành cho phụ huynh, học sinh, học viên và cựu học sinh muốn nói lời cảm ơn thầy cô: từ cây bút ký, chiếc cốc giữ nhiệt đến bộ ấm trà, đồng hồ pha lê — in lời tri ân 20/11, có hộp sẵn để tặng.</p>
       <div class="countdown" id="countdown">⏳ Còn <b id="cd-days">—</b> ngày đến 20/11 · hàng làm theo lô, nên đặt sớm</div>
       <div><a class="cta" href="#dat-qua">Đặt quà 20/11 ngay →</a></div>
-      <p class="cta-note">Chưa cần trả trước khi đặt — chuyển khoản theo mã đơn, BTC liên hệ xác nhận.</p>
+      <p class="cta-note">Chưa cần trả trước khi đặt — chuyển khoản theo mã đơn, chúng tôi gọi lại xác nhận.</p>
     </div>
     <div class="hero-visual">
       <figure><img src="anh/qua-coc-giu-nhiet-530.jpg" alt="Cốc giữ nhiệt 530 ml in hoa văn tri ân thầy cô 20/11, kèm hộp"></figure>
@@ -230,7 +230,7 @@ footer a:hover{text-decoration:underline}
     <div class="trust-item"><span class="i">🎁</span><span><b><span class="n-gifts">7</span> món quà</b> chọn riêng cho 20/11</span></div>
     <div class="trust-item"><span class="i">🖨️</span><span>In <b>lời tri ân 20/11</b>, có hộp quà</span></div>
     <div class="trust-item"><span class="i">✅</span><span><b>Chốt mẫu thật</b> trước khi giao</span></div>
-    <div class="trust-item"><span class="i">💝</span><span>Mỗi đơn góp vào <b>quỹ hội khóa</b></span></div>
+    <div class="trust-item"><span class="i">🚚</span><span><b>Nhận trực tiếp</b> hoặc giao tận nơi</span></div>
   </div>
 </div>
 
@@ -245,8 +245,8 @@ footer a:hover{text-decoration:underline}
     </div>
     <div class="benefits">
       <div class="benefit"><div class="i">☕</div><h3>Dùng được mỗi ngày</h3><p>Cốc giữ nhiệt mang lên lớp, bút ký dùng khi chấm bài, túi vải đựng giáo án — món nào cũng thiết thực.</p></div>
-      <div class="benefit"><div class="i">✍️</div><h3>Ghi dấu lời cảm ơn của riêng bạn</h3><p>Mẫu chuẩn in lời tri ân 20/11. Muốn in thêm tên lớp, tên con hay một lời chúc riêng, cứ ghi khi đặt — BTC báo giá trước khi làm.</p></div>
-      <div class="benefit"><div class="i">🤝</div><h3>Vừa tặng vừa góp quỹ</h3><p>Phần dư sau chi phí đưa vào quỹ tổ chức ngày hội khóa 01/05/2027; thu – chi do Ban tài chính công khai.</p></div>
+      <div class="benefit"><div class="i">✍️</div><h3>Ghi dấu lời cảm ơn của riêng bạn</h3><p>Mẫu chuẩn in lời tri ân 20/11. Muốn in thêm tên lớp, tên con hay một lời chúc riêng, cứ ghi khi đặt — chúng tôi báo giá trước khi làm.</p></div>
+      <div class="benefit"><div class="i">🚚</div><h3>Giao kịp dịp 20/11</h3><p>Đặt trước, chúng tôi chuẩn bị quà và hẹn giao trước ngày 20/11. Nhận trực tiếp hoặc giao tận nơi (khách trả cước giao riêng).</p></div>
     </div>
   </div>
 </section>
@@ -257,7 +257,7 @@ footer a:hover{text-decoration:underline}
     <div class="center narrow" style="margin-bottom:30px">
       <span class="kicker">Chọn quà</span>
       <h2><span class="n-gifts">7</span> món quà tri ân 20/11</h2>
-      <p class="muted">Giá bán đề xuất theo báo giá ngày 15/09/2026. Ảnh là demo thiết kế — mẫu thật được chốt trước khi giao.</p>
+      <p class="muted">Ảnh là demo thiết kế — mẫu thật được gửi bạn xem và chốt trước khi giao.</p>
     </div>
     <h3 class="tier-h">Quà nhỏ, dễ tặng <span>dưới 300.000đ · học sinh, phụ huynh tự chọn tặng</span></h3>
     <div class="products" id="products"></div>
@@ -276,7 +276,7 @@ footer a:hover{text-decoration:underline}
     <div class="center" style="margin-bottom:26px">
       <span class="kicker">Đặt quà</span>
       <h2>Chọn số lượng & để lại thông tin</h2>
-      <p class="muted">Mất khoảng 1 phút. BTC sẽ gọi xác nhận mẫu và lịch giao.</p>
+      <p class="muted">Mất khoảng 1 phút. Chúng tôi sẽ gọi xác nhận mẫu và lịch giao.</p>
     </div>
     <div class="order-card">
       <form id="order-form" novalidate>
@@ -292,8 +292,8 @@ footer a:hover{text-decoration:underline}
         </div>
         <div class="field"><label for="f-note">Lời chúc / ghi chú</label><textarea id="f-note" placeholder="VD: In thêm dòng “Lớp 5A kính tặng cô” hoặc “Mẹ bé An cảm ơn cô”"></textarea></div>
         <div class="deliver">
-          <label><input type="radio" name="deliver" value="Nhận trực tiếp" checked><span><b>Nhận trực tiếp</b><small>Hẹn nhận tại điểm BTC thông báo</small></span></label>
-          <label><input type="radio" name="deliver" value="Giao tận nơi"><span><b>Giao tận nơi</b><small>Khách trả cước giao riêng — BTC báo sau</small></span></label>
+          <label><input type="radio" name="deliver" value="Nhận trực tiếp" checked><span><b>Nhận trực tiếp</b><small>Hẹn nhận tại điểm chúng tôi thông báo</small></span></label>
+          <label><input type="radio" name="deliver" value="Giao tận nơi"><span><b>Giao tận nơi</b><small>Khách trả cước giao riêng — báo khi xác nhận đơn</small></span></label>
         </div>
         <div class="field" id="addr-field" hidden><label for="f-addr">Địa chỉ nhận <span class="req">*</span></label><textarea id="f-addr" placeholder="Số nhà, đường, phường/xã, tỉnh/thành"></textarea><div class="err">Vui lòng nhập địa chỉ giao hàng.</div></div>
         <button class="cta" type="submit" style="width:100%">Xác nhận đặt quà 20/11</button>
@@ -314,7 +314,7 @@ footer a:hover{text-decoration:underline}
       <li>Ban cán sự lớp hoặc hội phụ huynh gom quà chung cho cả lớp</li>
       <li>Cựu học sinh muốn gửi lời cảm ơn thầy cô năm xưa</li>
       <li>Bạn muốn một món quà có ý nghĩa, không chỉ là hoa và thiệp</li>
-      <li>Bạn muốn ủng hộ quỹ hội khóa bằng một việc làm cụ thể</li>
+      <li>Doanh nghiệp, trung tâm muốn tặng quà tri ân giáo viên, giảng viên</li>
     </ul>
   </div>
 </section>
@@ -323,13 +323,13 @@ footer a:hover{text-decoration:underline}
 <section class="faq" style="padding-top:0">
   <div class="wrap narrow">
     <div class="center" style="margin-bottom:24px"><span class="kicker">Câu hỏi thường gặp</span><h2>Trước khi đặt, bạn có thể thắc mắc</h2></div>
-    <details><summary>Khi nào tôi nhận được quà?</summary><p>Quà được sản xuất theo lô sau khi BTC gom đủ đơn đặt trước, nên đặt càng sớm càng dễ kịp giao trước 20/11. BTC sẽ gọi báo lịch nhận cụ thể khi xác nhận đơn.</p></details>
-    <details><summary>Tôi không phải cựu học sinh Phạm Văn Nghị, có mua được không?</summary><p>Được. Gian hàng mở cho tất cả mọi người — phụ huynh, học sinh, học viên ở bất kỳ trường nào. Quà in lời tri ân 20/11 chung, không in tên trường Phạm Văn Nghị nếu bạn không yêu cầu. Gian hàng do Ban tổ chức Hội khóa 2004–2007 vận hành để gây quỹ.</p></details>
-    <details><summary>Có in được tên thầy cô hoặc tên lớp không?</summary><p>Mẫu chuẩn in lời tri ân 20/11. In tên riêng cho từng người, logo mới hoặc diện tích in lớn cần nhà cung cấp xác nhận giá riêng — hãy ghi yêu cầu ở ô “Lời chúc / ghi chú”, BTC sẽ báo lại trước khi chốt.</p></details>
-    <details><summary>Thanh toán thế nào?</summary><p>Sau khi đặt, trang hiện mã đơn cùng số tài khoản và mã QR của quỹ. Bạn chuyển khoản với nội dung là mã đơn để BTC đối soát. Trang không thu thẻ hay mật khẩu ngân hàng.</p></details>
+    <details><summary>Khi nào tôi nhận được quà?</summary><p>Quà được sản xuất theo lô sau khi gom đủ đơn đặt trước, nên đặt càng sớm càng dễ kịp giao trước 20/11. Chúng tôi sẽ gọi báo lịch nhận cụ thể khi xác nhận đơn.</p></details>
+    <details><summary>Tôi ở trường khác / tỉnh khác, có mua được không?</summary><p>Được. Gian hàng mở cho tất cả mọi người — phụ huynh, học sinh, học viên ở bất kỳ trường nào. Quà in lời tri ân 20/11 chung; muốn in thêm tên trường, tên lớp thì ghi trong ô ghi chú. Ở xa thì chọn “Giao tận nơi”.</p></details>
+    <details><summary>Có in được tên thầy cô hoặc tên lớp không?</summary><p>Mẫu chuẩn in lời tri ân 20/11. In tên riêng cho từng người, logo mới hoặc diện tích in lớn cần nhà cung cấp xác nhận giá riêng — hãy ghi yêu cầu ở ô “Lời chúc / ghi chú”, chúng tôi sẽ báo lại trước khi chốt.</p></details>
+    <details><summary>Thanh toán thế nào?</summary><p>Sau khi đặt, trang hiện mã đơn cùng số tài khoản và mã QR. Bạn chuyển khoản với nội dung là mã đơn để chúng tôi đối soát. Trang không thu thẻ hay mật khẩu ngân hàng.</p></details>
     <details><summary>Ảnh trên trang có giống hàng thật không?</summary><p>Ảnh là demo minh họa thiết kế. Hộp, màu in, vật liệu và phụ kiện đi kèm được chốt bằng mẫu thật trước khi giao, để tránh sai màu hay sai quy cách.</p></details>
-    <details><summary>Cả lớp hoặc hội phụ huynh muốn đặt chung thì sao?</summary><p>Cứ nhập số lượng lớn ngay trong form và ghi tên lớp, tên trường. Nếu cần in nội dung riêng cho cả lớp, dùng mục <a href="qua-gay-quy.html#dat-lop">đặt số lượng lớn</a> ở gian hàng quà gây quỹ.</p></details>
-    <details><summary>Tiền mua quà được dùng vào việc gì?</summary><p>Tiền hàng trả nhà cung cấp; phần dư sau chi phí đưa vào quỹ tổ chức ngày hội khóa 20 năm (01/05/2027). Thu – chi được Ban tài chính công khai.</p></details>
+    <details><summary>Cả lớp hoặc hội phụ huynh muốn đặt chung thì sao?</summary><p>Cứ nhập số lượng lớn ngay trong form và ghi tên lớp, tên trường. Nếu cần in nội dung riêng cho cả lớp, ghi rõ trong ô “Lời chúc / ghi chú” — chúng tôi gọi lại chốt mẫu và báo giá.</p></details>
+    <details><summary>Nếu nhận hàng không đúng mẫu đã chốt thì sao?</summary><p>Mẫu in, màu hộp và quy cách được gửi bạn xác nhận trước khi sản xuất. Nếu hàng giao không đúng mẫu đã chốt, hãy báo ngay khi nhận để được xử lý.</p></details>
   </div>
 </section>
 
@@ -339,28 +339,28 @@ footer a:hover{text-decoration:underline}
     <h2>Một lời cảm ơn, gửi đúng dịp</h2>
     <p>Dù là thầy cô đang dạy con bạn, thầy cô đang đứng lớp của bạn hay thầy cô năm xưa — một món quà nhỏ đúng dịp 20/11 là cách giản dị để nói lời cảm ơn.</p>
     <a class="cta" href="#dat-qua">Đặt quà 20/11 ngay →</a>
-    <p class="cta-note">Từ 39.000đ · chuyển khoản sau khi đặt · góp quỹ hội khóa</p>
+    <p class="cta-note">Từ 39.000đ · chuyển khoản sau khi đặt · giao kịp trước 20/11</p>
   </div>
 </section>
 </main>
 
 <footer>
   <div class="wrap">
-    <span>© <span id="year"></span> Ban tổ chức Hội khóa 2004–2007 — THPT Phạm Văn Nghị</span>
-    <span><a href="qua-gay-quy.html">Quà gây quỹ các dịp khác</a> · <a href="index.html">Trang hội khóa</a></span>
+    <span>© <span id="year"></span> Quà Tri Ân — Quà tặng thầy cô 20/11</span>
+    <span><a href="#dat-qua">Đặt quà</a> · <a href="#top">Lên đầu trang</a></span>
   </div>
 </footer>
 
-<div class="sticky" id="sticky"><div class="t"><b>Quà tri ân 20/11</b>Từ 39.000đ · góp quỹ hội khóa</div><a class="cta" href="#dat-qua">Đặt quà</a></div>
+<div class="sticky" id="sticky"><div class="t"><b>Quà tri ân 20/11</b>Từ 39.000đ · giao kịp dịp</div><a class="cta" href="#dat-qua">Đặt quà</a></div>
 
-<!-- Giá & sản phẩm lấy chung từ file của gian hàng quà gây quỹ (sửa 1 nơi, 2 trang cùng cập nhật) -->
+<!-- Giá & sản phẩm lấy chung từ file san-pham-qua.js (sửa 1 nơi, các trang cùng cập nhật). Trang này truyền thông ĐỘC LẬP: không nhắc hội khóa trên giao diện. -->
 <script src="san-pham-qua.js"></script>
 <script>
 (function(){
   const CONFIG={
     event:"qua-gay-quy",          // đơn đổ chung tab "DonHang_qua_gay_quy" với gian hàng quà
-    source:"Landing 20/11",       // ghi vào ghi chú để BTC biết đơn đến từ trang này
-    codePrefix:"QGQ",
+    source:"Landing 20/11",       // ghi vào ghi chú để biết đơn đến từ trang này
+    codePrefix:"QTA",             // mã đơn khách thấy: QTA-xxxxx (Quà Tri Ân)
     bank:{accountName:"NGUYEN THI BICH HANH",accountNumber:"8990092163",bankName:"BIDV – PGD Đô Thị Hoàng Mai"},
     qrImage:"anh/qr-quy.png",
     formEndpoint:"https://script.google.com/macros/s/AKfycbxQbZvPw3Q6QusMUh4gnVMTJ-w-vt8C2cNEEA1G6IwleOpf8v8xl4vDD_CQQMqUz8dV/exec"
@@ -456,7 +456,7 @@ footer a:hover{text-decoration:underline}
   function showDone(o){
     const b=CONFIG.bank,tf=o.code+" "+o.name;
     form.hidden=true;const d=$("#done");d.hidden=false;
-    d.innerHTML=`<div class="ok">✓</div><h3>Cảm ơn bạn đã tri ân thầy cô & góp quỹ hội khóa!</h3>
+    d.innerHTML=`<div class="ok">✓</div><h3>Cảm ơn bạn đã đặt quà tri ân thầy cô!</h3>
       <p class="muted" style="margin:0">Mã đơn của bạn</p><div class="code">${o.code}</div>
       <p>${o.items.map(i=>esc(i.name.replace(/^\[[^\]]+\]\s*/,""))+" × "+i.qty).join("<br>")}</p>
       <p>Tổng: <b style="color:var(--primary);font-size:20px">${vnd(o.total)}</b> · ${esc(o.deliver)}</p>
@@ -466,9 +466,9 @@ footer a:hover{text-decoration:underline}
         <div class="pay-line"><span>Ngân hàng</span><span>${b.bankName}</span></div>
         <div class="pay-line"><span>Nội dung CK</span><span id="tf">${esc(tf)}</span></div>
         <div style="text-align:right;margin-top:8px"><button type="button" class="ghost" id="copy" style="min-height:38px;padding:6px 16px;font-size:14px">Sao chép nội dung</button></div>
-        <img class="qr" src="${CONFIG.qrImage}" alt="Mã QR chuyển khoản quỹ hội khóa">
+        <img class="qr" src="${CONFIG.qrImage}" alt="Mã QR chuyển khoản">
       </div>
-      <p class="form-note">BTC sẽ gọi xác nhận mẫu & lịch giao. Ghi đúng nội dung chuyển khoản giúp đối soát nhanh.</p>`;
+      <p class="form-note">Chúng tôi sẽ gọi xác nhận mẫu & lịch giao. Ghi đúng nội dung chuyển khoản giúp đối soát nhanh.</p>`;
     $("#copy").onclick=async function(){try{await navigator.clipboard.writeText(tf);this.textContent="Đã sao chép ✓";}catch(e){this.textContent="Hãy sao chép thủ công";}};
     d.scrollIntoView({behavior:"smooth",block:"start"});
   }
