@@ -80,11 +80,12 @@ section{padding:clamp(40px,6vw,72px) 0}
 .cart-btn{position:relative;display:inline-flex;align-items:center;gap:8px;background:var(--blue);color:#fff;border:0;border-radius:var(--radius-pill);padding:10px 18px;font-weight:600;font-size:14.5px;cursor:pointer;transition:background .2s}
 .cart-btn:hover{background:var(--navy)}
 .cart-count{position:absolute;top:-6px;right:-6px;min-width:22px;height:22px;padding:0 6px;border-radius:11px;background:var(--gold);color:#3a2905;font-size:12px;font-weight:700;display:grid;place-items:center;border:2px solid #fff}
+.cart-count[hidden]{display:none}
 @media(min-width:760px){.nav-back{display:inline-flex;margin-right:6px}}
 
 /* Hero compact */
 .hero{position:relative;color:#fff;overflow:hidden;background:radial-gradient(900px 460px at 12% -10%,rgba(120,161,245,.45),transparent 60%),linear-gradient(165deg,#2A63DD,var(--blue) 48%,var(--navy-900))}
-.hero-inner{padding:clamp(40px,6vw,72px) 0;max-width:760px}
+.hero-inner{padding-block:clamp(40px,6vw,72px);max-width:760px}
 .hero .eyebrow{color:var(--gold-soft)}
 .hero .eyebrow::before,.hero .eyebrow::after{background:var(--gold-soft)}
 .hero h1{font-size:clamp(30px,5vw,48px);color:#fff;margin-bottom:14px;text-wrap:balance}
@@ -323,16 +324,13 @@ section{padding:clamp(40px,6vw,72px) 0}
     <div class="center" style="max-width:640px;margin:0 auto 22px">
       <span class="eyebrow" style="justify-content:center;display:inline-flex">Chọn đúng size</span>
       <h2 style="margin:0 0 8px">Hướng dẫn chọn size áo</h2>
-      <p style="color:var(--muted);margin:0">Áp dụng cho áo polo & áo thun đồng phục. Chọn theo chiều cao và cân nặng của bạn.</p>
+      <p style="color:var(--muted);margin:0">Bảng size <b>dùng chung cho cả áo Nam & Nữ</b> (áo polo, áo thun đồng phục). Chọn theo cân nặng của bạn.</p>
     </div>
-    <div class="size-tabs" role="tablist">
-      <button type="button" class="size-tab active" data-g="nam">Áo Nam</button>
-      <button type="button" class="size-tab" data-g="nu">Áo Nữ</button>
-    </div>
+    <p class="center" style="margin:0 0 16px"><span class="badge badge-plan">Size chung · Nam &amp; Nữ</span></p>
     <div class="size-card">
       <div style="overflow-x:auto">
         <table class="size-table">
-          <thead><tr><th>Size</th><th>Chiều cao</th><th>Cân nặng</th></tr></thead>
+          <thead><tr><th>Size</th><th>Cân nặng (người lớn)</th></tr></thead>
           <tbody id="size-rows"></tbody>
         </table>
       </div>
@@ -474,7 +472,8 @@ const CONFIG = {
   const randId=(n)=>{const c="ABCDEFGHJKLMNPQRSTUVWXYZ23456789";let a;try{a=crypto.getRandomValues(new Uint32Array(n));}catch(e){a=null;}let s="";for(let i=0;i<n;i++)s+=c[(a?a[i]:Math.floor(Math.random()*4294967296))%c.length];return s;};
   const KEY="hoikhoa_shop_cart", ORDKEY="hoikhoa_shop_orders";
   const byId=id=>CONFIG.products.find(p=>p.id===id);
-  const SIZE_OPTS={nam:["S","M","L","X","XL","2XL","3XL"],nu:["S","M","L","XL","2XL","3XL"]};
+  const SIZE_LIST=["S","M","L","XL","XXL","XXXL"]; // size CHUNG cho Nam & Nữ (bảng size áo có cổ)
+  const SIZE_OPTS={nam:SIZE_LIST,nu:SIZE_LIST};
   const mLabel=g=>g==="nu"?"Nữ":"Nam";
   let REG_CODES=null, USED_VOUCHERS=null, voucherCode="", voucherDiscount=0; // mã nhận áo polo miễn phí
   window.imgFallback=(img,icon)=>{try{img.outerHTML='<svg class="icon"><use href="#'+(icon||"i-gift")+'"/></svg>';}catch(e){}};
@@ -774,40 +773,15 @@ const CONFIG = {
     recalc();
   })();
 
-  // ===== Hướng dẫn chọn size áo (Nam/Nữ) =====
+  // ===== Hướng dẫn chọn size áo — BẢNG CHUNG cho cả Nam & Nữ =====
   (function(){
     const tbody=$("#size-rows"); if(!tbody) return;
-    const SIZE_DATA={
-      nam:[
-        {s:"S",h:"1m58 – 1m65",w:"48 – 53 kg"},
-        {s:"M",h:"1m66 – 1m72",w:"54 – 60 kg"},
-        {s:"L",h:"1m73 – 1m77",w:"61 – 66 kg"},
-        {s:"X",h:"1m73 – 1m77",w:"61 – 66 kg"},
-        {s:"XL",h:"1m78 – 1m80",w:"67 – 72 kg"},
-        {s:"2XL",h:"—",w:"72 – 78 kg"},
-        {s:"3XL",h:"—",w:"trên 80 kg"}
-      ],
-      nu:[
-        {s:"S",h:"1m48 – 1m53",w:"37 – 41 kg"},
-        {s:"M",h:"1m54 – 1m58",w:"42 – 46 kg"},
-        {s:"L",h:"1m59 – 1m65",w:"47 – 52 kg"},
-        {s:"XL",h:"1m65 – 1m70",w:"53 – 58 kg"},
-        {s:"2XL",h:"—",w:"59 – 65 kg"},
-        {s:"3XL",h:"—",w:"trên 65 kg"}
-      ]
-    };
-    const NOTE={
-      nam:"Ngoại cỡ (ngoài bảng): báo riêng chiều cao + cân nặng để BTC may vừa. Nếu ở giữa 2 size, nên chọn size lớn hơn.",
-      nu:"Ngoại cỡ (ngoài bảng): đăng ký riêng chiều cao + cân nặng để BTC may vừa. Nếu ở giữa 2 size, nên chọn size lớn hơn."
-    };
-    function render(g){
-      tbody.innerHTML="";
-      SIZE_DATA[g].forEach(r=>{ tbody.appendChild(el("tr",null,`<td>${r.s}</td><td>${r.h}</td><td>${r.w}</td>`)); });
-      $("#size-note-text").textContent=NOTE[g];
-      document.querySelectorAll(".size-tab").forEach(b=>b.classList.toggle("active",b.dataset.g===g));
-    }
-    document.querySelectorAll(".size-tab").forEach(b=>b.onclick=()=>render(b.dataset.g));
-    render("nam");
+    const SIZE_DATA=[ // cân nặng người lớn — mang tính chất tương đối
+      {s:"S",w:"32 – 43 kg"},{s:"M",w:"43 – 53 kg"},{s:"L",w:"53 – 63 kg"},
+      {s:"XL",w:"63 – 73 kg"},{s:"XXL",w:"73 – 83 kg"},{s:"XXXL",w:"83 – 93 kg"}
+    ];
+    SIZE_DATA.forEach(r=>{ tbody.appendChild(el("tr",null,`<td>${r.s}</td><td>${r.w}</td>`)); });
+    $("#size-note-text").textContent="Bảng size mang tính chất tương đối, dùng chung cho áo Nam & Nữ. Nếu cân nặng ở giữa 2 size, nên chọn size lớn hơn. Ngoại cỡ (trên 93 kg): ghi cân nặng + chiều cao vào ô ghi chú để BTC hỗ trợ.";
   })();
 
   updateBadge();renderCart();
