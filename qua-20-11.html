@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#8E1B40" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Quà tri ân 20/11 — góp quỹ hội khóa 2004–2007" />
-<meta property="og:description" content="Cốc giữ nhiệt, bút ký, túi vải in lời tri ân thầy cô. Từ 39.000đ. Đặt trước để kịp 20/11." />
+<meta property="og:description" content="Bút ký, túi vải, cốc giữ nhiệt, bộ ấm trà, đồng hồ pha lê in lời tri ân thầy cô. Từ 39.000đ. Đặt trước để kịp 20/11." />
 <meta property="og:image" content="anh/qua-coc-giu-nhiet-530.jpg" />
 <meta property="og:locale" content="vi_VN" />
 <link rel="icon" href="logo.jpg?v=1" />
@@ -105,6 +105,12 @@ section{padding-block:clamp(48px,7vw,84px)}
 .p-card select{width:100%;font:500 14.5px var(--ff);padding:10px 12px;border:1.5px solid var(--border);border-radius:10px;background:#fff;color:var(--text);margin-bottom:12px}
 .p-card .price{font-family:var(--ff-head);font-size:26px;font-weight:700;color:var(--primary);margin-bottom:14px}
 .p-card .cta{min-height:48px;font-size:16px;width:100%}
+.tier-h{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;font-size:23px;margin:34px 0 16px;padding-bottom:10px;border-bottom:2px solid var(--border)}
+.tier-h:first-of-type{margin-top:0}
+.tier-h span{font:500 14px var(--ff);color:var(--text-light)}
+@media(min-width:600px) and (max-width:779px){.products.four{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1000px){.products.four{grid-template-columns:repeat(4,1fr)}}
+.products.four .p-card h3{font-size:18.5px}
 
 /* Set gợi ý */
 .combo{margin-top:26px;background:linear-gradient(135deg,#8E1B40,#B4234E);color:#fff;border-radius:22px;padding:24px 26px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
@@ -204,7 +210,7 @@ footer a:hover{text-decoration:underline}
       <div class="brand"><img src="logo.jpg?v=1" alt="">Hội khóa 2004–2007 · Gặp lại thanh xuân</div>
       <span class="kicker">Ngày Nhà giáo Việt Nam 20/11</span>
       <h1>Tri ân thầy cô bằng món quà dùng được mỗi ngày</h1>
-      <p class="sub">Cốc giữ nhiệt, bút ký khắc logo, túi vải in lời tri ân — món quà nhỏ để thầy cô nhớ đến lứa học trò 2004–2007 mỗi sáng lên lớp.</p>
+      <p class="sub">Từ bút ký, cốc giữ nhiệt đến bộ ấm trà, đồng hồ pha lê — in lời tri ân và logo khóa, để thầy cô nhớ đến lứa học trò 2004–2007 mỗi ngày.</p>
       <div class="countdown" id="countdown">⏳ Còn <b id="cd-days">—</b> ngày đến 20/11 · hàng làm theo lô, nên đặt sớm</div>
       <div><a class="cta" href="#dat-qua">Đặt quà 20/11 ngay →</a></div>
       <p class="cta-note">Chưa cần trả trước khi đặt — chuyển khoản theo mã đơn, BTC liên hệ xác nhận.</p>
@@ -221,7 +227,7 @@ footer a:hover{text-decoration:underline}
 <!-- CAM KẾT -->
 <div class="trust">
   <div class="wrap trust-grid">
-    <div class="trust-item"><span class="i">🎁</span><span><b>3 món quà</b> chọn riêng cho 20/11</span></div>
+    <div class="trust-item"><span class="i">🎁</span><span><b><span class="n-gifts">7</span> món quà</b> chọn riêng cho 20/11</span></div>
     <div class="trust-item"><span class="i">🖨️</span><span>In <b>logo hội khóa</b> & lời tri ân</span></div>
     <div class="trust-item"><span class="i">✅</span><span><b>Chốt mẫu thật</b> trước khi giao</span></div>
     <div class="trust-item"><span class="i">💝</span><span>Mỗi đơn góp vào <b>quỹ hội khóa</b></span></div>
@@ -250,10 +256,13 @@ footer a:hover{text-decoration:underline}
   <div class="wrap">
     <div class="center narrow" style="margin-bottom:30px">
       <span class="kicker">Chọn quà</span>
-      <h2>3 món quà tri ân 20/11</h2>
+      <h2><span class="n-gifts">7</span> món quà tri ân 20/11</h2>
       <p class="muted">Giá bán đề xuất theo báo giá ngày 15/09/2026. Ảnh là demo thiết kế — mẫu thật được chốt trước khi giao.</p>
     </div>
+    <h3 class="tier-h">Quà nhỏ, dễ tặng <span>dưới 300.000đ · mỗi bạn tự tặng</span></h3>
     <div class="products" id="products"></div>
+    <h3 class="tier-h">Quà trang trọng <span>cả lớp góp tặng thầy cô chủ nhiệm</span></h3>
+    <div class="products four" id="products-lux"></div>
     <div class="combo">
       <div><h3>Gợi ý: Set tri ân gọn gàng</h3><p>1 cốc giữ nhiệt + 1 bút ký khắc logo — đủ trang trọng cho một thầy, một cô.</p></div>
       <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap"><span class="sum" id="combo-sum">338.000đ</span><button class="ghost" type="button" id="pick-combo">Đặt set này</button></div>
@@ -381,8 +390,12 @@ footer a:hover{text-decoration:underline}
   // Thẻ sản phẩm (gộp quy cách cùng group)
   const groups=[],gi={};
   P.forEach(p=>{const k=p.group||p.id;if(!(k in gi)){gi[k]=groups.length;groups.push([]);}groups[gi[k]].push(p);});
-  const box=$("#products");
+  const LUX_FROM=300000; // từ giá này trở lên xếp vào nhóm "Quà trang trọng"
+  const minP=g=>Math.min(...g.map(o=>o.price));
+  groups.sort((a,b)=>minP(a)-minP(b));
+  document.querySelectorAll(".n-gifts").forEach(e=>e.textContent=groups.length);
   groups.forEach(opts=>{
+    const box=minP(opts)<LUX_FROM?$("#products"):$("#products-lux");
     const p0=opts[0],title=p0.gname||p0.name;
     const card=document.createElement("article");card.className="p-card";
     card.innerHTML=`<div class="media">${p0.tag?`<span class="tag">${esc(p0.tag)}</span>`:""}<img src="${esc(p0.img)}" alt="${esc(title)}" loading="lazy"></div>

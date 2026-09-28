@@ -33,6 +33,17 @@ window.SHOP_PRODUCTS = [
     desc:"Túi vải giả đay in logo & lời tri ân 20/11. Ảnh minh họa bản in PET nhiều màu.", price:159000, img:"anh/qua-tui-gia-day.jpg", tag:"" },
   { ma:"SP11-B", id:"sp11-b", cat:"20-11", group:"tui-gia-day", gname:"Túi vải giả đay", name:"Túi vải giả đay (in PET nhiều màu)", opt:"In PET nhiều màu",
     desc:"Túi vải giả đay in logo & lời tri ân 20/11. Ảnh minh họa bản in PET nhiều màu.", price:189000, img:"anh/qua-tui-gia-day.jpg", tag:"" },
+  /* --- Quà trang trọng: cùng mã & giá với bản gốc, đổi thiết kế in sang chủ đề 20/11 (ảnh demo vẽ lại bằng Canva) --- */
+  { ma:"SP12",   id:"sp12-2011", cat:"20-11", name:"Bộ bình giữ nhiệt & cốc sứ (mẫu 20/11)",
+    desc:"Bình giữ nhiệt + cốc sứ in hoa văn tri ân thầy cô, đựng trong hộp cứng sang trọng.", price:329000, img:"anh/qua-2011-bo-binh-coc.jpg", tag:"Mẫu 20/11" },
+  { ma:"SP10-A", id:"sp10-a-2011", cat:"20-11", group:"am-tra-2011", gname:"Bộ ấm trà sứ (mẫu 20/11)", name:"Bộ ấm trà sứ mẫu 20/11 (in 1 màu)", opt:"In 1 màu",
+    desc:"Ấm & chén sứ trắng in hoa văn tri ân, hộp quà lót lụa — món quà truyền thống biếu thầy cô.", price:399000, img:"anh/qua-2011-am-tra.jpg", tag:"Mẫu 20/11" },
+  { ma:"SP10-B", id:"sp10-b-2011", cat:"20-11", group:"am-tra-2011", gname:"Bộ ấm trà sứ (mẫu 20/11)", name:"Bộ ấm trà sứ mẫu 20/11 (in thêm 1 màu)", opt:"In thêm 1 màu",
+    desc:"Ấm & chén sứ trắng in hoa văn tri ân, hộp quà lót lụa — món quà truyền thống biếu thầy cô.", price:429000, img:"anh/qua-2011-am-tra.jpg", tag:"Mẫu 20/11" },
+  { ma:"SP13",   id:"sp13-2011", cat:"20-11", name:"Bộ ô gấp & cốc giữ nhiệt (mẫu 20/11)",
+    desc:"Ô gấp + cốc giữ nhiệt in hoa văn tri ân thầy cô, hộp quà dạng sách. Nhận đặt trước.", price:529000, img:"anh/qua-2011-bo-o-coc.jpg", tag:"Đặt trước" },
+  { ma:"SP06",   id:"sp06-2011", cat:"20-11", name:"Đồng hồ pha lê (mẫu 20/11)",
+    desc:"Đồng hồ để bàn pha lê khắc lời tri ân, kèm hộp — món quà trang trọng cho thầy cô. Nhận đặt trước.", price:649000, img:"anh/qua-2011-dong-ho-pha-le.jpg", tag:"Đặt trước" },
 
   /* ===================== NOEL ===================== */
   { ma:"SP12",   id:"sp12",   cat:"noel", name:"Bộ bình giữ nhiệt & cốc sứ",
@@ -71,5 +82,6 @@ window.SHOP_PRODUCTS = [
 window.SHOP_ICON_BY_ID = {
   "sp02-b":"p-mug","sp07":"p-book","sp11-a":"p-tote","sp11-b":"p-tote","sp12":"p-bottle",
   "sp04-b":"p-bottle","sp13":"i-gift","sp03-a":"p-mug","sp03-b":"p-mug","sp03-c":"p-mug",
-  "sp09":"p-calendar","sp10-a":"p-mug","sp10-b":"p-mug","sp01-b":"p-cap","sp06":"p-award"
+  "sp09":"p-calendar","sp10-a":"p-mug","sp10-b":"p-mug","sp01-b":"p-cap","sp06":"p-award",
+  "sp12-2011":"p-bottle","sp10-a-2011":"p-mug","sp10-b-2011":"p-mug","sp13-2011":"i-gift","sp06-2011":"p-award"
 };
