@@ -289,6 +289,17 @@ section{padding:clamp(52px,7.5vw,96px) 0}
 .field.invalid input,.field.invalid select{border-color:var(--red)}
 .field.invalid .err{display:flex}
 .row2{display:grid;grid-template-columns:1fr;gap:0 18px}
+.shirt-box{border:1.5px solid var(--line);border-radius:14px;padding:16px 16px 4px;margin:4px 0 16px;background:var(--cream)}
+.shirt-box legend{display:flex;align-items:center;gap:8px;font-weight:700;color:var(--navy);padding:0 6px;font-size:15.5px}
+.shirt-box legend .icon{width:20px;height:20px;color:var(--blue)}
+.size-mini{margin:0 0 12px;font-size:13.5px}
+.size-mini summary{cursor:pointer;color:var(--blue);font-weight:600}
+.size-mini table{width:100%;max-width:340px;border-collapse:collapse;margin-top:8px;background:#fff;border-radius:8px;overflow:hidden}
+.size-mini th,.size-mini td{padding:6px 10px;border-bottom:1px solid var(--line);text-align:left}
+.size-mini th{background:var(--cream-2,#E1EAFB);color:var(--navy)}
+.size-mini td:first-child{font-weight:700;color:var(--blue)}
+.shirt-done{background:#EEF4FD;border:1px solid #CFDDF5;border-radius:10px;padding:10px 12px;color:var(--navy);font-size:14.5px;margin:4px 0 10px}
+.shirt-done:empty{display:none}
 @media(min-width:560px){.row2{grid-template-columns:1fr 1fr}}
 .form-note{font-size:13px;color:var(--muted);margin-top:12px;display:flex;gap:8px;align-items:flex-start}
 .form-note .icon{width:16px;height:16px;color:var(--gold-ink);margin-top:2px;flex:none}
@@ -463,7 +474,6 @@ section{padding:clamp(52px,7.5vw,96px) 0}
       <a href="#chuong-trinh">Chương trình</a>
       <a href="#cac-lop">14 lớp</a>
       <a href="#ky-uc">Ký ức</a>
-      <a href="cua-hang.html">Vật phẩm</a>
       <a href="#hoi-dap">Hỏi đáp</a>
     </nav>
     <span class="nav-end">
@@ -651,6 +661,37 @@ section{padding:clamp(52px,7.5vw,96px) 0}
               <input id="f-nick" name="nick" type="text" maxlength="50" placeholder="(không bắt buộc)" />
             </div>
           </div>
+          <fieldset class="shirt-box">
+            <legend><svg class="icon"><use href="#i-shirt"/></svg>Áo đồng phục hội khóa</legend>
+            <div class="row2">
+              <div class="field">
+                <label for="f-shirt-model">Kiểu áo <span class="req">*</span></label>
+                <select id="f-shirt-model" name="shirt_model"><option value="Nam">Mẫu Nam</option><option value="Nữ">Mẫu Nữ</option></select>
+              </div>
+              <div class="field">
+                <label for="f-shirt-size">Size áo <span class="req">*</span></label>
+                <select id="f-shirt-size" name="shirt_size" required>
+                  <option value="">— Chọn size —</option>
+                  <option value="S">S (32–43 kg)</option><option value="M">M (43–53 kg)</option><option value="L">L (53–63 kg)</option>
+                  <option value="XL">XL (63–73 kg)</option><option value="XXL">XXL (73–83 kg)</option><option value="XXXL">XXXL (83–93 kg)</option>
+                  <option value="Ngoại cỡ">Ngoại cỡ (trên 93 kg)</option>
+                </select>
+                <div class="err"><svg class="icon"><use href="#i-info"/></svg>Vui lòng chọn size áo để BTC chuẩn bị đồng phục.</div>
+              </div>
+            </div>
+            <details class="size-mini"><summary>Xem bảng size (dùng chung Nam &amp; Nữ)</summary>
+              <table><thead><tr><th>Size</th><th>Cân nặng</th></tr></thead><tbody>
+                <tr><td>S</td><td>32 – 43 kg</td></tr><tr><td>M</td><td>43 – 53 kg</td></tr><tr><td>L</td><td>53 – 63 kg</td></tr>
+                <tr><td>XL</td><td>63 – 73 kg</td></tr><tr><td>XXL</td><td>73 – 83 kg</td></tr><tr><td>XXXL</td><td>83 – 93 kg</td></tr>
+              </tbody></table>
+              <p class="hint" style="margin:6px 0 0">Bảng size mang tính tương đối. Ở giữa 2 size nên chọn size lớn hơn. Ngoại cỡ: ghi cân nặng + chiều cao vào lời nhắn.</p>
+            </details>
+            <div class="field" id="guest-shirt-field" hidden>
+              <label for="f-shirt-guests">Áo cho người đi cùng (nếu cần)</label>
+              <input id="f-shirt-guests" name="shirt_guests" type="text" maxlength="120" placeholder="VD: 1 áo Nữ M, 1 áo Nam XL" />
+              <div class="hint">Để trống nếu người đi cùng không cần áo.</div>
+            </div>
+          </fieldset>
           <div class="field">
             <label for="f-msg">Lời nhắn gửi hội khóa</label>
             <textarea id="f-msg" name="message" maxlength="500" placeholder="Đôi dòng gửi thầy cô và bạn bè…"></textarea>
@@ -664,7 +705,7 @@ section{padding:clamp(52px,7.5vw,96px) 0}
           <h3>Cảm ơn bạn đã đăng ký trở về!</h3>
           <p style="color:var(--muted);margin:.2em 0">Mã đăng ký của bạn:</p>
           <div class="code" id="reg-code">—</div>
-          <p style="background:#FFF6E5;border:1px solid #EFD284;border-radius:10px;padding:10px 12px;color:#7a5b12;font-size:14px;margin:4px 0 10px">🎁 <b>Mã này cũng là mã nhận 1 áo polo miễn phí</b> — nhập ở bước đặt hàng trong mục <a href="cua-hang.html" style="color:var(--blue);font-weight:600">Vật phẩm</a> để được tặng.</p>
+          <p class="shirt-done" id="reg-shirt"></p>
           <p style="color:var(--muted);font-size:14.5px">Ban tổ chức sẽ liên hệ xác nhận. Hẹn gặp bạn ngày 01/05/2027!</p>
           <button type="button" class="btn btn-outline" id="reg-again" style="margin-top:6px">Đăng ký cho người khác</button>
         </div>
@@ -696,7 +737,6 @@ section{padding:clamp(52px,7.5vw,96px) 0}
       <span class="eyebrow">Chung tay</span>
       <h2 id="tt-h">Quỹ hội khóa & đồng hành tài trợ</h2>
       <p class="lead">Mỗi đóng góp — dù nhỏ — đều giúp ngày trở về thêm trọn vẹn. Các con số minh bạch sẽ do Ban tài chính công khai.</p>
-      <a href="cua-hang.html" class="btn btn-primary" style="margin-top:18px"><svg class="icon"><use href="#i-gift"/></svg>Mua vật phẩm kỷ niệm gây quỹ</a>
     </div>
 
     <div class="grid grid-2" style="margin-top:38px;align-items:stretch">
@@ -1052,30 +1092,41 @@ const CONFIG = {
   const genCode=cls=>{const list=load();let c;do{c=`HK20-${cls}-${randId(5)}`;}while(list.some(r=>r.code===c));return c;};
 
   window.addEventListener("hashchange",()=>{if(window.__preClass)document.getElementById("f-class").value=window.__preClass;});
+  // Hiện ô "áo cho người đi cùng" khi có người đi cùng
+  const guestsEl=document.getElementById("f-guests"),guestShirt=document.getElementById("guest-shirt-field");
+  const syncGuestShirt=()=>{guestShirt.hidden=!(parseInt(guestsEl.value||"0",10)>0);};
+  guestsEl.addEventListener("input",syncGuestShirt);
 
   let submitting=false;
   form.addEventListener("submit",function(ev){
     ev.preventDefault();if(submitting)return;
     const name=document.getElementById("f-name").value.trim(),
           cls=document.getElementById("f-class").value,
-          phoneRaw=document.getElementById("f-phone").value;
-    const bN=name.length<2,bC=!cls,bP=!validPhone(phoneRaw);
-    setErr("f-name",bN);setErr("f-class",bC);setErr("f-phone",bP);
-    if(bN||bC||bP){const first=form.querySelector(".field.invalid input,.field.invalid select");if(first)first.focus();return;}
+          phoneRaw=document.getElementById("f-phone").value,
+          shirtSize=document.getElementById("f-shirt-size").value;
+    const bN=name.length<2,bC=!cls,bP=!validPhone(phoneRaw),bS=!shirtSize;
+    setErr("f-name",bN);setErr("f-class",bC);setErr("f-phone",bP);setErr("f-shirt-size",bS);
+    if(bN||bC||bP||bS){const first=form.querySelector(".field.invalid input,.field.invalid select");if(first)first.focus();return;}
     submitting=true;
     const rec={type:"dang_ky",code:genCode(cls),name,class:cls,phone:normPhone(phoneRaw),
       guests:parseInt(document.getElementById("f-guests").value||"0",10),
       meal:document.getElementById("f-meal").value,
       nick:document.getElementById("f-nick").value.trim(),
-      message:document.getElementById("f-msg").value.trim(),at:new Date().toISOString()};
+      message:document.getElementById("f-msg").value.trim(),
+      shirt_model:document.getElementById("f-shirt-model").value,
+      shirt_size:shirtSize,
+      shirt_guests:(parseInt(document.getElementById("f-guests").value||"0",10)>0?document.getElementById("f-shirt-guests").value.trim():""),
+      at:new Date().toISOString()};
     const list=load();list.push(rec);save(list);
-    try{localStorage.setItem("hoikhoa_me",JSON.stringify({name:rec.name,phone:rec.phone,class:rec.class,code:rec.code}));}catch(e){} // để trang vật phẩm tự điền
+    try{localStorage.setItem("hoikhoa_me",JSON.stringify({name:rec.name,phone:rec.phone,class:rec.class,code:rec.code}));}catch(e){} // lưu trên máy để lần sau không phải nhập lại
     if(CONFIG.formEndpoint){try{fetch(CONFIG.formEndpoint,{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/json"},body:JSON.stringify(rec)}).catch(()=>{});}catch(e){}}
-    codeEl.textContent=rec.code;form.style.display="none";success.classList.add("show");
+    codeEl.textContent=rec.code;
+    document.getElementById("reg-shirt").textContent="👕 Áo đồng phục đã đăng ký: Mẫu "+rec.shirt_model+" · size "+rec.shirt_size+(rec.shirt_guests?" · Người đi cùng: "+rec.shirt_guests:"")+". BTC chuẩn bị áo theo size bạn chọn.";
+    form.style.display="none";success.classList.add("show");
     success.scrollIntoView({behavior:"smooth",block:"center"});submitting=false;
   });
   document.getElementById("reg-again").addEventListener("click",function(){
-    form.reset();form.style.display="block";success.classList.remove("show");
+    form.reset();syncGuestShirt();form.style.display="block";success.classList.remove("show");
     form.querySelectorAll(".invalid").forEach(f=>f.classList.remove("invalid"));
     form.scrollIntoView({behavior:"smooth",block:"center"});
   });
