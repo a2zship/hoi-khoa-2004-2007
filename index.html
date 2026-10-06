@@ -300,6 +300,12 @@ section{padding:clamp(52px,7.5vw,96px) 0}
 .size-mini td:first-child{font-weight:700;color:var(--blue)}
 .shirt-done{background:#EEF4FD;border:1px solid #CFDDF5;border-radius:10px;padding:10px 12px;color:var(--navy);font-size:14.5px;margin:4px 0 10px}
 .shirt-done:empty{display:none}
+.invite-box{margin:16px 0 8px;text-align:center}
+.invite-box .invite-title{font-family:var(--ff-head);font-weight:700;font-size:20px;color:var(--navy);margin:0 0 10px}
+.invite-box img{width:100%;height:auto;border-radius:10px;border:1px solid var(--line);box-shadow:var(--shadow-md);background:#fff}
+.invite-actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:14px}
+.invite-actions .btn{min-height:46px}
+.invite-box .hint{font-size:13px;color:var(--muted);margin:10px 0 0}
 @media(min-width:560px){.row2{grid-template-columns:1fr 1fr}}
 .form-note{font-size:13px;color:var(--muted);margin-top:12px;display:flex;gap:8px;align-items:flex-start}
 .form-note .icon{width:16px;height:16px;color:var(--gold-ink);margin-top:2px;flex:none}
@@ -335,11 +341,6 @@ section{padding:clamp(52px,7.5vw,96px) 0}
 .copy-btn{display:inline-flex;align-items:center;gap:6px;background:var(--navy);color:#fff;border:0;border-radius:9px;padding:7px 13px;font-size:13px;cursor:pointer;font-weight:600;transition:background .2s}
 .copy-btn:hover{background:var(--navy-700)}
 .copy-btn .icon{width:14px;height:14px;stroke-width:2.2}
-.pkg-table{width:100%;border-collapse:collapse;font-size:14.5px;margin-top:10px}
-.pkg-table th,.pkg-table td{text-align:left;padding:12px 10px;border-bottom:1px solid var(--line);vertical-align:top}
-.pkg-table th{font-family:var(--ff-head);color:var(--navy);font-weight:700;background:var(--cream);font-size:16px}
-.pkg-table td.amt{white-space:nowrap;font-weight:600;color:var(--red)}
-.pkg-table tbody tr:hover{background:var(--cream)}
 
 /* ============================================================
    ALBUM / KỶ NIỆM
@@ -706,6 +707,15 @@ section{padding:clamp(52px,7.5vw,96px) 0}
           <p style="color:var(--muted);margin:.2em 0">Mã đăng ký của bạn:</p>
           <div class="code" id="reg-code">—</div>
           <p class="shirt-done" id="reg-shirt"></p>
+          <div class="invite-box" id="invite-box" hidden>
+            <p class="invite-title">💌 Thư mời dành riêng cho bạn</p>
+            <img id="invite-img" alt="Thư mời Hội khóa 20 năm có ghi tên và lớp của bạn" />
+            <div class="invite-actions">
+              <button type="button" class="btn btn-primary" id="dl-invite-img"><svg class="icon"><use href="#i-image"/></svg>Tải ảnh thư mời</button>
+              <button type="button" class="btn btn-outline" id="dl-invite-pdf"><svg class="icon"><use href="#i-clipboard"/></svg>Tải bản in (PDF)</button>
+            </div>
+            <p class="hint">Ảnh để gửi Zalo / Facebook. Bản PDF khổ A5: in 2 mặt (lật cạnh ngắn) rồi gấp đôi thành thư A6.</p>
+          </div>
           <p style="color:var(--muted);font-size:14.5px">Ban tổ chức sẽ liên hệ xác nhận. Hẹn gặp bạn ngày 01/05/2027!</p>
           <button type="button" class="btn btn-outline" id="reg-again" style="margin-top:6px">Đăng ký cho người khác</button>
         </div>
@@ -758,16 +768,6 @@ section{padding:clamp(52px,7.5vw,96px) 0}
       </div>
     </div>
 
-    <div class="fund-card" style="margin-top:20px">
-      <h3><svg class="icon"><use href="#i-gift"/></svg>Các mức đồng hành gợi ý <span class="badge badge-plan">Chờ BTC duyệt</span></h3>
-      <div style="overflow-x:auto">
-        <table class="pkg-table">
-          <thead><tr><th>Mức đồng hành</th><th>Gợi ý</th><th>Ghi nhận</th></tr></thead>
-          <tbody id="pkg-body"></tbody>
-        </table>
-      </div>
-      <p class="form-note"><svg class="icon"><use href="#i-info"/></svg>Hình thức: tiền mặt · chuyển khoản · hiện vật · dịch vụ · ẩn danh. Quyền lợi ghi nhận chỉ áp dụng khi được Ban tổ chức xác nhận. Ngày hội đề cao tinh thần tri ân, không biến thành trang quảng cáo.</p>
-    </div>
   </div>
 </section>
 
@@ -915,14 +915,6 @@ const CONFIG = {
     {icon:"disc",    txt:"Nhận ảnh, video và kỷ yếu số sau sự kiện"}
   ],
 
-  packages: [
-    {name:"Góp một bàn tay", amount:"Từ 2.000.000đ", benefit:"Ghi nhận trên trang cảm ơn (nếu đồng ý)"},
-    {name:"Giữ lửa thanh xuân", amount:"Từ 5.000.000đ", benefit:"Tên/logo trên website và bài cảm ơn"},
-    {name:"Đồng hành tri ân", amount:"Từ 10.000.000đ", benefit:"Logo trên ấn phẩm phù hợp, video cảm ơn"},
-    {name:"Dấu ấn 20 năm", amount:"Từ 20.000.000đ", benefit:"Quyền lợi theo thỏa thuận và phê duyệt BTC"},
-    {name:"Tài trợ đặc biệt", amount:"Thỏa thuận", benefit:"Tiền, hiện vật hoặc một hạng mục cụ thể"}
-  ],
-
   // ====== KÝ ỨC: ĐĂNG ẢNH / VIDEO Ở ĐÂY ======
   // Mỗi phần tử là một ô trong lưới. Các kiểu:
   //   Ảnh:            {type:"image",  src:"anh/ten-anh.jpg",  caption:"Chú thích"}
@@ -988,8 +980,6 @@ const CONFIG = {
     const o=el("option");o.value=c.code;o.textContent="Lớp "+c.code;sel.appendChild(o);
   });
 
-  const pb=$("#pkg-body");
-  CONFIG.packages.forEach(p=>pb.appendChild(el("tr",null,`<td><b>${p.name}</b></td><td class="amt">${p.amount}</td><td>${p.benefit}</td>`)));
 
   const album=$("#album");
   CONFIG.album.forEach(item=>{
@@ -1097,6 +1087,65 @@ const CONFIG = {
   const syncGuestShirt=()=>{guestShirt.hidden=!(parseInt(guestsEl.value||"0",10)>0);};
   guestsEl.addEventListener("input",syncGuestShirt);
 
+
+  // ===== THƯ MỜI CÁ NHÂN HÓA (theo mẫu 09_Thu_moi_A6_gap_210x148.pdf) =====
+  // Ảnh nền = 2 mặt thư mời đã cắt đúng khổ thành phẩm. Tọa độ tính theo point (pt) của file PDF gốc.
+  const INVITE={out:"anh/thu-moi-ngoai.jpg?v=1", inn:"anh/thu-moi-trong.jpg?v=1", trimX:28.3465, trimY:28.3465, trimW:595.2756, ink:"#06468c"};
+  let inviteCover=null, inviteInside=null, inviteName="";
+  const loadImg=src=>new Promise((ok,err)=>{const i=new Image();i.onload=()=>ok(i);i.onerror=err;i.src=src;});
+  const eventText=()=>{ // "07:30 · Thứ Bảy, ngày 01/05/2027" từ CONFIG.eventDateISO
+    const m=/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})/.exec(CONFIG.eventDateISO||""); if(!m) return "";
+    const wd=["Chủ nhật","Thứ Hai","Thứ Ba","Thứ Tư","Thứ Năm","Thứ Sáu","Thứ Bảy"][new Date(Date.UTC(+m[1],+m[2]-1,+m[3])).getUTCDay()];
+    return `${m[4]}:${m[5]} · ${wd}, ngày ${m[3]}/${m[2]}/${m[1]}`;
+  };
+  async function makeInvite(rec){
+    const nameLine="Bạn "+rec.name, classLine=/^A\d+$/.test(rec.class)?"Cựu học sinh lớp "+rec.class:rec.class;
+    const timeLine=eventText(), venueLine=CONFIG.venueName||"";
+    const all=nameLine+classLine+timeLine+venueLine;
+    try{ await Promise.all([document.fonts.load('700 40px "EB Garamond"',all),document.fonts.load('600 20px "Be Vietnam Pro"',all),document.fonts.load('500 20px "Be Vietnam Pro"',all)]); }catch(e){}
+    const [bo,bi]=await Promise.all([loadImg(INVITE.out),loadImg(INVITE.inn)]);
+    const W=bi.naturalWidth,H=bi.naturalHeight,k=W/INVITE.trimW;
+    const X=pt=>(pt-INVITE.trimX)*k, Y=pt=>(pt-INVITE.trimY)*k;
+    const c=document.createElement("canvas");c.width=W;c.height=H;
+    const g=c.getContext("2d");g.drawImage(bi,0,0,W,H);g.fillStyle=INVITE.ink;g.textBaseline="alphabetic";
+    const put=(txt,family,weight,pt,x,y,align,maxPt)=>{ // tự thu nhỏ chữ nếu dài quá khung
+      let size=pt; g.textAlign=align;
+      do{ g.font=`${weight} ${size*k}px ${family}`; if(g.measureText(txt).width<=maxPt*k) break; size-=0.5; }while(size>6);
+      g.fillText(txt,X(x),Y(y));
+    };
+    // Dòng chấm dưới "TRÂN TRỌNG KÍNH MỜI": x 360–589.6pt, y 130.4pt
+    put(nameLine,'"EB Garamond", Georgia, serif',700,16,474.8,123.5,"center",222);
+    put(classLine,'"Be Vietnam Pro", Arial, sans-serif',500,8.5,474.8,143.5,"center",222);
+    // "Thời gian:" (dòng chấm y 272.1pt) và "Địa điểm:" (dòng chấm y 337.3pt), lề trái 362.8pt
+    put(timeLine,'"Be Vietnam Pro", Arial, sans-serif',600,9.5,363.5,267.5,"left",219);
+    put(venueLine,'"Be Vietnam Pro", Arial, sans-serif',600,9.5,363.5,332.5,"left",219);
+    inviteCover=bo; inviteInside=c; inviteName=rec.name;
+    return c;
+  }
+  const fileSlug=t=>(t||"thu-moi").normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/đ/g,"d").replace(/Đ/g,"D").replace(/[^A-Za-z0-9]+/g,"-").replace(/^-|-$/g,"");
+  const downloadUrl=(url,name)=>{const a=document.createElement("a");a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();};
+  document.getElementById("dl-invite-img").addEventListener("click",function(){
+    if(!inviteInside) return;
+    const W=inviteInside.width,H=inviteInside.height,gap=Math.round(W*0.03);
+    const c=document.createElement("canvas");c.width=W;c.height=H*2+gap;const g=c.getContext("2d");
+    g.fillStyle="#ffffff";g.fillRect(0,0,c.width,c.height);g.drawImage(inviteCover,0,0,W,H);g.drawImage(inviteInside,0,H+gap);
+    downloadUrl(c.toDataURL("image/jpeg",0.92),"Thu-moi-Hoi-khoa-20-nam-"+fileSlug(inviteName)+".jpg");
+  });
+  document.getElementById("dl-invite-pdf").addEventListener("click",async function(){
+    if(!inviteInside) return;
+    const btn=this, old=btn.innerHTML; btn.disabled=true; btn.textContent="Đang tạo PDF…";
+    try{
+      if(!window.jspdf) await new Promise((ok,err)=>{const sc=document.createElement("script");sc.src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js";sc.onload=ok;sc.onerror=err;document.head.appendChild(sc);});
+      const doc=new window.jspdf.jsPDF({orientation:"landscape",unit:"mm",format:"a5"});
+      const cv=document.createElement("canvas");cv.width=inviteCover.naturalWidth;cv.height=inviteCover.naturalHeight;cv.getContext("2d").drawImage(inviteCover,0,0);
+      doc.addImage(cv.toDataURL("image/jpeg",0.95),"JPEG",0,0,210,148);
+      doc.addPage("a5","landscape");
+      doc.addImage(inviteInside.toDataURL("image/jpeg",0.95),"JPEG",0,0,210,148);
+      doc.save("Thu-moi-Hoi-khoa-20-nam-"+fileSlug(inviteName)+".pdf");
+    }catch(e){ alert("Chưa tạo được PDF (kiểm tra kết nối mạng). Bạn có thể dùng nút Tải ảnh thư mời."); }
+    btn.disabled=false; btn.innerHTML=old;
+  });
+
   let submitting=false;
   form.addEventListener("submit",function(ev){
     ev.preventDefault();if(submitting)return;
@@ -1123,10 +1172,14 @@ const CONFIG = {
     codeEl.textContent=rec.code;
     document.getElementById("reg-shirt").textContent="👕 Áo đồng phục đã đăng ký: Mẫu "+rec.shirt_model+" · size "+rec.shirt_size+(rec.shirt_guests?" · Người đi cùng: "+rec.shirt_guests:"")+". BTC chuẩn bị áo theo size bạn chọn.";
     form.style.display="none";success.classList.add("show");
+    const ibox=document.getElementById("invite-box"); ibox.hidden=true;
+    makeInvite(rec).then(c=>{document.getElementById("invite-img").src=c.toDataURL("image/jpeg",0.9);ibox.hidden=false;})
+      .catch(()=>{ibox.hidden=true;}); // lỗi tải ảnh/font -> ẩn khối thư mời, đăng ký vẫn thành công
     success.scrollIntoView({behavior:"smooth",block:"center"});submitting=false;
   });
   document.getElementById("reg-again").addEventListener("click",function(){
     form.reset();syncGuestShirt();form.style.display="block";success.classList.remove("show");
+    document.getElementById("invite-box").hidden=true;inviteInside=null;
     form.querySelectorAll(".invalid").forEach(f=>f.classList.remove("invalid"));
     form.scrollIntoView({behavior:"smooth",block:"center"});
   });
