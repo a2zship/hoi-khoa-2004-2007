@@ -1090,7 +1090,7 @@ const CONFIG = {
 
   // ===== THƯ MỜI CÁ NHÂN HÓA (theo mẫu 09_Thu_moi_A6_gap_210x148.pdf) =====
   // Ảnh nền = 2 mặt thư mời đã cắt đúng khổ thành phẩm. Tọa độ tính theo point (pt) của file PDF gốc.
-  const INVITE={out:"anh/thu-moi-ngoai.jpg?v=1", inn:"anh/thu-moi-trong.jpg?v=2", trimX:28.3465, trimY:28.3465, trimW:595.2756, ink:"#06468c"};
+  const INVITE={out:"anh/thu-moi-ngoai.jpg?v=2", inn:"anh/thu-moi-trong.jpg?v=2", trimX:28.3465, trimY:28.3465, trimW:595.2756, ink:"#06468c"};
   let inviteCover=null, inviteInside=null, inviteName="";
   const loadImg=src=>new Promise((ok,err)=>{const i=new Image();i.onload=()=>ok(i);i.onerror=err;i.src=src;});
   const eventText=()=>{ // "07:30 · Thứ Bảy, ngày 01/05/2027" từ CONFIG.eventDateISO
@@ -1102,7 +1102,7 @@ const CONFIG = {
     const nameLine="Bạn "+rec.name, classLine=/^A\d+$/.test(rec.class)?"Cựu học sinh lớp "+rec.class:rec.class;
     const timeLine=eventText(), venueLine=CONFIG.venueName||"";
     const prog=(CONFIG.program||[]).filter(p=>p&&p.time&&p.title);
-    const all=nameLine+classLine+timeLine+venueLine+"CHƯƠNG TRÌNH NGÀY HỘI BUỔI SÁNG CHIỀU TỐI Gặp lại thanh xuân"+prog.map(p=>p.time+p.title).join("");
+    const all=nameLine+classLine+timeLine+venueLine+"CHƯƠNG TRÌNH NGÀY HỘI BUỔI SÁNG CHIỀU TỐI"+prog.map(p=>p.time+p.title).join("");
     try{ await Promise.all([document.fonts.load('700 40px "EB Garamond"',all),document.fonts.load('500 40px "EB Garamond"',all),document.fonts.load('700 20px "Be Vietnam Pro"',all),document.fonts.load('600 20px "Be Vietnam Pro"',all),document.fonts.load('500 20px "Be Vietnam Pro"',all)]); }catch(e){}
     const [bo,bi]=await Promise.all([loadImg(INVITE.out),loadImg(INVITE.inn)]);
     const W=bi.naturalWidth,H=bi.naturalHeight,k=W/INVITE.trimW;
@@ -1127,10 +1127,11 @@ const CONFIG = {
       const groups=[];prog.forEach(p=>{const n=sess(p.time);if(!groups.length||groups[groups.length-1].name!==n)groups.push({name:n,items:[]});groups[groups.length-1].items.push(p);});
       // Co giãn khoảng cách dòng để vừa vùng y 104–352pt dù chương trình dài/ngắn
       const units=prog.length*1+groups.length*0.95+(groups.length-1)*0.45;
-      const step=Math.max(10,Math.min(15.5,(352-104)/units));
-      put("CHƯƠNG TRÌNH NGÀY HỘI",'"Be Vietnam Pro", Arial, sans-serif',700,10,MID,80,"center",230);
-      g.fillStyle=GOLD;g.fillRect(X(MID-24),Y(87.5),48*k,1.2*k);
-      let y=104;
+      const step=Math.max(10,Math.min(15.5,(380-124)/units));
+      const used=units*step, top=Math.max(104,238-(used+44)/2);   // canh giữa theo chiều dọc
+      put("CHƯƠNG TRÌNH NGÀY HỘI",'"Be Vietnam Pro", Arial, sans-serif',700,10,MID,top,"center",230);
+      g.fillStyle=GOLD;g.fillRect(X(MID-24),Y(top+7.5),48*k,1.2*k);
+      let y=top+24;
       groups.forEach((gr,gi)=>{
         if(gi) y+=step*0.45;
         g.fillStyle=GOLD; put(gr.name,'"Be Vietnam Pro", Arial, sans-serif',700,7.4,L,y+6.5,"left",120);
@@ -1142,8 +1143,6 @@ const CONFIG = {
           y+=step;
         });
       });
-      g.fillStyle=INVITE.ink; put("Gặp lại thanh xuân",'"EB Garamond", Georgia, serif',500,15,MID,392,"center",230);
-      g.fillStyle=GOLD; g.fillRect(X(MID-60),Y(402),120*k,0.9*k);
       g.fillStyle=INVITE.ink;
     }
     inviteCover=bo; inviteInside=c; inviteName=rec.name;
