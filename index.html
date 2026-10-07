@@ -1188,7 +1188,7 @@ const CONFIG = {
 
   // ===== THƯ MỜI CÁ NHÂN HÓA (theo mẫu 09_Thu_moi_A6_gap_210x148.pdf) =====
   // Ảnh nền = 2 mặt thư mời đã cắt đúng khổ thành phẩm. Tọa độ tính theo point (pt) của file PDF gốc.
-  const INVITE={out:"anh/thu-moi-ngoai.jpg?v=2", inn:"anh/thu-moi-trong.jpg?v=2", trimX:28.3465, trimY:28.3465, trimW:595.2756, ink:"#06468c"};
+  const INVITE={out:"anh/thu-moi-ngoai.jpg?v=3", inn:"anh/thu-moi-trong.jpg?v=2", trimX:28.3465, trimY:28.3465, trimW:595.2756, ink:"#06468c"};
   let inviteCover=null, inviteInside=null, inviteName="";
   const loadImg=src=>new Promise((ok,err)=>{const i=new Image();i.onload=()=>ok(i);i.onerror=err;i.src=src;});
   const eventText=()=>{ // "07:30 · Thứ Bảy, ngày 01/05/2027" từ CONFIG.eventDateISO
