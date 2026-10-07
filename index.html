@@ -155,7 +155,7 @@ section{padding:clamp(52px,7.5vw,96px) 0}
     radial-gradient(2px 2px at 84% 58%,rgba(255,255,255,.5),transparent),
     radial-gradient(1.5px 1.5px at 40% 76%,rgba(255,255,255,.4),transparent)}
 .hero-inner{position:relative;display:grid;grid-template-columns:1fr;gap:40px;align-items:center;
-  padding:clamp(48px,8vw,92px) 0}
+  padding-block:clamp(48px,8vw,92px)}
 .hero-kicker{display:inline-flex;align-items:center;gap:9px;font-weight:600;letter-spacing:.16em;
   text-transform:uppercase;font-size:12.5px;color:var(--gold-soft);border:1px solid rgba(228,200,119,.45);
   padding:7px 15px;border-radius:var(--radius-pill);margin-bottom:20px}
@@ -170,7 +170,8 @@ section{padding:clamp(52px,7.5vw,96px) 0}
 .meta-chip{display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.09);
   border:1px solid rgba(255,255,255,.16);padding:9px 15px;border-radius:var(--radius-pill);font-size:14.5px}
 .meta-chip .icon{width:17px;height:17px;color:var(--gold-soft)}
-.hero-goals{color:#c8d3ee;font-size:14.5px;margin:16px 0 2px;display:flex;align-items:center;gap:9px}
+.hero-goals{color:#c8d3ee;font-size:14.5px;margin:16px 0 2px;display:flex;align-items:flex-start;gap:9px}
+.hero-goals .icon{margin-top:3px}
 .hero-goals .icon{width:17px;height:17px;color:var(--gold-soft)}
 .hero-goals b{color:var(--gold-soft)}
 .hero-cta{display:flex;flex-wrap:wrap;gap:13px;margin-top:26px}
@@ -211,7 +212,7 @@ section{padding:clamp(52px,7.5vw,96px) 0}
 .grid{display:grid;gap:20px}
 .grid-2{grid-template-columns:1fr}
 .grid-3{grid-template-columns:1fr}
-.grid-4{grid-template-columns:repeat(2,1fr)}
+.grid-4{grid-template-columns:repeat(2,minmax(0,1fr))}
 @media(min-width:640px){.grid-2{grid-template-columns:1fr 1fr}.grid-3{grid-template-columns:repeat(2,1fr)}}
 @media(min-width:960px){.grid-3{grid-template-columns:repeat(3,1fr)}.grid-4{grid-template-columns:repeat(4,1fr)}}
 
@@ -268,6 +269,27 @@ section{padding:clamp(52px,7.5vw,96px) 0}
 .class-card .rep{font-size:13.5px;color:var(--muted);margin:2px 0}
 .class-card .rep b{color:var(--ink)}
 .class-card .btn{margin-top:14px;min-height:42px;padding:9px 16px;font-size:13.5px;width:100%}
+.class-card{position:relative}
+.reg-count{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:center;text-align:center;gap:2px 6px;margin:8px 0 2px;font-size:14px;color:var(--muted)}
+.reg-count b{font-family:var(--ff-head);font-size:22px;color:var(--blue);line-height:1}
+.reg-count.zero{font-size:12.5px;font-style:italic}
+.reg-bar{height:5px;border-radius:99px;background:var(--cream-2,#E1EAFB);overflow:hidden;margin:6px 4px 0}
+.reg-bar span{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--blue),var(--gold));transition:width 1s ease}
+.lead-tag{position:absolute;top:12px;right:12px;font-size:11.5px;font-weight:700;color:#7a5b12;background:#FFF1C9;border:1px solid #EFD284;border-radius:99px;padding:2px 9px}
+.goal-reg[hidden]{display:none}
+/* Popup tổng số người đã đăng ký */
+.reg-pop{position:fixed;left:20px;bottom:24px;z-index:70;width:min(360px,calc(100vw - 24px));display:flex;gap:14px;align-items:flex-start;
+  background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 18px 16px;box-shadow:var(--shadow-lg);
+  transform:translateY(24px);opacity:0;pointer-events:none;transition:transform .4s ease,opacity .4s ease}
+.reg-pop.show{transform:none;opacity:1;pointer-events:auto}
+.reg-pop-ic{flex:none;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;font-size:24px;background:var(--cream);border:1px solid var(--line)}
+.reg-pop-num{font-size:15px;color:var(--ink);line-height:1.35}
+.reg-pop-num b{font-family:var(--ff-head);font-size:30px;color:var(--blue);margin-right:4px}
+.reg-pop-sub{font-size:13.5px;color:var(--muted);margin:4px 0 10px;line-height:1.45}
+.reg-pop .btn{min-height:40px;padding:8px 16px;font-size:14px}
+.reg-pop-x{position:absolute;top:8px;right:10px;border:0;background:none;font-size:22px;line-height:1;color:var(--muted);cursor:pointer;padding:4px}
+@media(max-width:999px){.reg-pop{left:12px;right:12px;width:auto;bottom:calc(86px + env(safe-area-inset-bottom))}}
+@media(prefers-reduced-motion:reduce){.reg-pop,.reg-bar span{transition:none}}
 
 /* ============================================================
    FORM
@@ -500,7 +522,7 @@ section{padding:clamp(52px,7.5vw,96px) 0}
         <span class="meta-chip"><svg class="icon"><use href="#i-clock"/></svg><span id="hero-time">07:30 sáng</span></span>
       </div>
 
-      <p class="hero-goals"><svg class="icon"><use href="#i-users"/></svg>Mục tiêu: <b id="goal-people">~500</b> cựu học sinh · <b id="goal-class">14</b> lớp (A1–A14)</p>
+      <p class="hero-goals"><svg class="icon"><use href="#i-users"/></svg><span>Mục tiêu: <b id="goal-people">~500</b> cựu học sinh · <b id="goal-class">14</b> lớp (A1–A14)<span class="goal-reg" id="goal-reg-wrap" hidden> · Đã đăng ký: <b id="goal-reg">0</b></span></span></p>
 
       <div class="countdown" id="countdown" aria-label="Đếm ngược tới ngày hội khóa">
         <div class="cd-box"><span class="cd-num" id="cd-days">--</span><span class="cd-label">Ngày</span></div>
@@ -854,6 +876,16 @@ section{padding:clamp(52px,7.5vw,96px) 0}
   </div>
 </footer>
 
+<div class="reg-pop" id="reg-pop" role="status" aria-live="polite">
+  <button type="button" class="reg-pop-x" id="reg-pop-x" aria-label="Đóng thông báo">×</button>
+  <div class="reg-pop-ic" aria-hidden="true">🎉</div>
+  <div>
+    <div class="reg-pop-num"><b id="pop-total">0</b>cựu học sinh đã đăng ký trở về</div>
+    <div class="reg-pop-sub" id="pop-sub"></div>
+    <a href="#dang-ky" class="btn btn-primary" id="pop-cta">Đăng ký cùng mọi người</a>
+  </div>
+</div>
+
 <div class="mobile-bar">
   <a href="#dang-ky" class="btn btn-primary">Tham dự</a>
   <a href="#tai-tro" class="btn btn-outline">Tài trợ</a>
@@ -976,7 +1008,7 @@ const CONFIG = {
     const rep=c.rep?`Đại diện: <b>${c.rep}</b>`:`Đại diện: <b>Đang cập nhật</b>`;
     const call=c.repPhone?`<a class="btn btn-outline" href="tel:${c.repPhone}">${ic("phone")}Gọi đại diện</a>`
                          :`<a class="btn btn-outline" href="#dang-ky" onclick="window.__preClass='${c.code}'">Đăng ký cùng lớp</a>`;
-    cg.appendChild(el("div","class-card",`<div class="class-badge">${c.code}</div><div class="rep">${rep}</div>${call}`));
+    cg.appendChild(el("div","class-card",`<div class="class-badge">${c.code}</div><div class="reg-count" data-cls="${c.code}" hidden></div><div class="reg-bar" data-bar="${c.code}" hidden><span></span></div><div class="rep">${rep}</div>${call}`));
     const o=el("option");o.value=c.code;o.textContent="Lớp "+c.code;sel.appendChild(o);
   });
 
@@ -1065,6 +1097,72 @@ const CONFIG = {
   const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}});},
     {threshold:.12,rootMargin:"0px 0px -40px 0px"});
   items.forEach(i=>io.observe(i));
+})();
+
+/* ============================================================
+   THỐNG KÊ ĐĂNG KÝ — số người theo lớp + popup tổng số
+   Nguồn: Apps Script ?resource=stats (chỉ trả con số, không tên/SĐT).
+   ============================================================ */
+(function(){
+  const S={total:0,guests:null,byClass:{}};
+  const $id=id=>document.getElementById(id);
+  async function loadStats(){
+    if(!CONFIG.formEndpoint) return false;
+    const sep=CONFIG.formEndpoint.includes("?")?"&":"?";
+    const get=async res=>{const r=await fetch(CONFIG.formEndpoint+sep+"resource="+res+"&_="+Date.now(),{cache:"no-store"});return r.json();};
+    try{
+      let j=await get("stats");
+      if(j&&j.feature==="stats"&&j.stats){
+        S.total=+j.stats.total||0; S.guests=+j.stats.guests||0; S.byClass={};
+        Object.entries(j.stats.byClass||{}).forEach(([k,v])=>S.byClass[k]=+(v&&v.n)||0);
+        return true;
+      }
+      // Dự phòng khi Apps Script chưa lên bản 4: đếm theo mã đăng ký (dạng HK20-A3-XXXXX)
+      j=await get("regcodes");
+      if(j&&j.feature==="regcodes"){
+        S.byClass={};S.total=0;S.guests=null;
+        new Set((j.codes||[]).map(c=>String(c).toUpperCase())).forEach(c=>{const m=/^HK20-(A\d{1,2})-/.exec(c);if(m){S.byClass[m[1]]=(S.byClass[m[1]]||0)+1;S.total++;}});
+        return true;
+      }
+    }catch(e){}
+    return false;
+  }
+  function render(){
+    const max=Math.max(0,...Object.values(S.byClass));
+    document.querySelectorAll(".reg-count[data-cls]").forEach(box=>{
+      const k=box.dataset.cls,n=S.byClass[k]||0,card=box.closest(".class-card"),bar=card.querySelector("[data-bar]");
+      box.hidden=false;
+      box.classList.toggle("zero",!n);
+      box.innerHTML=n?`<b>${n}</b> bạn đã đăng ký`:"Chưa có ai — hãy là người đầu tiên!";
+      bar.hidden=!n; bar.firstElementChild.style.width=(max?Math.round(n/max*100):0)+"%";
+      let tag=card.querySelector(".lead-tag");
+      if(n&&n===max&&max>1){ if(!tag){tag=document.createElement("span");tag.className="lead-tag";tag.textContent="🏆 Dẫn đầu";card.appendChild(tag);} }
+      else if(tag) tag.remove();
+    });
+    if(S.total>0){$id("goal-reg").textContent=S.total;$id("goal-reg-wrap").hidden=false;}
+  }
+  function topClass(){let best=null;Object.entries(S.byClass).forEach(([k,n])=>{if(!best||n>best[1])best=[k,n];});return best;}
+  function countUp(el,to){
+    if(matchMedia("(prefers-reduced-motion: reduce)").matches){el.textContent=to;return;}
+    const t0=performance.now(),d=1200;const step=t=>{const p=Math.min(1,(t-t0)/d);el.textContent=Math.round(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(step);};requestAnimationFrame(step);
+  }
+  function showPopup(){
+    let seen=false;try{seen=sessionStorage.getItem("hk_pop_seen")==="1";}catch(e){}
+    if(seen||S.total<1) return;
+    const pop=$id("reg-pop"),top=topClass(),parts=[];
+    if(S.guests) parts.push(`cùng ${S.guests} người thân đi cùng`);
+    if(top&&top[1]>1) parts.push(`Lớp ${top[0]} đang dẫn đầu với ${top[1]} bạn`);
+    $id("pop-sub").textContent=parts.length?parts.join(" · ")+".":"Còn bạn thì sao? Hẹn gặp lại ngày 01/05/2027!";
+    let me=null;try{me=JSON.parse(localStorage.getItem("hoikhoa_me")||"null");}catch(e){}
+    const cta=$id("pop-cta");
+    if(me){cta.textContent="Rủ thêm bạn cùng lớp";cta.setAttribute("href","#cac-lop");}
+    const close=()=>{pop.classList.remove("show");try{sessionStorage.setItem("hk_pop_seen","1");}catch(e){}};
+    $id("reg-pop-x").onclick=close; cta.addEventListener("click",close);
+    setTimeout(()=>{pop.classList.add("show");countUp($id("pop-total"),S.total);setTimeout(close,12000);},1500);
+  }
+  // Gọi sau khi đăng ký thành công để số nhảy ngay, không chờ tải lại
+  window.__statsBump=(cls)=>{if(!/^A\d{1,2}$/.test(cls))return;S.byClass[cls]=(S.byClass[cls]||0)+1;S.total++;render();};
+  loadStats().then(ok=>{if(ok){render();showPopup();}});
 })();
 
 /* ============================================================
@@ -1193,6 +1291,7 @@ const CONFIG = {
       shirt_guests:(parseInt(document.getElementById("f-guests").value||"0",10)>0?document.getElementById("f-shirt-guests").value.trim():""),
       at:new Date().toISOString()};
     const list=load();list.push(rec);save(list);
+    if(window.__statsBump) window.__statsBump(cls);
     try{localStorage.setItem("hoikhoa_me",JSON.stringify({name:rec.name,phone:rec.phone,class:rec.class,code:rec.code}));}catch(e){} // lưu trên máy để lần sau không phải nhập lại
     if(CONFIG.formEndpoint){try{fetch(CONFIG.formEndpoint,{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/json"},body:JSON.stringify(rec)}).catch(()=>{});}catch(e){}}
     codeEl.textContent=rec.code;
