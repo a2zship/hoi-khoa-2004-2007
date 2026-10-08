@@ -8,7 +8,7 @@
 <link rel="icon" href="logo.jpg?v=1" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Noto+Serif+Display:wght@700;800&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Noto+Serif+Display:wght@700;800&family=Great+Vibes&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <style>
 :root{--navy:#0C2A66;--blue:#1B54CC;--gold:#C7972F;--ink:#15233F;--muted:#586176;--line:#DCE6F5;--bg:#F4F7FC}
 *{box-sizing:border-box}
@@ -53,6 +53,8 @@ main{max-width:1200px;margin:0 auto;padding:20px;display:grid;gap:20px}
 <main>
   <section class="panel">
     <h2>1. Thông tin nhà tài trợ</h2>
+    <div class="field"><label for="f-title">Danh xưng</label>
+      <select id="f-title"><option>Bạn</option><option>Thầy</option><option>Cô</option><option>Anh</option><option>Chị</option><option>Gia đình</option><option>Công ty</option><option value="">(không ghi)</option></select></div>
     <div class="row2">
       <div class="field"><label for="f-name">Họ tên / tên gọi</label><input id="f-name" type="text" maxlength="40" placeholder="VD: Liên Điệu"></div>
       <div class="field"><label for="f-class">Lớp</label><select id="f-class"><option value="">(không ghi)</option></select></div>
@@ -81,10 +83,11 @@ main{max-width:1200px;margin:0 auto;padding:20px;display:grid;gap:20px}
 <script>
 (function(){
   /* Tọa độ theo thiết kế Canva "Mẫu vinh danh nhà tài trợ — Hội khóa 2004–2007" (trang 528×408), ảnh nền xuất ×4. */
-  const S=4, BG="anh/vinh-danh-nen.jpg?v=2", OV="anh/vinh-danh-phu.png?v=2", OV_X=148, OV_Y=342;
+  const S=4, BG="anh/vinh-danh-nen.jpg?v=3", OV="anh/vinh-danh-phu.png?v=3", OV_X=148, OV_Y=342;
   const RING={cx:126.5*S, cy:175*S, r:87.5*S};                     // lòng trong vòng vàng
   const NAME={cx:368.6*S, cy:171*S, size:33.8*S, max:248*S, color:"#1143AE"}   /* màu thương hiệu (chữ xanh trong Canva) */;
-  const AMT ={cx:372*S,  cy:251.5*S, size:35.3*S, max:252*S};
+  const AMT ={cx:372*S,  cy:251.5*S, size:30*S, max:252*S};
+  const TITLE={cx:364.3*S, cy:138*S, size:26.5*S, max:200*S, color:"#1143AE"};   // danh xưng viết tay (Great Vibes — đủ dấu tiếng Việt)
   const $=id=>document.getElementById(id);
   const cv=$("cv"), g=cv.getContext("2d");
   let bg=null, ov=null, photo=null, zoom=1, offX=0, offY=0;
@@ -122,6 +125,14 @@ main{max-width:1200px;margin:0 auto;padding:20px;display:grid;gap:20px}
       g.drawImage(photo,RING.cx-w/2+offX,RING.cy-h/2+offY,w,h); g.restore();
     }
     if(ov) g.drawImage(ov,OV_X,OV_Y);       // ruy băng, cúp, viền vàng đè lên ảnh
+    // Danh xưng (Bạn / Thầy / Cô...) — căn giữa theo khung chữ thật
+    const tt=$("f-title").value;
+    if(tt){
+      let ts=TITLE.size; g.textAlign="center"; g.textBaseline="alphabetic";
+      do{ g.font=`400 ${ts}px "Great Vibes", cursive`; if(g.measureText(tt).width<=TITLE.max) break; ts-=2; }while(ts>TITLE.size*0.5);
+      const m=g.measureText(tt); g.fillStyle=TITLE.color;
+      g.fillText(tt,TITLE.cx,TITLE.cy+(m.actualBoundingBoxAscent-m.actualBoundingBoxDescent)/2);
+    }
     // Tên
     const nm=($("f-name").value.trim()||"Họ và tên")+(sel.value?" "+sel.value:"");
     const txt=nm.toLocaleUpperCase("vi-VN");
@@ -136,7 +147,7 @@ main{max-width:1200px;margin:0 auto;padding:20px;display:grid;gap:20px}
     $("dl-png").disabled=!ready; $("dl-jpg").disabled=!ready;
   }
 
-  ["f-name","f-amount"].forEach(id=>$(id).addEventListener("input",draw)); sel.addEventListener("change",draw);
+  ["f-name","f-amount"].forEach(id=>$(id).addEventListener("input",draw)); sel.addEventListener("change",draw); $("f-title").addEventListener("change",draw);
   $("f-amount").addEventListener("blur",()=>{const v=$("f-amount").value.replace(/[.,\s]/g,"");if(/^\d+$/.test(v))$("f-amount").value=Number(v).toLocaleString("vi-VN").replace(/,/g,".");});
   $("f-photo").addEventListener("change",e=>{
     const f=e.target.files&&e.target.files[0]; if(!f) return;
@@ -158,7 +169,7 @@ main{max-width:1200px;margin:0 auto;padding:20px;display:grid;gap:20px}
   $("dl-png").addEventListener("click",()=>save("image/png"));
   $("dl-jpg").addEventListener("click",()=>save("image/jpeg",0.9));
 
-  Promise.all([load(BG),load(OV),document.fonts.load('700 40px "Playfair Display"',"HỌ VÀ TÊN ĐIỆU 0123456789 VNĐ"),document.fonts.load('800 40px "Playfair Display"',"0123456789 VNĐ"),document.fonts.load('700 40px "Noto Serif Display"',"0123456789"),document.fonts.load('800 40px "Noto Serif Display"',"0123456789")])
+  Promise.all([load(BG),load(OV),document.fonts.load('700 40px "Playfair Display"',"HỌ VÀ TÊN ĐIỆU 0123456789 VNĐ"),document.fonts.load('800 40px "Playfair Display"',"0123456789 VNĐ"),document.fonts.load('700 40px "Noto Serif Display"',"0123456789"),document.fonts.load('400 60px "Great Vibes"',"Bạn Thầy Cô Anh Chị Gia đình Công ty"),document.fonts.load('800 40px "Noto Serif Display"',"0123456789")])
     .then(([b,o])=>{bg=b;ov=o;$("loading").remove();draw();})
     .catch(()=>{$("loading").textContent="Không tải được mẫu. Kiểm tra kết nối mạng rồi tải lại trang.";});
 })();
