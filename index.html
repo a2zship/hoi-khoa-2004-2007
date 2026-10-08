@@ -322,6 +322,8 @@ section{padding:clamp(52px,7.5vw,96px) 0}
 .size-mini td:first-child{font-weight:700;color:var(--blue)}
 .shirt-done{background:#EEF4FD;border:1px solid #CFDDF5;border-radius:10px;padding:10px 12px;color:var(--navy);font-size:14.5px;margin:4px 0 10px}
 .shirt-done:empty{display:none}
+.reg-known{background:#FFF6E5;border:1px solid #EFD284;border-radius:12px;padding:10px 14px;color:#6b4f10;font-size:14px;margin:0 0 16px;line-height:1.5}
+.reg-note{background:#EEF4FD;border:1px solid #CFDDF5;border-radius:10px;padding:10px 12px;color:var(--navy);font-size:14px;margin:6px 0 4px}
 .invite-box{margin:16px 0 8px;text-align:center}
 .invite-box .invite-title{font-family:var(--ff-head);font-weight:700;font-size:20px;color:var(--navy);margin:0 0 10px}
 .invite-box img{width:100%;height:auto;border-radius:10px;border:1px solid var(--line);box-shadow:var(--shadow-md);background:#fff}
@@ -649,6 +651,7 @@ section{padding:clamp(52px,7.5vw,96px) 0}
 
     <div class="form-grid" style="margin-top:38px">
       <div class="form-card">
+        <p class="reg-known" id="reg-known" hidden></p>
         <form id="reg-form" novalidate>
           <div class="row2">
             <div class="field">
@@ -725,7 +728,8 @@ section{padding:clamp(52px,7.5vw,96px) 0}
 
         <div class="form-success" id="reg-success" role="status" aria-live="polite">
           <span class="medallion"><svg class="icon"><use href="#i-check"/></svg></span>
-          <h3>Cảm ơn bạn đã đăng ký trở về!</h3>
+          <h3 id="reg-title">Cảm ơn bạn đã đăng ký trở về!</h3>
+          <p class="reg-note" id="reg-note" hidden></p>
           <p style="color:var(--muted);margin:.2em 0">Mã đăng ký của bạn:</p>
           <div class="code" id="reg-code">—</div>
           <p class="shirt-done" id="reg-shirt"></p>
@@ -1272,8 +1276,24 @@ const CONFIG = {
   });
 
   let submitting=false;
-  form.addEventListener("submit",function(ev){
+  const submitBtn=form.querySelector('button[type="submit"]'), btnHTML=submitBtn.innerHTML;
+  const phoneErr=document.getElementById("f-phone").closest(".field").querySelector(".err"), phoneErrHTML=phoneErr.innerHTML;
+  const esc=t=>String(t||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  // Nhắc nếu máy này đã từng đăng ký
+  try{const me=JSON.parse(localStorage.getItem("hoikhoa_me")||"null");
+    if(me&&me.name){const k=document.getElementById("reg-known");k.innerHTML=`ℹ️ Máy này đã đăng ký cho <b>${esc(me.name)}</b>${me.code?` (mã ${esc(me.code)})`:""}. Đăng ký lại bằng <b>cùng số điện thoại</b> sẽ <b>cập nhật</b> thông tin, không tạo đăng ký mới. Đăng ký cho người khác thì cứ điền bình thường.`;k.hidden=false;}}catch(e){}
+
+  // Gửi và ĐỌC phản hồi (POST dạng text — không cần preflight). Mạng lỗi -> null (máy chủ vẫn tự chống trùng).
+  async function sendReg(rec){
+    if(!CONFIG.formEndpoint) return null;
+    const ctrl=new AbortController(), t=setTimeout(()=>ctrl.abort(),15000);
+    try{const r=await fetch(CONFIG.formEndpoint,{method:"POST",body:JSON.stringify(rec),signal:ctrl.signal});clearTimeout(t);return await r.json();}
+    catch(e){clearTimeout(t);return null;}
+  }
+
+  form.addEventListener("submit",async function(ev){
     ev.preventDefault();if(submitting)return;
+    phoneErr.innerHTML=phoneErrHTML;
     const name=document.getElementById("f-name").value.trim(),
           cls=document.getElementById("f-class").value,
           phoneRaw=document.getElementById("f-phone").value,
@@ -1281,7 +1301,7 @@ const CONFIG = {
     const bN=name.length<2,bC=!cls,bP=!validPhone(phoneRaw),bS=!shirtSize;
     setErr("f-name",bN);setErr("f-class",bC);setErr("f-phone",bP);setErr("f-shirt-size",bS);
     if(bN||bC||bP||bS){const first=form.querySelector(".field.invalid input,.field.invalid select");if(first)first.focus();return;}
-    submitting=true;
+    submitting=true; submitBtn.disabled=true; submitBtn.textContent="Đang gửi đăng ký…";
     const rec={type:"dang_ky",code:genCode(cls),name,class:cls,phone:normPhone(phoneRaw),
       guests:parseInt(document.getElementById("f-guests").value||"0",10),
       meal:document.getElementById("f-meal").value,
@@ -1291,17 +1311,32 @@ const CONFIG = {
       shirt_size:shirtSize,
       shirt_guests:(parseInt(document.getElementById("f-guests").value||"0",10)>0?document.getElementById("f-shirt-guests").value.trim():""),
       at:new Date().toISOString()};
-    const list=load();list.push(rec);save(list);
-    if(window.__statsBump) window.__statsBump(cls);
+    const res=await sendReg(rec);
+    submitting=false; submitBtn.disabled=false; submitBtn.innerHTML=btnHTML;
+
+    // SĐT đã thuộc về một người khác -> không ghi đè, báo liên hệ BTC
+    if(res&&res.conflict){
+      phoneErr.innerHTML='<svg class="icon"><use href="#i-info"/></svg>Số điện thoại này đã được dùng để đăng ký cho một bạn khác. Nếu có nhầm lẫn, vui lòng liên hệ BTC: 0977.408.258.';
+      setErr("f-phone",true);document.getElementById("f-phone").focus();return;
+    }
+    const updated=!!(res&&res.duplicate&&res.updated);
+    if(updated&&res.code) rec.code=String(res.code);
+    const list=load(), at=list.findIndex(r=>r.phone===rec.phone);
+    if(at>=0) list[at]=rec; else list.push(rec);
+    save(list);
+    if(!updated&&at<0&&window.__statsBump) window.__statsBump(cls);   // chỉ tăng bộ đếm khi là người MỚI
     try{localStorage.setItem("hoikhoa_me",JSON.stringify({name:rec.name,phone:rec.phone,class:rec.class,code:rec.code}));}catch(e){} // lưu trên máy để lần sau không phải nhập lại
-    if(CONFIG.formEndpoint){try{fetch(CONFIG.formEndpoint,{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/json"},body:JSON.stringify(rec)}).catch(()=>{});}catch(e){}}
+
     codeEl.textContent=rec.code;
+    document.getElementById("reg-title").textContent=updated?"Bạn đã đăng ký trước đó — thông tin vừa được cập nhật!":"Cảm ơn bạn đã đăng ký trở về!";
+    const note=document.getElementById("reg-note");
+    note.hidden=!updated; note.textContent=updated?"Mỗi số điện thoại chỉ giữ một đăng ký, nên lần này hệ thống cập nhật vào đăng ký cũ và giữ nguyên mã của bạn.":"";
     document.getElementById("reg-shirt").textContent="👕 Áo đồng phục đã đăng ký: Mẫu "+rec.shirt_model+" · size "+rec.shirt_size+(rec.shirt_guests?" · Người đi cùng: "+rec.shirt_guests:"")+". BTC chuẩn bị áo theo size bạn chọn.";
     form.style.display="none";success.classList.add("show");
     const ibox=document.getElementById("invite-box"); ibox.hidden=true;
     makeInvite(rec).then(c=>{document.getElementById("invite-img").src=c.toDataURL("image/jpeg",0.9);ibox.hidden=false;})
       .catch(()=>{ibox.hidden=true;}); // lỗi tải ảnh/font -> ẩn khối thư mời, đăng ký vẫn thành công
-    success.scrollIntoView({behavior:"smooth",block:"center"});submitting=false;
+    success.scrollIntoView({behavior:"smooth",block:"center"});
   });
   document.getElementById("reg-again").addEventListener("click",function(){
     form.reset();syncGuestShirt();form.style.display="block";success.classList.remove("show");
