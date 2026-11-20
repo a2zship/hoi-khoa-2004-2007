@@ -324,7 +324,7 @@ body.is-admin .site-footer{padding-bottom:110px}
       </div>
       <p style="color:var(--muted);font-size:14px;margin:0;max-width:42ch">Giá dưới đây là mức gợi ý <span class="badge badge-plan">Chờ BTC chốt</span>. Đặt trước để BTC chuẩn bị số lượng.</p>
     </div>
-    <div class="shop-note"><svg class="icon"><use href="#i-shield"/></svg><span><b>Lưu ý:</b> Việc <b>khắc tên riêng</b> (lên áo, bình giữ nhiệt, móc khóa…) chỉ áp dụng cho <b>đơn hàng từ 30 sản phẩm trở lên</b>.</span></div>
+    <div class="shop-note"><svg class="icon"><use href="#i-shield"/></svg><span><b>Lưu ý:</b> Việc <b>khắc tên riêng</b> (lên bình giữ nhiệt, bút ký, đồng hồ…) chỉ áp dụng cho <b>đơn hàng từ 30 sản phẩm trở lên</b>.</span></div>
     <div class="cat-tabs" id="cat-tabs"></div>
     <div class="grid" id="product-grid"></div>
   </div>
@@ -357,7 +357,7 @@ body.is-admin .site-footer{padding-bottom:110px}
     <div class="center" style="max-width:700px;margin:0 auto 30px">
       <span class="eyebrow" style="justify-content:center;display:inline-flex">Dành cho ban cán sự lớp</span>
       <h2 style="margin:0 0 8px">Đặt in ấn riêng theo lớp</h2>
-      <p style="color:var(--muted);margin:0">Mỗi lớp có thể tự chọn <b>chủng loại</b> và <b>số lượng riêng</b>, kèm <b>nội dung in riêng</b> (tên lớp, danh sách tên, màu áo…). BTC sẽ liên hệ đại diện lớp để chốt mẫu và báo giá cuối trước khi thu tiền.</p>
+      <p style="color:var(--muted);margin:0">Mỗi lớp có thể tự chọn <b>chủng loại</b> và <b>số lượng riêng</b>, kèm <b>nội dung in riêng</b> (tên lớp, danh sách tên…). BTC sẽ liên hệ đại diện lớp để chốt mẫu và báo giá cuối trước khi thu tiền.</p>
     </div>
     <div class="cls-card">
       <form id="cls-form" novalidate>
@@ -370,7 +370,7 @@ body.is-admin .site-footer{padding-bottom:110px}
           <div class="field"><label for="cls-phone">Số điện thoại <span class="req">*</span></label><input id="cls-phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="0912 345 678"><div class="err">SĐT chưa hợp lệ (10 số).</div></div>
           <div class="field"><label for="cls-when">Thời điểm cần nhận</label><input id="cls-when" type="text" placeholder="VD: trước ngày hội 10 ngày"></div>
         </div>
-        <div class="field"><label for="cls-print">Nội dung in riêng cho lớp</label><textarea id="cls-print" placeholder="VD: In dòng &quot;LỚP 12A3&quot; ở lưng áo; danh sách tên thành viên; màu áo xanh dương…"></textarea></div>
+        <div class="field"><label for="cls-print">Nội dung in riêng cho lớp</label><textarea id="cls-print" placeholder="VD: In dòng &quot;LỚP 12A3&quot; lên bình/cốc; khắc tên từng thành viên lên bút…"></textarea></div>
         <label style="font-weight:600;font-size:14px;display:block;margin-bottom:2px">Chọn chủng loại & số lượng cho lớp</label>
         <div style="overflow-x:auto">
           <table class="cls-table">
@@ -405,7 +405,7 @@ body.is-admin .site-footer{padding-bottom:110px}
     </div>
     <div class="why">
       <div class="why-card"><div class="medallion"><svg class="icon"><use href="#i-heart"/></svg></div><h3>Gây quỹ minh bạch</h3><p style="color:var(--muted);font-size:14.5px;margin:0">Toàn bộ nguồn thu dùng để tổ chức ngày hội; thu – chi sẽ được Ban tài chính công khai.</p></div>
-      <div class="why-card"><div class="medallion"><svg class="icon"><use href="#i-gift"/></svg></div><h3>Kỷ vật một thời</h3><p style="color:var(--muted);font-size:14.5px;margin:0">Áo, nón, ly, kỷ yếu… in dấu ấn khóa 2004–2007 để giữ mãi ký ức tuổi học trò.</p></div>
+      <div class="why-card"><div class="medallion"><svg class="icon"><use href="#i-gift"/></svg></div><h3>Kỷ vật một thời</h3><p style="color:var(--muted);font-size:14.5px;margin:0">Nón, bình, cốc, đồng hồ… in dấu ấn khóa 2004–2007 để giữ mãi ký ức tuổi học trò.</p></div>
       <div class="why-card"><div class="medallion"><svg class="icon"><use href="#i-truck"/></svg></div><h3>Nhận tiện lợi</h3><p style="color:var(--muted);font-size:14.5px;margin:0">Nhận trực tiếp tại ngày hội (miễn phí) hoặc giao tận nơi nếu bạn ở xa.</p></div>
     </div>
   </div>
@@ -604,7 +604,10 @@ const CONFIG = {
       ["#adm-save","#adm-undo"].forEach(id=>{ const b=$(id); if(b) b.disabled=false; });
     }
   }
-  function refreshCart(){ try{ updateBadge(); renderCart(); }catch(e){} }
+  function syncShirtUI(){ const sec=$("#huong-dan-size"); if(sec) sec.style.display=CONFIG.products.some(p=>p.variant==="ao")?"":"none"; }
+  function pruneCart(){ let ch=false; for(const k in cart){ if(!byId(cart[k].id)){ delete cart[k]; ch=true; } } if(ch) persist(); }
+  function refreshCart(){ try{ pruneCart(); syncShirtUI(); updateBadge(); renderCart(); }catch(e){} }
+  pruneCart(); syncShirtUI();
   renderCatTabs(); renderGrid(); adminBar();
 
   function addToCart(id,q,model,size){
@@ -671,7 +674,7 @@ const CONFIG = {
           <label><input type="radio" name="deliver" value="Giao tận nơi"><span><span class="d-title">Giao tận nơi</span><br><span class="d-sub">Dành cho bạn ở xa — phí ship BTC báo sau</span></span></label>
         </div>
         <div class="field" id="addr-field" hidden><label for="o-addr">Địa chỉ nhận hàng <span class="req">*</span></label><textarea id="o-addr" placeholder="Số nhà, đường, phường/xã, quận/huyện, tỉnh/thành"></textarea><div class="err">Vui lòng nhập địa chỉ giao hàng.</div></div>
-        <div class="field"><label for="o-note">Ghi chú (size áo, tên khắc…)</label><textarea id="o-note" placeholder="VD: Áo size L, móc khóa khắc tên Minh - A3"></textarea></div>
+        <div class="field"><label for="o-note">Ghi chú (tên khắc, yêu cầu khác…)</label><textarea id="o-note" placeholder="VD: Bút khắc tên Minh - A3"></textarea></div>
         <div style="margin:4px 0 12px">
           <div class="cart-total"><span class="lbl">Tạm tính (${count()} món)</span><span class="amt" id="ck-subtotal" style="font-size:17px">${vnd(total())}</span></div>
           <div class="cart-total" style="margin-top:2px"><span class="lbl"><b>Thành tiền</b></span><span class="amt" id="ck-final">${vnd(total())}</span></div>

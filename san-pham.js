@@ -24,10 +24,11 @@ window.SHOP_CATEGORIES = [
 
 window.SHOP_PRODUCTS = [
   /* ===================== HỘI KHÓA 20 NĂM ===================== */
-  { id:"ao-polo", cat:"dong-phuc", name:"Áo polo (mẫu 1)",   desc:"Polo trắng phối xanh, thêu logo 20 năm, in được tên lớp.", price:200000, img:"anh/ao-polo.png", tag:"Bán chạy", variant:"ao" },
-  { id:"ao-polo-2", cat:"dong-phuc", name:"Áo polo (mẫu 2)", desc:"Polo trắng cổ & bo tay xanh, thêu logo 20 năm 'Gặp lại thanh xuân'.", price:200000, img:"anh/ao-polo-2.jpg", tag:"Mẫu mới", variant:"ao" },
-  { id:"ao-thun", cat:"dong-phuc", name:"Áo thun",          desc:"Áo thun cotton in logo & hình bóng học trò, đủ size.",     price:150000, img:"anh/ao-thun.png", tag:"", variant:"ao" },
-  { id:"mu",      cat:"dong-phuc", name:"Mũ lưỡi trai",     desc:"Nón kết trắng–xanh thêu biểu tượng hội khóa.",             price:90000,  img:"anh/mu-luoi-trai.png", tag:"" },
+  // ÁO: tạm ẨN khỏi gian hàng (Sếp yêu cầu 20/11/2026) — áo đồng phục đăng ký size ở trang đăng ký. Bỏ "hide:true" để bán lại.
+  { id:"ao-polo", cat:"dong-phuc", name:"Áo polo (mẫu 1)",   desc:"Polo trắng phối xanh, thêu logo 20 năm, in được tên lớp.", price:200000, img:"anh/ao-polo.png", tag:"Bán chạy", variant:"ao", hide:true },
+  { id:"ao-polo-2", cat:"dong-phuc", name:"Áo polo (mẫu 2)", desc:"Polo trắng cổ & bo tay xanh, thêu logo 20 năm 'Gặp lại thanh xuân'.", price:200000, img:"anh/ao-polo-2.jpg", tag:"Mẫu mới", variant:"ao", hide:true },
+  { id:"ao-thun", cat:"dong-phuc", name:"Áo thun",          desc:"Áo thun cotton in logo & hình bóng học trò, đủ size.",     price:150000, img:"anh/ao-thun.png", tag:"", variant:"ao", hide:true },
+  { id:"mu",      cat:"do-dung", name:"Mũ lưỡi trai",     desc:"Nón kết trắng–xanh thêu biểu tượng hội khóa.",             price:90000,  img:"anh/mu-luoi-trai.png", tag:"" },
   { id:"binh",    cat:"do-dung", name:"Bình giữ nhiệt",   desc:"Bình giữ nhiệt inox in logo, khắc được tên lớp.",          price:180000, img:"anh/binh-giu-nhiet.png", tag:"" },
   { id:"tui",     cat:"do-dung", name:"Túi vải",          desc:"Túi vải canvas in logo, bền & tiện dùng hằng ngày.",       price:85000,  img:"anh/tui-vai.png", tag:"" },
   { id:"moc-khoa",cat:"do-dung", name:"Móc khóa",         desc:"Móc khóa kim loại in logo, khắc được tên & lớp.",          price:45000,  img:"anh/moc-khoa.png", tag:"", hide:true }, // TẠM ẨN: ảnh lỗi chính tả "thank"->"thanh", chờ ảnh sửa
