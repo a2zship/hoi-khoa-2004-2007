@@ -446,7 +446,7 @@ const CONFIG = {
   formEndpoint: "https://script.google.com/macros/s/AKfycbxQbZvPw3Q6QusMUh4gnVMTJ-w-vt8C2cNEEA1G6IwleOpf8v8xl4vDD_CQQMqUz8dV/exec", // Google Apps Script → Google Sheet
 
   // icon = id trong sprite (p-*). Muốn dùng ảnh thật: thêm img:"ten-anh.jpg" (để cùng thư mục)
-  // Danh mục theo dịp (Hội khóa / 20-11 / Tết / khác) — lấy từ san-pham.js
+  // Nhóm vật phẩm (Áo & mũ / Đồ dùng / Quà tặng) — lấy từ san-pham.js
   categories: (window.SHOP_CATEGORIES && window.SHOP_CATEGORIES.length ? window.SHOP_CATEGORIES : [{id:"hoi-khoa",label:"Hội khóa"}]),
   // ⭐ Giá & ảnh lấy từ file san-pham.js cho DỄ SỬA. Danh sách dưới đây chỉ là bản dự phòng nếu thiếu file.
   products: (window.SHOP_PRODUCTS && window.SHOP_PRODUCTS.length ? window.SHOP_PRODUCTS : [
@@ -467,7 +467,7 @@ const CONFIG = {
   const el=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e;};
   const ic=n=>`<svg class="icon"><use href="#${n}"/></svg>`;
   const vnd=n=>new Intl.NumberFormat("vi-VN").format(n)+"đ";
-  const ASSET_VER="1"; // tăng số này mỗi lần thay ảnh để trình duyệt hiện ảnh mới ngay
+  const ASSET_VER="2"; // tăng số này mỗi lần thay ảnh để trình duyệt hiện ảnh mới ngay
   const ver=u=>u?(u+(u.indexOf("?")<0?"?":"&")+"v="+ASSET_VER):u;
   const randId=(n)=>{const c="ABCDEFGHJKLMNPQRSTUVWXYZ23456789";let a;try{a=crypto.getRandomValues(new Uint32Array(n));}catch(e){a=null;}let s="";for(let i=0;i<n;i++)s+=c[(a?a[i]:Math.floor(Math.random()*4294967296))%c.length];return s;};
   const KEY="hoikhoa_shop_cart", ORDKEY="hoikhoa_shop_orders";
@@ -495,8 +495,11 @@ const CONFIG = {
     if(cats.length<=2){ box.style.display="none"; return; } box.style.display="";
     cats.forEach(c=>{ const b=el("button","cat-tab"+(c.id===activeCat?" active":""),c.label); b.onclick=()=>{activeCat=c.id;renderCatTabs();renderGrid();}; box.appendChild(b); });
   }
+  const catRank=c=>{const i=(CONFIG.categories||[]).findIndex(x=>x.id===c);return i<0?99:i;};
   function renderGrid(){ grid.innerHTML="";
-  CONFIG.products.filter(p=>activeCat==="all"||p.cat===activeCat).forEach(p=>{
+  CONFIG.products.filter(p=>activeCat==="all"||p.cat===activeCat)
+    .map((p,i)=>({p,i})).sort((a,b)=>catRank(a.p.cat)-catRank(b.p.cat)||a.i-b.i).map(x=>x.p)
+    .forEach(p=>{
     const media = `<div class="product-media">${p.tag?`<span class="tag">${p.tag}</span>`:""}${ p.img ? `<img src="${ver(p.img)}" alt="${p.name}" loading="lazy" onerror="imgHideCard(this)">` : ic(p.icon) }</div>`;
     const card=el("div","product-card",
       `${media}
@@ -756,7 +759,8 @@ const CONFIG = {
       clearTimeout(to);
       const j=await r.json();
       if(j&&j.feature==="products"&&Array.isArray(j.products)&&j.products.length){
-        CONFIG.products=j.products.filter(p=>!p.hide && p.img).map(p=>({...p,price:+p.price||0,
+        const local=id=>(window.SHOP_PRODUCTS||[]).find(x=>x.id===id)||{};
+        CONFIG.products=j.products.filter(p=>!p.hide && p.img).map(p=>({...p,price:+p.price||0,variant:p.variant||local(p.id).variant,
           icon:p.icon||(window.SHOP_ICON_BY_ID&&window.SHOP_ICON_BY_ID[p.id])||"i-gift",tag:p.tag||"",cat:p.cat||"hoi-khoa"}));
         renderCatTabs(); renderGrid(); if(rebuildClassRows) rebuildClassRows();
       }

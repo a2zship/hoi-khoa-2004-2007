@@ -177,7 +177,7 @@ h1,h2{font-family:var(--ff-head);margin:0}
 
   function seed(){
     const base = (window.SHOP_PRODUCTS && window.SHOP_PRODUCTS.length) ? window.SHOP_PRODUCTS : [];
-    return base.map(p=>({id:p.id||("sp-"+Math.random().toString(36).slice(2,7)),cat:p.cat||"hoi-khoa",name:p.name||"",desc:p.desc||"",price:+p.price||0,img:p.img||"",tag:p.tag||"",hide:!!p.hide}));
+    return base.map(p=>({id:p.id||("sp-"+Math.random().toString(36).slice(2,7)),cat:p.cat||"hoi-khoa",name:p.name||"",desc:p.desc||"",price:+p.price||0,img:p.img||"",tag:p.tag||"",variant:p.variant||"",hide:!!p.hide}));
   }
 
   // ---- Gate ----
@@ -189,7 +189,7 @@ h1,h2{font-family:var(--ff-head);margin:0}
         const r=await fetch(ENDPOINT+"?resource=products&_="+Date.now(),{cache:"no-store"});
         const j=await r.json();
         if(j&&j.feature==="products"&&Array.isArray(j.products)&&j.products.length){
-          items=j.products.map(p=>({id:p.id||("sp-"+Math.random().toString(36).slice(2,7)),cat:p.cat||"hoi-khoa",name:p.name||"",desc:p.desc||"",price:+p.price||0,img:p.img||"",tag:p.tag||"",hide:!!p.hide}));
+          items=j.products.map(p=>({id:p.id||("sp-"+Math.random().toString(36).slice(2,7)),cat:p.cat||"hoi-khoa",name:p.name||"",desc:p.desc||"",price:+p.price||0,img:p.img||"",tag:p.tag||"",variant:p.variant||(((window.SHOP_PRODUCTS||[]).find(x=>x.id===p.id)||{}).variant)||"",hide:!!p.hide}));
           render(); toast("Đã tải danh sách đang hiển thị trên web.",true);
         }
       }catch(e){}
@@ -319,7 +319,7 @@ h1,h2{font-family:var(--ff-head);margin:0}
   $("#btn-export").onclick=()=>{
     const lines=items.map(it=>{
       const s=k=>JSON.stringify(it[k]||"");
-      return `  { id:${JSON.stringify(it.id)}, cat:${JSON.stringify(it.cat||"hoi-khoa")}, name:${s("name")}, desc:${s("desc")}, price:${Math.max(0,+it.price||0)}, img:${s("img")}, tag:${s("tag")}${it.hide?", hide:true":""} }`;
+      return `  { id:${JSON.stringify(it.id)}, cat:${JSON.stringify(it.cat||"hoi-khoa")}, name:${s("name")}, desc:${s("desc")}, price:${Math.max(0,+it.price||0)}, img:${s("img")}, tag:${s("tag")}${it.variant?", variant:"+JSON.stringify(it.variant):""}${it.hide?", hide:true":""} }`;
     }).join(",\n");
     const iconmap = JSON.stringify(ICONMAP,null,2);
     const cats = JSON.stringify(CATS,null,2);
