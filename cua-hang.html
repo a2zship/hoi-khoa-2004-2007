@@ -109,6 +109,18 @@ section{padding:clamp(40px,6vw,72px) 0}
 .product-name{font-family:var(--ff-head);font-weight:600;font-size:18px;color:var(--navy);margin:0 0 4px}
 .product-desc{color:var(--muted);font-size:13.5px;margin:0 0 12px;flex:1}
 .product-price{font-weight:700;font-size:18px;color:var(--blue);margin-bottom:12px}
+.price-edit{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.price-edit input{flex:1 1 90px;min-width:0;font-family:inherit;font-weight:700;font-size:17px;color:var(--blue);padding:7px 10px;border:1.5px dashed var(--gold);border-radius:9px;background:#FFFBF0}
+.price-edit input:focus{outline:none;border-style:solid;border-color:var(--blue);box-shadow:0 0 0 3px rgba(27,84,204,.12)}
+.price-edit input.changed{border-style:solid;border-color:var(--blue);background:#EEF3FF}
+.price-edit .cur{font-weight:700;color:var(--blue)}
+.price-edit .old{flex-basis:100%;font-size:12px;color:var(--muted)}
+.admin-bar{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:90;width:max-content;max-width:calc(100% - 32px);display:flex;flex-wrap:wrap;align-items:center;gap:10px;background:var(--navy-900);color:#fff;border-radius:14px;padding:10px 12px 10px 16px;box-shadow:0 12px 30px rgba(12,42,102,.35);font-size:14px}
+.admin-bar .msg{flex:0 1 auto;min-width:0}
+.admin-bar .btn{padding:8px 14px;font-size:13.5px}
+.admin-bar .btn[disabled]{opacity:.45;pointer-events:none}
+.admin-bar .ok{color:#9BE7B0}.admin-bar .bad{color:#FFB4B4}
+body.is-admin .site-footer{padding-bottom:110px}
 .product-actions{display:flex;gap:8px;align-items:center}
 .qty{display:inline-flex;align-items:center;border:1.5px solid var(--line-cool);border-radius:10px;overflow:hidden}
 .qty button{width:34px;height:40px;background:#fff;border:0;cursor:pointer;color:var(--blue);display:grid;place-items:center}
@@ -469,6 +481,18 @@ const CONFIG = {
   const vnd=n=>new Intl.NumberFormat("vi-VN").format(n)+"đ";
   const ASSET_VER="2"; // tăng số này mỗi lần thay ảnh để trình duyệt hiện ảnh mới ngay
   const ver=u=>u?(u+(u.indexOf("?")<0?"?":"&")+"v="+ASSET_VER):u;
+  const num=n=>new Intl.NumberFormat("vi-VN").format(n);
+  // ===== Danh sách SP: Google Sheet (nếu có) ghi đè theo id; SP mới chỉ có trong san-pham.js vẫn được thêm vào =====
+  const LOCAL=window.SHOP_PRODUCTS||[];
+  const mergeProducts=sheet=>{ sheet=Array.isArray(sheet)?sheet:[]; if(!sheet.length) return LOCAL.map(p=>({...p}));
+    const ids=new Set(sheet.map(p=>p.id)); return sheet.map(p=>({...p})).concat(LOCAL.filter(p=>!ids.has(p.id)).map(p=>({...p}))); };
+  const visible=list=>list.filter(p=>!p.hide && p.img).map(p=>({...p,price:+p.price||0,
+      variant:p.variant||((LOCAL.find(x=>x.id===p.id)||{}).variant),
+      icon:p.icon||(window.SHOP_ICON_BY_ID&&window.SHOP_ICON_BY_ID[p.id])||"i-gift",tag:p.tag||"",cat:p.cat||"hoi-khoa"}));
+  // ===== Chế độ SỬA GIÁ cho BTC: mở trang với địa chỉ cua-hang.html?sua-gia =====
+  const ADMIN=/(^|[?&#])sua-gia(\b|=|$)/.test(location.search.slice(1)+"&"+location.hash.slice(1));
+  const edits={};
+  if(ADMIN) document.body.classList.add("is-admin");
   const randId=(n)=>{const c="ABCDEFGHJKLMNPQRSTUVWXYZ23456789";let a;try{a=crypto.getRandomValues(new Uint32Array(n));}catch(e){a=null;}let s="";for(let i=0;i<n;i++)s+=c[(a?a[i]:Math.floor(Math.random()*4294967296))%c.length];return s;};
   const KEY="hoikhoa_shop_cart", ORDKEY="hoikhoa_shop_orders";
   const byId=id=>CONFIG.products.find(p=>p.id===id);
@@ -506,7 +530,7 @@ const CONFIG = {
        <div class="product-body">
          <div class="product-name">${p.name}</div>
          <div class="product-desc">${p.desc}</div>
-         <div class="product-price">${vnd(p.price)}</div>
+         ${ADMIN?`<label class="price-edit"><input type="text" inputmode="numeric" data-price="${p.id}" value="${num(edits[p.id]!=null?edits[p.id]:p.price)}" aria-label="Giá ${p.name}"${edits[p.id]!=null?' class="changed"':''}><span class="cur">đ</span>${edits[p.id]!=null?`<span class="old">Giá đang bán: ${vnd(p.price)}</span>`:""}</label>`:`<div class="product-price">${vnd(p.price)}</div>`}
          ${p.variant==="ao"?`<div class="variant-row">
            <select data-model aria-label="Mẫu ${p.name}"><option value="nam">Mẫu Nam</option><option value="nu">Mẫu Nữ</option></select>
            <select data-size aria-label="Size ${p.name}"></select>
@@ -520,7 +544,12 @@ const CONFIG = {
            <button class="btn btn-primary add-btn" data-add="${p.id}">Thêm</button>
          </div>
        </div>`);
-    const input=card.querySelector("input");
+    const input=card.querySelector(".qty input");
+    if(ADMIN){ const pi=card.querySelector("[data-price]");
+      pi.oninput=()=>{ const v=+(pi.value.replace(/\D/g,""))||0; if(v!==+p.price) edits[p.id]=v; else delete edits[p.id]; pi.classList.toggle("changed",edits[p.id]!=null); adminBar(); };
+      pi.onchange=()=>{ renderGridKeepScroll(); };
+      pi.onkeydown=e=>{ if(e.key==="Enter") pi.blur(); };
+    }
     card.querySelector("[data-dec]").onclick=()=>input.value=Math.max(1,(+input.value||1)-1);
     card.querySelector("[data-inc]").onclick=()=>input.value=Math.min(99,(+input.value||1)+1);
     if(p.variant==="ao"){
@@ -534,7 +563,49 @@ const CONFIG = {
     grid.appendChild(card);
   });
   if(!grid.children.length) grid.innerHTML='<p style="grid-column:1/-1;text-align:center;color:var(--muted);padding:30px">Chưa có sản phẩm cho dịp này.</p>'; }
-  renderCatTabs(); renderGrid();
+  function renderGridKeepScroll(){ const y=scrollY; renderGrid(); scrollTo(0,y); }
+  function adminBar(state,text){ if(!ADMIN) return;
+    let bar=$("#admin-bar"); if(!bar){ bar=el("div","admin-bar"); bar.id="admin-bar"; bar.setAttribute("role","status"); document.body.appendChild(bar); }
+    const n=Object.keys(edits).length, busy=state==="busy";
+    const msg=text||(n?`Đã sửa <b>${n}</b> giá, chưa lưu.`:"<b>Chế độ sửa giá.</b> Bấm vào ô giá để sửa.");
+    bar.innerHTML=`<span class="msg ${state||""}">${msg}</span>
+      <button type="button" class="btn btn-white" id="adm-undo"${n&&!busy?"":" disabled"}>Hoàn tác</button>
+      <button type="button" class="btn btn-primary" id="adm-save"${n&&!busy?"":" disabled"}>Lưu lên web</button>
+      <a class="btn btn-white" href="cua-hang.html" title="Thoát chế độ sửa giá">Thoát</a>`;
+    $("#adm-undo").onclick=()=>{ for(const k in edits) delete edits[k]; renderGridKeepScroll(); adminBar(); };
+    $("#adm-save").onclick=saveEdits;
+  }
+  async function saveEdits(){
+    if(!CONFIG.formEndpoint) return;
+    let key=sessionStorage.getItem("hk_pub_key");
+    if(!key){ key=prompt("Nhập mật khẩu quản trị (ADMIN_KEY đặt trong Apps Script):"); if(!key) return; }
+    adminBar("busy","Đang lưu lên web…");
+    const sep=CONFIG.formEndpoint.includes("?")?"&":"?";
+    let sheet;
+    try{ const j=await (await fetch(CONFIG.formEndpoint+sep+"resource=products&_="+Date.now(),{cache:"no-store"})).json();
+      if(!j||j.feature!=="products") throw 0; sheet=j.products||[]; }
+    catch(e){ adminBar("bad","Không kết nối được máy chủ. Kiểm tra mạng rồi bấm lưu lại."); return; }
+    const n=Object.keys(edits).length;
+    const products=mergeProducts(sheet).map(p=>({id:p.id,cat:p.cat||"hoi-khoa",name:p.name||"",desc:p.desc||"",
+      price:edits[p.id]!=null?edits[p.id]:(+p.price||0),img:p.img||"",tag:p.tag||"",hide:!!p.hide}));
+    let res=null;
+    try{ const r=await fetch(CONFIG.formEndpoint,{method:"POST",body:JSON.stringify({type:"products_save",key,products})}); res=await r.json(); }catch(e){}
+    if(res&&res.ok){
+      sessionStorage.setItem("hk_pub_key",key);
+      for(const k in edits) delete edits[k];
+      CONFIG.products=visible(products); renderCatTabs(); renderGridKeepScroll(); if(rebuildClassRows) rebuildClassRows(); refreshCart();
+      adminBar("ok",`✓ Đã lưu ${n} giá lên web. Khách mở trang sẽ thấy giá mới.`);
+    } else {
+      const err=res&&res.error;
+      if(err==="WRONG_KEY") sessionStorage.removeItem("hk_pub_key");
+      adminBar("bad", err==="WRONG_KEY"?"Sai mật khẩu quản trị. Bấm lưu lại để nhập lại."
+        : err==="NO_KEY_SET"?"Apps Script chưa đặt ADMIN_KEY nên chưa lưu được."
+        : "Chưa lưu được (lỗi mạng hoặc máy chủ). Thử lại sau ít phút.");
+      ["#adm-save","#adm-undo"].forEach(id=>{ const b=$(id); if(b) b.disabled=false; });
+    }
+  }
+  function refreshCart(){ try{ updateBadge(); renderCart(); }catch(e){} }
+  renderCatTabs(); renderGrid(); adminBar();
 
   function addToCart(id,q,model,size){
     const key=model?`${id}::${model}::${size}`:id;
@@ -759,10 +830,8 @@ const CONFIG = {
       clearTimeout(to);
       const j=await r.json();
       if(j&&j.feature==="products"&&Array.isArray(j.products)&&j.products.length){
-        const local=id=>(window.SHOP_PRODUCTS||[]).find(x=>x.id===id)||{};
-        CONFIG.products=j.products.filter(p=>!p.hide && p.img).map(p=>({...p,price:+p.price||0,variant:p.variant||local(p.id).variant,
-          icon:p.icon||(window.SHOP_ICON_BY_ID&&window.SHOP_ICON_BY_ID[p.id])||"i-gift",tag:p.tag||"",cat:p.cat||"hoi-khoa"}));
-        renderCatTabs(); renderGrid(); if(rebuildClassRows) rebuildClassRows();
+        CONFIG.products=visible(mergeProducts(j.products));
+        renderCatTabs(); renderGridKeepScroll(); if(rebuildClassRows) rebuildClassRows(); refreshCart();
       }
     }catch(e){ /* mạng lỗi -> dùng giá trong san-pham.js */ }
   })();
